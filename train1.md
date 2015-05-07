@@ -195,12 +195,7 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
 ## TRANSITION STYLES
 可以自由的设置切换页面的方式,点击下面的选项来查看不同的切换效果
 
-```{r echo = F, results = 'asis', comment = NA}
-transitions = c("cube", "page", "concave", "zoom", "linear", "fade", "none", "default")
-names(transitions) = gsub("^([a-z])", "\\U\\1", transitions, perl = TRUE)
-x = sprintf("[%s](?transition=%s#/transitions)", names(transitions), transitions)
-cat(paste(x, collapse = ' - '))
-```
+[Cube](?transition=cube#/transitions) - [Page](?transition=page#/transitions) - [Concave](?transition=concave#/transitions) - [Zoom](?transition=zoom#/transitions) - [Linear](?transition=linear#/transitions) - [Fade](?transition=fade#/transitions) - [None](?transition=none#/transitions) - [Default](?transition=default#/transitions)
 
 
 
@@ -227,12 +222,7 @@ cat(paste(x, collapse = ' - '))
 
 Reveal.js支持以下所有主题:
 
-```{r echo = F, results = 'asis', comment = NA}
-themes = c("sky", "beige", "simple", "serif", "night", "default", "solarized", "moon")
-names(themes) = gsub("^([a-z])", "\\U\\1", themes, perl = TRUE)
-x = sprintf("[%s](?theme=%s#/themes)", names(themes), themes)
-cat(paste(x, collapse = ' - '))
-```
+[Sky](?theme=sky#/themes) - [Beige](?theme=beige#/themes) - [Simple](?theme=simple#/themes) - [Serif](?theme=serif#/themes) - [Night](?theme=night#/themes) - [Default](?theme=default#/themes) - [Solarized](?theme=solarized#/themes) - [Moon](?theme=moon#/themes)
 
 ***
 ## 在slidify中修改主题
