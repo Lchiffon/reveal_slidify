@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mathematical Economics</title>
+  <meta name="description" content="">
+  <meta name="author" content="Chiffon">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  <h1>数理经济学</h1>
+  <h3>基于均衡理念的流域污染物排放许可交易</h3>
+
+<p><small> Created by <a href="http://chiffon.gitcafe.io">Chiffon</a><br/>13720064 郎大为</small></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <aside class='notes'>
+    <p>中国水利水电科学研究院流域水循环模拟与调控国家重点实验室
+2012 重庆学报</p>
+
+  </aside>
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h2>OUTLINES</h2>
+  <ul>
+<li>背景介绍</li>
+<li>选用的模型
+
+<ul>
+<li>遗传算法改进序列(NSGA-II)</li>
+<li>Young交易理论(YBT)</li>
+<li>污染物初始排放许可分配(IDPA)模型</li>
+<li>排放许可交易DPT模型</li>
+</ul></li>
+<li>案例分析</li>
+</ul>
+
+  <aside class='notes'>
+    <p>污染物排放许可交易是一种实现流域污染物治理与水质改善均衡发展的有效经济手段。</p>
+
+<p>在概述国内外流域污染物排放交易研究特点的基础上，给出以治污成本最小化、低水位水质风险最小化为目标函数的污染物排放交易研究框架。</p>
+
+  </aside>
+</section>
+<section>
+   <section class='' data-state='soothe'>
+    <h2>背景介绍</h2>
+    
+    <aside class='notes'>
+      <p>1、可交易排污许可证，也叫做排污许可证交易，是把排污许可证商品化，是国家一项重要的环境经济政策。
+2、厂商根据自身排污情况购买许可证。当然随着排污量的增多，可能会出现购买多个的问
+题。也有的是厂商自己用不了这么多，也可以当做商品交易。当然前提是保证自己的排污需要。购买多个，可以像正常的商品一样，进行增价来营利。政府在一段时间内为控制排污总量，发放的许可证是定量的，也就意味着许可证要想商品一样流通。
+3、这项政策把排污许可商品化，通过市场这支看不见的受来调控，以实现对环境容量资源的合理利用。政府可以通过发放或收购许可证，调节一个区域污染物排放总量，必要时可以通过发放或收购许可证调节许可证的交易价格。</p>
+,,,<p>1、可交易排污许可证，也叫做排污许可证交易，是把排污许可证商品化，是国家一项重要的环境经济政策。
+2、厂商根据自身排污情况购买许可证。当然随着排污量的增多，可能会出现购买多个的问
+题。也有的是厂商自己用不了这么多，也可以当做商品交易。当然前提是保证自己的排污需要。购买多个，可以像正常的商品一样，进行增价来营利。政府在一段时间内为控制排污总量，发放的许可证是定量的，也就意味着许可证要想商品一样流通。
+3、这项政策把排污许可商品化，通过市场这支看不见的受来调控，以实现对环境容量资源的合理利用。政府可以通过发放或收购许可证，调节一个区域污染物排放总量，必要时可以通过发放或收购许可证调节许可证的交易价格。</p>
+,pnotes
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>排污许可证</h3>
+
+<ol>
+<li>排污许可证商品化</li>
+<li>厂商根据自身排污情况购买许可证</li>
+<li>通过市场调节</li>
+</ol>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>研究背景</h3>
+
+<ul>
+<li>污染物排放许可交易制度首先由Crocker[3]和Dales[4]提出</li>
+<li>大部分研究是基于:
+
+<ul>
+<li>经济学原理层面</li>
+<li>实例研究</li>
+<li>确定性研究</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>研究背景</h3>
+
+<ul>
+<li>污染物排放的风险</li>
+<li>治污成本变动</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>目标函数</h3>
+
+<ul>
+<li>治污成本最小化</li>
+<li>低水位水质风险最小化</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state='soothe'>
+    <h3>研究方法</h3>
+    
+    <aside class='notes'>
+      <p>解决方案中包括上下游可接受的总治
+理成本以及超标水质造成的风险，也包括污染物排
+放者ｉ的污染物处理水平（ｘ′）和排放负荷（ｐｉ）。</p>
+,,,<p>解决方案中包括上下游可接受的总治
+理成本以及超标水质造成的风险，也包括污染物排
+放者ｉ的污染物处理水平（ｘ′）和排放负荷（ｐｉ）。</p>
+,pnotes
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>遗传算法改进序列(NSGA-II)</h3>
+
+<p><br/>
+NSGA-II是目前最流行的多目标优化算法之一，它降低了非劣排序遗传算法的复杂性，具有运行速度快，解集的收敛性好的优点，成为其他多目标优化算法性能的基准。</p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>遗传算法改进序列(NSGA-II)</h3>
+
+<p><br/></p>
+
+<p>\[ \begin{align} \min &\left(f_1(x), f_2(x),\ldots, f_k(x) \right) \\ \text{s.t. } &x\in X, \end{align}\]</p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>遗传算法改进序列(NSGA-II)</h3>
+
+<p><br/></p>
+
+<p>\(x^1\in X\) 比 \(x^2\in X\) 是一个更优解(Pareto optimal solutions)</p>
+
+<ul>
+<li>\(f_i(x^1)\leq f_i(x^2)\) for all indices \(i \in \left\{ {1,2,\dots,k } \right\}\)</li>
+<li>\(f_j(x^1) < f_j(x^2)\) for at least one index \(j \in \left\{ {1,2,\dots,k } \right\}\).</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>Young交易理论(YBT)</h3>
+
+<ul>
+<li>Young Bargaining Theory</li>
+<li>提供了一种调查双方价格满足程度的方法</li>
+<li>模型假定存在2种有限性:
+
+<ul>
+<li>可能的交易数目\(l_1\)</li>
+<li>代理商数量\(l_2\)</li>
+</ul></li>
+<li>在每个周期中，2个随机给定代理商的 \(j \in l_1,k \in l_2\) 开始有2个参与者1和2独自进行博弈。</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>Young交易理论(YBT)</h3>
+
+<ul>
+<li>在用NSGA-II方法获得均衡曲线的基础上</li>
+<li>YBT模型用于选择无偏差的最优解决方案。</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>污染物初始排放许可分配(IDPA)模型</h3>
+
+<ul>
+<li>Initial Discharge Permit Allocation model</li>
+<li>用于检测污染物的排放负荷
+\[maxZ_1 = \sum_{i=1}^{n} \overline{p_i}\]
+\[subject \quad to\quad  c_{al} \ge c_a\]</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>排放许可交易DPT模型</h3>
+
+<ul>
+<li>NGGA-II,YBT对排污者i提供了:
+
+<ul>
+<li>污染物的最优处理水平</li>
+<li> 污染物的最优限定排放负荷$p_i$，</li>
+</ul></li>
+<li>IPDA提供了最大污染物排放负荷\(\overline{p_i}\)</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3>排放许可交易DPT模型</h3>
+
+<p><br/></p>
+
+<ul>
+<li>\(\overline{p_i} < p_i\)</li>
+<li>\(\overline{p_j} > p_j\)</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-5'>
+  
+  <p><img src = "pic/pic/1.png"></p>
+
+</section>
+<section class='' data-state='soothe' id='slide-6'>
+  <h2>案例分析</h2>
+  
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h3>监测指标</h3>
+  <p><br/></p>
+
+<ul>
+<li>DO
+
+<ul>
+<li>环境监测氧参数(dissolved oxygen;DO)空气中的分子态氧溶解在水中称为溶解氧。</li>
+</ul></li>
+<li>BOD
+
+<ul>
+<li>生化需氧量(Biochemical Oxygen Demand)或生化耗氧量(五日化学需氧量),表示水中有机物等需氧污染物质含量的一个综合指示</li>
+</ul></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  
+  <p><img src = "pic/pic/2.png"></p>
+
+</section>
+<section class='' data-state='' id='slide-9'>
+  
+  <p><img src = "pic/pic/3.png"></p>
+
+</section>
+<section class='' data-state='' id='slide-10'>
+  
+  <p><img src = "pic/pic/4.png"></p>
+
+</section>
+<section class='' data-state='' id='slide-11'>
+  
+  <p><img src = "pic/pic/5.png"></p>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'Sky', 
+    transition: Reveal.getQueryHash().transition || 'slide', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>

@@ -1,49 +1,13 @@
 ---
-title: See Reveal.js
-author: Chiffon
-mode : selfcontained
-framework: revealjs
-hitheme : zenburn
-revealjs:
-  theme:  Default # {solarized,Black,White,League,Sky,Beige,Simple,Serif, Night,Moon}
-  transition: slide # {fade/slide/convex/concave/zoom}
-  center: "true"
-bootstrap:
-  theme: amelia
-navbar:
-  title: Slidify
-  items: 
-    - {item: Home, href: index,  icon: home}
-    - {item: "Start", href: start, icon: signin}
-    - {item: Author, href: about, icon: pencil}
-    - {item: Style, href: style, icon: hand-right, class: dropdown, 
-        dropdown: true, menu: [
-         {item: io2012, href: 'samples/intro'},
-         {item: deck.js, href: 'samples/deck.js'},
-         {item: shower, href: 'samples/shower'},
-         {item: landslide, href: 'samples/landslide'}
-        ]
-      }
-    - {item: Customize, href: customize, icon: gift}
-    - {item: Extend, href: extend, icon: cogs}
-    - {item: Publish, href: publish, icon: github}
+title: "new"
+author: "Chiffon"
+date: "Friday, May 08, 2015"
+output: html_document
 ---
 
-# Reveal.js
-### 中文reveal教程
+<iframe src = "http://lchiffon.github.io/reveal_slidify/train1.html?theme=sky#/slide-1" height = 400px width = 95%  ></iframe>
 
-<small> Created by [Chiffon](http://chiffon.gitcafe.io)<br/>
-部分内容来自于[hakimel](https://github.com/hakimel/reveal.js)</small>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
-
-*** =pnotes
-
-Some notes on the first slide
-
----
+点这里看完整的reveal展示: <http://lchiffon.github.io/reveal_slidify/train1.html?theme=sky#/slide-1>
 
 ## 简介
 
@@ -54,10 +18,9 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
 - 稍大的字体
 - 默认居中显示各个元素
 - 较好的过渡,动态效果
-- [英文教程](train.html)
+- [英文教程](http://lchiffon.github.io/reveal_slidify/train.html)
 
 
----
 
 ## Outlines
 ### 不同的小trick
@@ -71,8 +34,7 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
 
 
 
----
-## YAML
+### YAML
 
 超长的YAML,不过好消息是基本不需要做太多的更改...
 ```
@@ -114,9 +76,6 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
 ```
 
 
-
---- &vertical
-
 ## Vertical Slides
 ### 纵向slides
 <br/>
@@ -129,7 +88,6 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
 
 在第一页使用&vertical来声明:
 
-### 我要开始上下翻页啦!
 
 ```
    --- &vertical
@@ -139,7 +97,6 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
    ...
 ```
 
-***
 
 在之后的页面使用 `***` 而不是 `---`:
 <br/>
@@ -149,7 +106,7 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
   ## 这是一个子页
 ```
 
-***
+
 总的来说就是这样:
 
 ```
@@ -165,40 +122,44 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
    ## 子页2
 ```
 
----
 
-## 总览和放大
+
+### 总览和放大
 
 
 在任何一页,按下ESC键会进入总览,可以从这里选择你需要查看的页面.
 
 
-<img src = "pic/1.png"/>
+<img src = "http://lchiffon.github.io/reveal_slidify/pic/1.png"/>
 
 
 
----
 
-## 总览和放大
+### 总览和放大
 
 
 在任何一页,ALT加鼠标左键可以查看该点处的放大效果,这个功能是从[zoom.js](http://lab.hakim.se/zoom-js)实现的,再次alt点击任意一点恢复原先的视角.
 
 
-<img src = "pic/2.png"/>
+<img src = "http://lchiffon.github.io/reveal_slidify/pic/2.png"/>
 
 
 
---- #transitions &vertical
+
 
 ## TRANSITION STYLES
 可以自由的设置切换页面的方式,点击下面的选项来查看不同的切换效果
 
-[Cube](?transition=cube#/transitions) - [Page](?transition=page#/transitions) - [Concave](?transition=concave#/transitions) - [Zoom](?transition=zoom#/transitions) - [Linear](?transition=linear#/transitions) - [Fade](?transition=fade#/transitions) - [None](?transition=none#/transitions) - [Default](?transition=default#/transitions)
+```{r echo = F, results = 'asis', comment = NA}
+transitions = c("cube", "page", "concave", "zoom", "linear", "fade", "none", "default")
+names(transitions) = gsub("^([a-z])", "\\U\\1", transitions, perl = TRUE)
+x = sprintf("[%s](?transition=%s#/transitions)", names(transitions), transitions)
+cat(paste(x, collapse = ' - '))
+```
 
 
 
-***
+
 ## 更改切换的方式:
 
 在Rmd文件的YAML部分修改slides的切换方式:
@@ -215,15 +176,20 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
     transition: convex
 ```
 
---- #themes &vertical
+
 
 ## 主题
 
 Reveal.js支持以下所有主题:
 
-[Sky](?theme=sky#/themes) - [Beige](?theme=beige#/themes) - [Simple](?theme=simple#/themes) - [Serif](?theme=serif#/themes) - [Night](?theme=night#/themes) - [Default](?theme=default#/themes) - [Solarized](?theme=solarized#/themes) - [Moon](?theme=moon#/themes)
+```{r echo = F, results = 'asis', comment = NA}
+themes = c("sky", "beige", "simple", "serif", "night", "default", "solarized", "moon")
+names(themes) = gsub("^([a-z])", "\\U\\1", themes, perl = TRUE)
+x = sprintf("[%s](?theme=%s#/themes)", names(themes), themes)
+cat(paste(x, collapse = ' - '))
+```
 
-***
+
 ## 在slidify中修改主题
 在Rmd文件的YAML部分修改slides的主题:
 
@@ -240,26 +206,23 @@ Reveal.js支持以下所有主题:
 ```
 
 
---- ds:alert &vertical
+
 
 ## 更改背景颜色
-### alert
+- alert
 
 ```
     --- ds:alert
 ```
 
-*** ds:blackout
-
-## Blackout
+- Blackout
 
 ```
     --- ds:blackout
 ```
 
-*** ds:soothe
 
-## Soothe
+- Soothe
 
 ```
     --- ds:soothe
@@ -267,24 +230,15 @@ Reveal.js支持以下所有主题:
 
 
 
---- &vertical
+
 ## 其他小控件
 ### 逐步进入的条目
-
-> - any type
-> - of view
-> - __fragments__
-
-
-
-***
 
 
 
 - 与io2012相同,使用`>-`
 - 坏消息是在slides的**最后**需要加一段JS
 - 或者在每次使用这个功能以后加入后面的JS
-
 
 ```
     > - any type
@@ -298,21 +252,8 @@ Reveal.js支持以下所有主题:
 
 
 
-
---- &vertical
-## 其他小控件
 ### 动态效果
 
-> - Point 1
-> - .highlight-red Point 2
-> - .grow Point 3
-
-
-
-
-***
-## 其他小控件
-### 动态效果
 
 ```
     > - Point 1
@@ -323,7 +264,7 @@ Reveal.js支持以下所有主题:
     </script>
 ```
 
---- &vertical
+
 ## 最后的总结
 
 ### reveal.js的优点:
@@ -334,7 +275,7 @@ Reveal.js支持以下所有主题:
    - Knitr
    - Html
 
-***
+
 ### 适合演讲
 
 - 大字体适合做report的时候使用
@@ -345,9 +286,6 @@ Reveal.js支持以下所有主题:
 
 
 
---- &vertical
-## 最后的总结
-
 ### reveal.js的缺点:
 
 - 不适合讲课的地方
@@ -355,7 +293,3 @@ Reveal.js支持以下所有主题:
   - 动态切换和主题容易干扰学生注意力
 - 一些功能需要加JS代码
 - 与io2012不同,首页需要自己写,而不是自动生成
-
-<script>
-$('ul.incremental li').addClass('fragment')
-</script>

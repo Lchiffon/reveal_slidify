@@ -8,7 +8,6 @@ revealjs:
   theme:  Default # {solarized,Black,White,League,Sky,Beige,Simple,Serif, Night,Moon}
   transition: slide # {fade/slide/convex/concave/zoom}
   center: "true"
-url: {lib: "."}
 bootstrap:
   theme: amelia
 navbar:
