@@ -155,6 +155,7 @@ $x^1\in X$ 比 $x^2\in X$ 是一个更优解(Pareto optimal solutions)
 ### Young交易理论(YBT)
 - 在用NSGA-II方法获得均衡曲线的基础上
 - YBT模型用于选择无偏差的最优解决方案。
+- 排放者 $i$ 的污染物处理水平 $x'$ 和排放负荷 $p_i$
 
 *** =pnotes
 解决方案中包括上下游可接受的总治
