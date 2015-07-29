@@ -6,7 +6,7 @@
         packages: [
             {
                 name: 'BMap',
-                location: 'http://echarts.baidu.com/extension/BMap/src',
+                location: './require',
                 main: 'main'
             }
         ]
