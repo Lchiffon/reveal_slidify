@@ -1,0 +1,294 @@
+<html>
+  <head>
+                <meta charset='utf-8'>
+                <style type='text/css'>
+                body {
+                margin: 0;
+                }
+                #main {
+                height: 100%;
+                }
+                </style>
+                </head>
+                <body>
+                <div id='main'></div>
+                <script src='http://echarts.baidu.com/build/dist/echarts.js'></script>
+                <script type='text/javascript' src='http://api.map.baidu.com/api?v=2.0&ak=q9U1lWgCK1aBGVC1DVWrgWa7'></script>
+                <script src='http://echarts.baidu.com/doc/asset/js/jquery.min.js'></script>
+                
+<script>
+                (function () {
+                require.config({
+                paths: {
+                echarts:'http://echarts.baidu.com/doc/example/www/js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: 'http://echarts.baidu.com/extension/BMap/src',
+                main: 'main'
+                }
+                ]
+                });
+                
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+                $('#main').css({
+                height:$('body').height(),
+                width: $('body').width()
+                });
+                
+                var BMapExt = new BMapExtension($('#main')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+                
+                var startPoint = {
+                x: 104.114129,
+                y: 37.550339
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 5);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({
+    styleJson: [
+    {
+    'featureType': 'water',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#044161'
+    }
+    },
+    {
+    'featureType': 'land',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#064f85'
+    }
+    },
+    {
+    'featureType': 'railway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#005b96',
+    'lightness': 1
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#00508b'
+    }
+    },
+    {
+    'featureType': 'poi',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'green',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#056197',
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'subway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'manmade',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'local',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#029fd4'
+    }
+    },
+    {
+    'featureType': 'building',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#1a5787'
+    }
+    },
+    {
+    'featureType': 'label',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    }
+    ]
+  }); 
+                
+
+option = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '未来天气预报',
+    subtext: 'by REmap, Chiffon',
+    x:'center',
+    textStyle : {
+      color: '#fff'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter:function(params,ticket,callback){
+              return(params[1]);
+                }
+  },
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+      
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :25,
+      effect : {
+        show: false,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:function(param){
+          return(param.data.value);
+        }
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'上海<br/>__________<br/>明天天气<br/> 晴 <br/> 27℃ - 35℃ <br/>__________<br/>后天天气<br/> 中雨 <br/> 27℃ - 33℃',value:'yellow',symbol:'image://w/sunny.png'},
+{name:'乌鲁木齐<br/>__________<br/>明天天气<br/> 晴 <br/> 24℃ - 35℃ <br/>__________<br/>后天天气<br/> 晴 <br/> 26℃ - 36℃',value:'yellow',symbol:'image://w/sunny.png'},
+{name:'包头<br/>__________<br/>明天天气<br/> 晴 <br/> 16℃ - 30℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 17℃ - 31℃',value:'orange',symbol:'image://w/sunny.png'},
+{name:'北京<br/>__________<br/>明天天气<br/> 多云 <br/> 22℃ - 31℃ <br/>__________<br/>后天天气<br/> 雷阵雨 <br/> 23℃ - 32℃',value:'orange',symbol:'image://w/cloudy.png'},
+{name:'南宁<br/>__________<br/>明天天气<br/> 多云 <br/> 26℃ - 33℃ <br/>__________<br/>后天天气<br/> 晴 <br/> 26℃ - 35℃',value:'lime',symbol:'image://w/cloudy.png'},
+{name:'南昌<br/>__________<br/>明天天气<br/> 多云 <br/> 28℃ - 35℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 27℃ - 34℃',value:'lime',symbol:'image://w/cloudy.png'},
+{name:'台北<br/>__________<br/>明天天气<br/> 大雨 <br/> 26℃ - 32℃ <br/>__________<br/>后天天气<br/> 暴雨 <br/> 26℃ - 30℃',value:'aqua',symbol:'image://w/rainy.png'},
+{name:'大连<br/>__________<br/>明天天气<br/> 大雨 <br/> 22℃ - 27℃ <br/>__________<br/>后天天气<br/> 阵雨 <br/> 23℃ - 28℃',value:'#ff3333',symbol:'image://w/rainy.png'},
+{name:'广州<br/>__________<br/>明天天气<br/> 晴 <br/> 27℃ - 35℃ <br/>__________<br/>后天天气<br/> 晴 <br/> 27℃ - 37℃',value:'orange',symbol:'image://w/sunny.png'},
+{name:'拉萨<br/>__________<br/>明天天气<br/> 小雨 <br/> 11℃ - 19℃ <br/>__________<br/>后天天气<br/> 小雨 <br/> 12℃ - 19℃',value:'orange',symbol:'image://w/rainy.png'},
+{name:'武汉<br/>__________<br/>明天天气<br/> 中雨 <br/> 24℃ - 33℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 25℃ - 34℃',value:'aqua',symbol:'image://w/rainy.png'},
+{name:'洛阳<br/>__________<br/>明天天气<br/> 晴 <br/> 23℃ - 34℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 23℃ - 34℃',value:'lime',symbol:'image://w/sunny.png'},
+{name:'重庆<br/>__________<br/>明天天气<br/> 多云 <br/> 24℃ - 34℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 25℃ - 35℃',value:'aqua',symbol:'image://w/cloudy.png'},
+{name:'长春<br/>__________<br/>明天天气<br/> 雷阵雨 <br/> 21℃ - 31℃ <br/>__________<br/>后天天气<br/> 雷阵雨 <br/> 20℃ - 28℃',value:'#ff3333',symbol:'image://w/rainy.png'}
+      ]},
+      geoCoord:{'上海<br/>__________<br/>明天天气<br/> 晴 <br/> 27℃ - 35℃ <br/>__________<br/>后天天气<br/> 中雨 <br/> 27℃ - 33℃': [121.48024,31.23631],
+'乌鲁木齐<br/>__________<br/>明天天气<br/> 晴 <br/> 24℃ - 35℃ <br/>__________<br/>后天天气<br/> 晴 <br/> 26℃ - 36℃': [ 87.48488,43.90951],
+'包头<br/>__________<br/>明天天气<br/> 晴 <br/> 16℃ - 30℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 17℃ - 31℃': [110.01111,40.57196],
+'北京<br/>__________<br/>明天天气<br/> 多云 <br/> 22℃ - 31℃ <br/>__________<br/>后天天气<br/> 雷阵雨 <br/> 23℃ - 32℃': [116.62119,40.06107],
+'南宁<br/>__________<br/>明天天气<br/> 多云 <br/> 26℃ - 33℃ <br/>__________<br/>后天天气<br/> 晴 <br/> 26℃ - 35℃': [108.17832,22.61504],
+'南昌<br/>__________<br/>明天天气<br/> 多云 <br/> 28℃ - 35℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 27℃ - 34℃': [115.92152,28.86337],
+'台北<br/>__________<br/>明天天气<br/> 大雨 <br/> 26℃ - 32℃ <br/>__________<br/>后天天气<br/> 暴雨 <br/> 26℃ - 30℃': [121.52487,25.04218],
+'大连<br/>__________<br/>明天天气<br/> 大雨 <br/> 22℃ - 27℃ <br/>__________<br/>后天天气<br/> 阵雨 <br/> 23℃ - 28℃': [121.55046,38.96884],
+'广州<br/>__________<br/>明天天气<br/> 晴 <br/> 27℃ - 35℃ <br/>__________<br/>后天天气<br/> 晴 <br/> 27℃ - 37℃': [113.30939,23.39237],
+'拉萨<br/>__________<br/>明天天气<br/> 小雨 <br/> 11℃ - 19℃ <br/>__________<br/>后天天气<br/> 小雨 <br/> 12℃ - 19℃': [ 90.87458,29.36577],
+'武汉<br/>__________<br/>明天天气<br/> 中雨 <br/> 24℃ - 33℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 25℃ - 34℃': [114.21442,30.77288],
+'洛阳<br/>__________<br/>明天天气<br/> 晴 <br/> 23℃ - 34℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 23℃ - 34℃': [112.39881,34.74147],
+'重庆<br/>__________<br/>明天天气<br/> 多云 <br/> 24℃ - 34℃ <br/>__________<br/>后天天气<br/> 多云 <br/> 25℃ - 35℃': [106.64542,29.72356],
+'长春<br/>__________<br/>明天天气<br/> 雷阵雨 <br/> 21℃ - 31℃ <br/>__________<br/>后天天气<br/> 雷阵雨 <br/> 20℃ - 28℃': [125.70685,43.99970]
+                  }
+                  
+      
+    },
+    ]
+};
+
+
+var myChart = BMapExt.initECharts(container);
+window.onresize = myChart.onresize;
+BMapExt.setOption(option);
+                }
+                );
+                })();
+</script>
+  </body>
+  </html>
+  
+  
