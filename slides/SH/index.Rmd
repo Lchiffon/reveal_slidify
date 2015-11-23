@@ -109,7 +109,7 @@ strong{
     - Html
     - Code(R,Python,Ruby,C,...)
 ***=right
-![knitr](pic/Knitr.png)
+![knitr](pic/knitr.png)
 
 ---
 
@@ -163,7 +163,7 @@ strong{
 ## Example
 - [REmap](https://github.com/lchiffon/REmap)
 
-![remap](pic/remapgithub.png)
+![remap](pic/REmapgithub.png)
 
 ---
 ## 阅读别人的博客
@@ -188,7 +188,7 @@ strong{
   - 用Jekyll生成静态网页
   - 使用github部署到网络
 ***=right
-![Jekyll](pic/Jekyll.png)
+![Jekyll](pic/jekyll.png)
 
 ---
 ![jekyll](pic/jekyll2.png)
