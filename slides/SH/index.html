@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>From Knitr to Jekyll</title>
+  <meta name="description" content="">
+  <meta name="author" content="Chiffon">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  
+  <style>
+
+.title-slide {
+  background-color: #e2e2e2;
+}
+
+.title-slide hgroup > h1{
+  font-family: 'Oswald', '微软雅黑';
+  color: #202020;
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+.reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+strong{
+ color: #4876FF;
+}
+</style>
+
+<h2>数据科学的博客</h2>
+
+<h3>从Knitr到Jekyll</h3>
+
+<p><small> Created by <a href="http://chiffon.gitcafe.io">Chiffon</a>郎大为</small><br/>
+<small>Supstat. Inc 数据科学家</small></p>
+
+<script src="./libraries/jquery.min.js"></script>
+
+<script>
+            document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  
+  <p><img src="pic/ds.png" alt="ds">
+<small><datacamp.com></small></p>
+
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h2>Road Map</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li>Knitr</li>
+<li>Git &amp; Github</li>
+<li>RSS</li>
+<li>Jekyll</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="pic/roadmap.png" alt="roadmap"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h2>Knitr</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>Author: 谢益辉</li>
+<li>可重复报告</li>
+<li>论文,博客,报告</li>
+<li>包含
+
+<ul>
+<li>Latex</li>
+<li>Markdown</li>
+<li>Html</li>
+<li>Code(R,Python,Ruby,C,...)</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="pic/Knitr.png" alt="knitr"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h2><a href='pic/rmarkdown-cheatsheet.pdf' target="_blank">R + Markdown</a></h2>
+  <iframe src="pic/rmarkdown-cheatsheet.pdf" width='100%' height='700px' ></iframe>
+
+</section>
+<section class='' data-state='' id='slide-6'>
+  <h2>Slidify</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>Author: Ramnath Vaidyanathan</li>
+<li>用Rmd撰写报告</li>
+<li>缩减优化格式动画的时间</li>
+<li>花更多的时间在内容上</li>
+<li><a href="http://chiffon.gitcafe.io/2015/05/08/RevealJS.html">UseReveal</a></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="pic/slidify.png" alt="slidify"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h2>Rpubs</h2>
+  <p><img src="pic/rpubs.png" alt="Rpub"></p>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h2>Git</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>版本管理工具</li>
+<li>Git三板斧:
+
+<ul>
+<li>add</li>
+<li>commit</li>
+<li>push</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="pic/git.png" alt="git"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h2>Github</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>多人代码协作</li>
+<li>以Git为基础</li>
+<li>最新,最高端的开源项目
+
+<ul>
+<li>Spark, Hadoop, Docker,..</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="pic/github.png" alt="github"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-10'>
+  <h2>Example</h2>
+  <ul>
+<li><a href="https://github.com/lchiffon/REmap">REmap</a></li>
+</ul>
+
+<p><img src="pic/remapgithub.png" alt="remap"></p>
+
+</section>
+<section class='' data-state='' id='slide-11'>
+  <h2>阅读别人的博客</h2>
+  <h3>RSS</h3>
+
+<ul>
+<li>统一规范的订阅(比如feed.xml)</li>
+<li>可以使用邮件/App来完成订阅</li>
+<li>听别人讲故事</li>
+<li>了解最前沿的技术发展潮流</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-12'>
+  <h2>了解前沿</h2>
+  <ul>
+<li>查询我订阅文章中的Deeplearning</li>
+</ul>
+
+<p><img src="pic/inoreader.png" alt="ino"></p>
+
+</section>
+<section class='' data-state='' id='slide-13'>
+  <h2>构建自己的博客</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li><a href="http://jekyll.bootcss.com/">Jekyll</a>
+
+<ul>
+<li>用Knitr撰写文章</li>
+<li>用Jekyll生成静态网页</li>
+<li>使用github部署到网络</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="pic/Jekyll.png" alt="Jekyll"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-14'>
+  
+  <p><img src="pic/jekyll2.png" alt="jekyll"></p>
+
+</section>
+<section class='' data-state='' id='slide-15'>
+  <h2>Jekyll</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <h3>优点</h3>
+
+<ul>
+<li>免费</li>
+<li>其他Blogger的各种不同的模板</li>
+</ul>
+
+<p><img src="pic/wordpress.jpg" alt="wordpress"></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h3>缺点</h3>
+
+<ul>
+<li>上手稍复杂</li>
+<li>github有可能跪(gitcafe.com)</li>
+</ul>
+
+<p><img src="pic/hexo.png" alt="hexo"></p>
+
+</div>
+</section>
+<section class='' data-state='' id='slide-16'>
+  <h2><a href="http://lchiffon.github.com/">七风阁</a></h2>
+  <p><img src="pic/chiffon.png" alt="chiffon"></p>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  <h2><a href="http://lchiffon.github.com/REmap">REmap主页</a></h2>
+  <p><img src="pic/home.png" alt="home"></p>
+
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>进一步个性化</h2>
+    <p><img src="pic/blog.png" alt="blog"></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/duoshuo.png" alt="duoshuo"></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/google.png" alt="google"></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-19'>
+  <h2>收获&amp;建议</h2>
+  <ul class = "build incremental">
+<li>不断学习的状态</li>
+<li>前端的能力
+
+<ul>
+<li>H5,REmap</li>
+</ul></li>
+<li>跟上数据科学的浪潮</li>
+<li>不仅与数据打交道</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-20'>
+  
+  <p><img src="pic/learn.png" alt="learn"></p>
+
+</section>
+<section class='' data-state='' id='slide-21'>
+  <h2><a href="http://xueqing.cc">雪晴数据网</a></h2>
+  <p><img src="pic/xueqing.png" alt="xueqing"></p>
+
+</section>
+<section class='' data-state='' id='slide-22'>
+  <h2>Thanks</h2>
+  <ul>
+<li>微博@郎大为Chiffon</li>
+</ul>
+
+<p><a href="http://lchiffon.github.com/REmap">REmap主页</a>
+<a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
+
+<script>
+$('ul.incremental li').addClass('fragment')
+</script>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'Sky', 
+    transition: Reveal.getQueryHash().transition || 'slide', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
