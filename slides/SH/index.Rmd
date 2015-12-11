@@ -4,6 +4,7 @@ author: Chiffon
 mode : selfcontained
 framework: revealjs
 hitheme : tomorrow
+url :  {lib: ../libraries}
 revealjs:
   theme: Sky
   transition: slide
