@@ -1,0 +1,15 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+slidify
+knitr
+wordcloud2
+RColorBrewer
+wordcloud
+NLP
+tm
+recharts
