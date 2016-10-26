@@ -93,17 +93,90 @@ strong{
 # htmlwidgets
 ## 连接R与JS可视化的桥梁
 
----
-
-library(wordcloud)wordcloud(demoFreq[,1],demoFreq[,2])<div class="rimage center"><img src="assets/fig/unnamed-chunk-1-1.pdf" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div>
-
-
-
 
 ---
+## 安装
+- CRAN版:
 
-library(wordcloud2)wordcloud2(demoFreq)<div class="rimage center"><img src="assets/fig/unnamed-chunk-2-1.pdf" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
+```r
+install.packages("wordcloud2")
+```
+- 开发版:
 
+```r
+devtools::install_github("lchiffon/wordcloud2")
+```
+
+
+---&vertical
+
+
+```r
+library(wordcloud)
+wordcloud(demoFreq[,1],demoFreq[,2])
+```
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+
+***
+![](pic/wordcloud1.png)
+
+
+
+---
+
+
+```r
+library(wordcloud2)
+wordcloud2(demoFreq)
+```
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div>
+
+
+---
+## 
+
+```r
+figPath = system.file("examples/t.png",package = "wordcloud2")
+wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = "skyblue")
+```
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div>
+
+
+---
+## 图片保存
+1. Rstudio Export
+2. `webshot` packages
+
+
+```r
+install.packages("webshot")
+webshot::install_phantomjs()
+library(wordcloud2)
+hw = wordcloud2(demoFreq,size = 3)
+saveWidget(hw,"demo.html",selfcontained = F)
+webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
+```
+
+
+
+
+---
+## _shiny_
+
+
+
+
+
+---
+## _knitr/slidify_
+
+```r
+install.packages("webshot")
+webshot::install_phantomjs()
+```
 
 
 ---

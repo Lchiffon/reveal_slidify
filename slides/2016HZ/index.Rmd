@@ -30,7 +30,7 @@ navbar:
     - {item: Publish, href: publish, icon: github}
 ---
 
-```{r setup, include=FALSE,echo = F, message = F, warning = F, tidy = F}
+```{r setup, include=FALSE,echo = F, message = F, warning = F, tidy = F, cache=F}
 # make this an external chunk that can be included in any file
 options(width = 100,digits=4)
 opts_chunk$set(message = FALSE, fig.align = "center", warning = FALSE, comment = NA, dpi = 100, tidy = FALSE, fig.width=8,fig.height=5,cache = FALSE)
@@ -108,20 +108,76 @@ strong{
 # htmlwidgets
 ## 连接R与JS可视化的桥梁
 
+
 ---
+## 安装
+- CRAN版:
+```{r eval = F}
+install.packages("wordcloud2")
+```
+- 开发版:
+```{r eval = F}
+devtools::install_github("lchiffon/wordcloud2")
+```
+
+
+---&vertical
 
 ```{r}
 library(wordcloud)
 wordcloud(demoFreq[,1],demoFreq[,2])
 ```
 
+***
+![](pic/wordcloud1.png)
+
 
 
 ---
 
-```{r screenshot.opts=list(delay = 3)}
+```{r screenshot.opts=list(delay=3)}
 library(wordcloud2)
 wordcloud2(demoFreq)
+```
+
+
+---
+## 
+```{r screenshot.opts=list(delay=10)}
+figPath = system.file("examples/t.png",package = "wordcloud2")
+wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = "skyblue")
+```
+
+
+---
+## 图片保存
+1. Rstudio Export
+2. `webshot` packages
+
+```{r eval = F}
+install.packages("webshot")
+webshot::install_phantomjs()
+library(wordcloud2)
+hw = wordcloud2(demoFreq,size = 3)
+saveWidget(hw,"demo.html",selfcontained = F)
+webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
+```
+
+
+
+
+---
+## _shiny_
+
+
+
+
+
+---
+## _knitr/slidify_
+```{r eval = F}
+install.packages("webshot")
+webshot::install_phantomjs()
 ```
 
 

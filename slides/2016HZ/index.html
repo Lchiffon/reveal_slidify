@@ -104,21 +104,94 @@ strong{
    </section>
 </section>
 <section class='' data-state='' id='slide-3'>
-  
-  <p>library(wordcloud)wordcloud(demoFreq[,1],demoFreq[,2])<div class="rimage center"><img src="assets/fig/unnamed-chunk-1-1.pdf" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div></p>
+  <h2>安装</h2>
+  <ul>
+<li>CRAN版:</li>
+</ul>
+
+<pre><code class="r">install.packages(&quot;wordcloud2&quot;)
+</code></pre>
+
+<ul>
+<li>开发版:</li>
+</ul>
+
+<pre><code class="r">devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
+</code></pre>
 
 </section>
-<section class='' data-state='' id='slide-4'>
-  
-  <p>library(wordcloud2)wordcloud2(demoFreq)<div class="rimage center"><img src="assets/fig/unnamed-chunk-2-1.pdf" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div></p>
+<section>
+   <section class='' data-state=''>
+    
+    <pre><code class="r">library(wordcloud)
+wordcloud(demoFreq[,1],demoFreq[,2])
+</code></pre>
 
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/wordcloud1.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
 <section class='' data-state='' id='slide-5'>
+  
+  <pre><code class="r">library(wordcloud2)
+wordcloud2(demoFreq)
+</code></pre>
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div>
+
+</section>
+<section class='' data-state='' id='slide-6'>
+  
+  <pre><code class="r">figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
+wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = &quot;skyblue&quot;)
+</code></pre>
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div>
+
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h2>图片保存</h2>
+  <ol>
+<li>Rstudio Export</li>
+<li><code>webshot</code> packages</li>
+</ol>
+
+<pre><code class="r">install.packages(&quot;webshot&quot;)
+webshot::install_phantomjs()
+library(wordcloud2)
+hw = wordcloud2(demoFreq,size = 3)
+saveWidget(hw,&quot;demo.html&quot;,selfcontained = F)
+webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,vwidth = 800, vheight = 600, delay =3)
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h2><em>shiny</em></h2>
+  
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h2><em>knitr/slidify</em></h2>
+  <pre><code class="r">install.packages(&quot;webshot&quot;)
+webshot::install_phantomjs()
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-10'>
   <h2><a href="http://lchiffon.github.com/">七风阁</a></h2>
   <p><img src="pic/chiffon.png" alt="chiffon"></p>
 
 </section>
-<section class='' data-state='' id='slide-6'>
+<section class='' data-state='' id='slide-11'>
   <h2><a href="http://lchiffon.github.com/REmap">REmap主页</a></h2>
   <p><img src="pic/home.png" alt="home"></p>
 
@@ -147,7 +220,7 @@ strong{
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-8'>
+<section class='' data-state='' id='slide-13'>
   <h2>Thanks</h2>
   <ul>
 <li>微博@郎大为Chiffon</li>
