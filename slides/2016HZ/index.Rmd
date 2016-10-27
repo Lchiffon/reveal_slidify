@@ -31,18 +31,11 @@ navbar:
 ---
 
 ```{r setup, include=FALSE,echo = F, message = F, warning = F, tidy = F, cache=F}
+library(knitr)
 # make this an external chunk that can be included in any file
 options(width = 100,digits=4)
 opts_chunk$set(message = FALSE, fig.align = "center", warning = FALSE, comment = NA, dpi = 100, tidy = FALSE, fig.width=8,fig.height=5,cache = FALSE)
 
-options(xtable.type = 'html')
-knit_hooks$set(inline = function(x) {
-  if(is.numeric(x)) {
-    round(x, getOption('digits'))
-  } else {
-    paste(as.character(x), collapse = ', ')
-  }
-})
 knit_hooks$set(plot = knitr:::hook_plot_html)
 
 ```
@@ -142,11 +135,43 @@ wordcloud2(demoFreq)
 
 
 ---
-## 
-```{r screenshot.opts=list(delay=10)}
+## 基于图片的 _Wordcloud2_
+```{r eval=F}
 figPath = system.file("examples/t.png",package = "wordcloud2")
-wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = "skyblue")
+wordcloud2(demoFreq, figPath = figPath,
+           size = 1.5,color = "skyblue")
 ```
+
+
+---
+## 基于文字的 _Wordcloud2_
+```{r screenshot.opts=list(delay=10)}
+letterCloud(demoFreq, word = "R")
+```
+
+---
+## _Wordcloud2_ 主题
+```{r eval=F}
+wc = wordcloud2(demoFreq)
+wc + WCtheme(class = 1)
+## class: 1,2,3
+```
+
+
+---&vertical
+## _Wordcloud2_ 细节调整
+
+可用参数:
+  - size
+  - fontFamily
+  - color/backgroundColor
+  - minRotation/maxRotation
+  - rotateRatio
+  - shape
+  - figPath
+  - hoverFunction
+  
+
 
 
 ---
@@ -160,7 +185,8 @@ webshot::install_phantomjs()
 library(wordcloud2)
 hw = wordcloud2(demoFreq,size = 3)
 saveWidget(hw,"demo.html",selfcontained = F)
-webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
+webshot::webshot("demo.html","demo.png",
+                 vwidth = 800, vheight = 600, delay =3)
 ```
 
 
@@ -179,28 +205,6 @@ webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
 install.packages("webshot")
 webshot::install_phantomjs()
 ```
-
-
----
-## [七风阁](http://lchiffon.github.com/)
-
-![chiffon](pic/chiffon.png)
-
----
-## [REmap主页](http://lchiffon.github.com/REmap)
-
-![home](pic/home.png)
-
-
---- &vertical
-## 进一步个性化
-![blog](pic/blog.png)
-
-***
-![duoshuo](pic/duoshuo.png)
-
-***
-![google](pic/google.png)
 
 
 

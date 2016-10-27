@@ -127,7 +127,8 @@ strong{
 wordcloud(demoFreq[,1],demoFreq[,2])
 </code></pre>
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+<pre><code>Error in wordcloud(demoFreq[, 1], demoFreq[, 2]): object &#39;demoFreq&#39; not found
+</code></pre>
 
     <aside class='notes'>
       
@@ -147,19 +148,56 @@ wordcloud(demoFreq[,1],demoFreq[,2])
 wordcloud2(demoFreq)
 </code></pre>
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div>
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
 
 </section>
 <section class='' data-state='' id='slide-6'>
-  
+  <h2>基于图片的 <em>Wordcloud2</em></h2>
   <pre><code class="r">figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
 wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = &quot;skyblue&quot;)
 </code></pre>
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div>
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
 
 </section>
 <section class='' data-state='' id='slide-7'>
+  <h2>基于文字的 <em>Wordcloud2</em></h2>
+  <pre><code class="r">letterCloud(demoFreq, word = &quot;R&quot;)
+</code></pre>
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h2><em>Wordcloud2</em> 主题</h2>
+  <pre><code class="r">wc = wordcloud2(demoFreq)
+wc + WCtheme(class = 1)
+## class: 1,2,3
+</code></pre>
+
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 细节调整</h2>
+    <p>可用参数:</p>
+
+<ul>
+<li>size</li>
+<li>fontFamily</li>
+<li>color/backgroundColor</li>
+<li>minRotation/maxRotation</li>
+<li>rotateRatio</li>
+<li>shape</li>
+<li>figPath</li>
+<li>hoverFunction</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-10'>
   <h2>图片保存</h2>
   <ol>
 <li>Rstudio Export</li>
@@ -175,50 +213,16 @@ webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,vwidth = 800, vheigh
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-8'>
+<section class='' data-state='' id='slide-11'>
   <h2><em>shiny</em></h2>
   
 </section>
-<section class='' data-state='' id='slide-9'>
+<section class='' data-state='' id='slide-12'>
   <h2><em>knitr/slidify</em></h2>
   <pre><code class="r">install.packages(&quot;webshot&quot;)
 webshot::install_phantomjs()
 </code></pre>
 
-</section>
-<section class='' data-state='' id='slide-10'>
-  <h2><a href="http://lchiffon.github.com/">七风阁</a></h2>
-  <p><img src="pic/chiffon.png" alt="chiffon"></p>
-
-</section>
-<section class='' data-state='' id='slide-11'>
-  <h2><a href="http://lchiffon.github.com/REmap">REmap主页</a></h2>
-  <p><img src="pic/home.png" alt="home"></p>
-
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>进一步个性化</h2>
-    <p><img src="pic/blog.png" alt="blog"></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/duoshuo.png" alt="duoshuo"></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/google.png" alt="google"></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
 </section>
 <section class='' data-state='' id='slide-13'>
   <h2>Thanks</h2>

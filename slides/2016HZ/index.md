@@ -116,7 +116,9 @@ library(wordcloud)
 wordcloud(demoFreq[,1],demoFreq[,2])
 ```
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+```
+Error in wordcloud(demoFreq[, 1], demoFreq[, 2]): object 'demoFreq' not found
+```
 
 ***
 ![](pic/wordcloud1.png)
@@ -131,18 +133,53 @@ library(wordcloud2)
 wordcloud2(demoFreq)
 ```
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div>
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
 
 
 ---
-## 
+## 基于图片的 _Wordcloud2_
 
 ```r
 figPath = system.file("examples/t.png",package = "wordcloud2")
 wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = "skyblue")
 ```
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div>
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
+
+
+---
+## 基于文字的 _Wordcloud2_
+
+```r
+letterCloud(demoFreq, word = "R")
+```
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+
+---
+## _Wordcloud2_ 主题
+
+```r
+wc = wordcloud2(demoFreq)
+wc + WCtheme(class = 1)
+## class: 1,2,3
+```
+
+
+---&vertical
+## _Wordcloud2_ 细节调整
+
+可用参数:
+  - size
+  - fontFamily
+  - color/backgroundColor
+  - minRotation/maxRotation
+  - rotateRatio
+  - shape
+  - figPath
+  - hoverFunction
+  
+
 
 
 ---
@@ -177,28 +214,6 @@ webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
 install.packages("webshot")
 webshot::install_phantomjs()
 ```
-
-
----
-## [七风阁](http://lchiffon.github.com/)
-
-![chiffon](pic/chiffon.png)
-
----
-## [REmap主页](http://lchiffon.github.com/REmap)
-
-![home](pic/home.png)
-
-
---- &vertical
-## 进一步个性化
-![blog](pic/blog.png)
-
-***
-![duoshuo](pic/duoshuo.png)
-
-***
-![google](pic/google.png)
 
 
 
