@@ -20,7 +20,9 @@
       <section class='' data-state='' id='slide-1'>
   
   <style>
-
+td{
+font-size: 3
+}
 .title-slide {
   background-color: #e2e2e2;
 }
@@ -79,9 +81,9 @@ strong{
     </aside>
    </section>
    <section class='' data-state=''>
-    <h1>还有一门更适合可视化的语言</h1>
+    <h1>JavaScript</h1>
 
-<h2>JavaScript</h2>
+<h2>更适合可视化的语言</h2>
 
 <ul>
 <li>Echarts</li>
@@ -94,18 +96,81 @@ strong{
     </aside>
    </section>
    <section class='' data-state=''>
+    <h2>htmlwidgets</h2>
+
+<h3>连接R与JS可视化的桥梁</h3>
+
+<ul>
+<li>Rstudio 出品</li>
+<li>良好的框架</li>
+<li>方便的输出</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>htmlwidgets</h2>
+
+<h3>连接R与JS可视化的桥梁</h3>
+
+<ul>
+<li>良好的框架
+
+<ul>
+<li>配置文件(叙述如何配置HtmlWidgets)</li>
+<li>JS库(源生JS)</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
     <h1>htmlwidgets</h1>
 
 <h2>连接R与JS可视化的桥梁</h2>
+
+<ul>
+<li>方便的输出
+
+<ul>
+<li>Rstudio</li>
+<li>浏览器</li>
+<li>shiny</li>
+<li>knitr/slidify</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><a href="http://gallery.htmlwidgets.org/">htmlWidgets Gallery</a></h2>
+
+<p><img src="pic/htmlWidgets.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>wordlcoud2</em> 流程图</h2>
+
+<p><img src="pic/flow.png" alt=""></p>
 
     <aside class='notes'>
       
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-3'>
-  <h2>安装</h2>
-  <ul>
+<section>
+   <section class='' data-state=''>
+    <h2>安装</h2>
+    <ul>
 <li>CRAN版:</li>
 </ul>
 
@@ -119,61 +184,158 @@ strong{
 <pre><code class="r">devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
 </code></pre>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/gh.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
 <section>
    <section class='' data-state=''>
-    
+    <h2>原始wordcloud</h2>
     <pre><code class="r">library(wordcloud)
 wordcloud(demoFreq[,1],demoFreq[,2])
 </code></pre>
 
-<pre><code>Error in wordcloud(demoFreq[, 1], demoFreq[, 2]): object &#39;demoFreq&#39; not found
-</code></pre>
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
 
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <p><img src="pic/wordcloud1.png" alt=""></p>
+    <ul>
+<li>过大的margin
+
+<ul>
+<li>导致图案过小</li>
+</ul></li>
+<li>图案的设置
+
+<ul>
+<li>不能自定义形状</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>原始wordcloud</h2>
+
+<p><img src="pic/wordcloud1.png" alt=""></p>
 
     <aside class='notes'>
       
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-5'>
-  
-  <pre><code class="r">library(wordcloud2)
+<section>
+   <section class='' data-state=''>
+    <h2>基本使用</h2>
+    <pre><code class="r">library(wordcloud2)
 wordcloud2(demoFreq)
 </code></pre>
 
 <div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <iframe src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
-<section class='' data-state='' id='slide-6'>
-  <h2>基于图片的 <em>Wordcloud2</em></h2>
-  <pre><code class="r">figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
-wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = &quot;skyblue&quot;)
+<section>
+   <section class='' data-state=''>
+    <h2>基于图片的 <em>Wordcloud2</em></h2>
+    <pre><code class="r">figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
+wordcloud2(demoFreq, 
+           figPath = figPath,
+           size = 1.5, 
+           color = &quot;skyblue&quot;)
 </code></pre>
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/bird.png" alt=""></p>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/hs.jpg" alt=""></p>
+
+<p>@微信: wetalkdata</p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
-<section class='' data-state='' id='slide-7'>
-  <h2>基于文字的 <em>Wordcloud2</em></h2>
-  <pre><code class="r">letterCloud(demoFreq, word = &quot;R&quot;)
+<section>
+   <section class='' data-state=''>
+    <h2>基于文字的 <em>Wordcloud2</em></h2>
+    <pre><code class="r">library(wordcloud2)
+letterCloud(dat,&quot;R&quot;, 
+            color = &quot;random-light&quot;,
+            backgroundColor = &quot;black&quot;,
+            size = 0.3)
 </code></pre>
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/tou.png" alt=""></p>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/tb.jpg" alt=""></p>
+
+<p><a href="http://yalei.name/2016/06/wordcloud2">亚磊的博客</a></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
 <section class='' data-state='' id='slide-8'>
   <h2><em>Wordcloud2</em> 主题</h2>
-  <pre><code class="r">wc = wordcloud2(demoFreq)
+  <ul>
+<li><em>仅在开发版中使用(2016/10)</em></li>
+</ul>
+
+<pre><code class="r">wc = wordcloud2(demoFreq,
+                fontFamily=&#39;微软雅黑&#39;)
 wc + WCtheme(class = 1)
 ## class: 1,2,3
 </code></pre>
+
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h2><em>Wordcloud2</em> 主题</h2>
+  <p><img src="pic/theme.png" alt=""></p>
 
 </section>
 <section>
@@ -196,8 +358,128 @@ wc + WCtheme(class = 1)
       
     </aside>
    </section>
+   <section class='' data-state=''>
+    <table><thead>
+<tr>
+<th>参数名</th>
+<th>含义</th>
+<th>取值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>size</td>
+<td>大小</td>
+<td>1为默认值</td>
+</tr>
+<tr>
+<td>fontFamily</td>
+<td>字体</td>
+<td>&#39;Segoe UI&#39;</td>
+</tr>
+<tr>
+<td>color</td>
+<td>颜色</td>
+<td>&#39;random-dark&#39;</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>背景色</td>
+<td>&#39;white&#39;</td>
+</tr>
+<tr>
+<td>minRotation</td>
+<td>最小角度</td>
+<td>-pi/4</td>
+</tr>
+<tr>
+<td>maxRotation</td>
+<td>最大角度</td>
+<td>pi/4</td>
+</tr>
+<tr>
+<td>rotateRatio</td>
+<td>旋转比例</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>shape</td>
+<td>形状</td>
+<td>&#39;circle&#39;</td>
+</tr>
+<tr>
+<td>figPath</td>
+<td>图像</td>
+<td>图片路径</td>
+</tr>
+<tr>
+<td>hoverFunction</td>
+<td>JS函数</td>
+<td>动态函数</td>
+</tr>
+</tbody></table>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>size</em></h2>
+
+<pre><code class="r">wordcloud2(demoFreqC,size = 0.5,
+           fontFamily = &#39;微软雅黑&#39;)
+wordcloud2(demoFreqC,size = 2,
+           fontFamily = &#39;微软雅黑&#39;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/size.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 主题</h2>
+
+<p><img src="pic/theme.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <ul>
+<li>theme1: 
+
+<ul>
+<li><code>minRotation = -pi/2</code></li>
+<li><code>maxRotation = -pi/2</code></li>
+</ul></li>
+<li>theme2:
+
+<ul>
+<li><code>minRotation = -pi/6</code></li>
+<li><code>maxRotation = -pi/6</code></li>
+<li><code>rotateRatio = 1</code></li>
+</ul></li>
+<li>theme3:
+
+<ul>
+<li>color = &quot;random-light&quot;</li>
+<li>backgroundColor = &quot;grey&quot;</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
-<section class='' data-state='' id='slide-10'>
+<section class='' data-state='' id='slide-11'>
   <h2>图片保存</h2>
   <ol>
 <li>Rstudio Export</li>
@@ -209,22 +491,26 @@ webshot::install_phantomjs()
 library(wordcloud2)
 hw = wordcloud2(demoFreq,size = 3)
 saveWidget(hw,&quot;demo.html&quot;,selfcontained = F)
-webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,vwidth = 800, vheight = 600, delay =3)
+webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,
+                 vwidth = 800, vheight = 600, delay =3)
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-11'>
-  <h2><em>shiny</em></h2>
-  
-</section>
 <section class='' data-state='' id='slide-12'>
+  <h2><em>shiny</em></h2>
+  <pre><code class="r">wordcloud2Output(outputId, width = &quot;100%&quot;, height = &quot;400px&quot;)
+renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
+</code></pre>
+
+</section>
+<section class='' data-state='' id='slide-13'>
   <h2><em>knitr/slidify</em></h2>
   <pre><code class="r">install.packages(&quot;webshot&quot;)
 webshot::install_phantomjs()
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-13'>
+<section class='' data-state='' id='slide-14'>
   <h2>Thanks</h2>
   <ul>
 <li>微博@郎大为Chiffon</li>

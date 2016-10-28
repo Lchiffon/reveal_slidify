@@ -33,7 +33,9 @@ navbar:
 
 
 <style>
-
+td{
+font-size: 3
+}
 .title-slide {
   background-color: #e2e2e2;
 }
@@ -82,19 +84,46 @@ strong{
 
 
 ***
-# 还有一门更适合可视化的语言
-## JavaScript
+# JavaScript
+## 更适合可视化的语言
 - Echarts
 - D3
 - Highcharts
 - ...
 
 ***
+## htmlwidgets
+### 连接R与JS可视化的桥梁
+- Rstudio 出品
+- 良好的框架
+- 方便的输出
+
+***
+## htmlwidgets
+### 连接R与JS可视化的桥梁
+- 良好的框架
+  - 配置文件(叙述如何配置HtmlWidgets)
+  - JS库(源生JS)
+
+
+***
 # htmlwidgets
 ## 连接R与JS可视化的桥梁
+- 方便的输出
+  - Rstudio
+  - 浏览器
+  - shiny
+  - knitr/slidify
 
+***
+## [htmlWidgets Gallery](http://gallery.htmlwidgets.org/)
+![](pic/htmlWidgets.png)
 
----
+***
+## _wordlcoud2_ 流程图
+![](pic/flow.png)
+
+---&vertical
 ## 安装
 - CRAN版:
 
@@ -108,25 +137,35 @@ devtools::install_github("lchiffon/wordcloud2")
 ```
 
 
----&vertical
 
+***
+![](pic/gh.png)
+
+---&vertical
+## 原始wordcloud
 
 ```r
 library(wordcloud)
 wordcloud(demoFreq[,1],demoFreq[,2])
 ```
 
-```
-Error in wordcloud(demoFreq[, 1], demoFreq[, 2]): object 'demoFreq' not found
-```
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
 
 ***
+- 过大的margin
+  - 导致图案过小
+- 图案的设置
+  - 不能自定义形状
+
+
+***
+## 原始wordcloud
 ![](pic/wordcloud1.png)
 
 
 
----
-
+---&vertical
+## 基本使用
 
 ```r
 library(wordcloud2)
@@ -135,36 +174,63 @@ wordcloud2(demoFreq)
 
 <div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
 
+***
+<iframe src="pic/wc1.html" height="600px" width="800px"></iframe>
 
----
+---&vertical
 ## 基于图片的 _Wordcloud2_
 
 ```r
 figPath = system.file("examples/t.png",package = "wordcloud2")
-wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = "skyblue")
+wordcloud2(demoFreq, 
+           figPath = figPath,
+           size = 1.5, 
+           color = "skyblue")
 ```
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
+***
+![](pic/bird.png)
 
+***
+![](pic/hs.jpg)
 
----
+@微信: wetalkdata
+
+---&vertical
 ## 基于文字的 _Wordcloud2_
 
 ```r
-letterCloud(demoFreq, word = "R")
+library(wordcloud2)
+letterCloud(dat,"R", 
+            color = "random-light",
+            backgroundColor = "black",
+            size = 0.3)
 ```
 
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
+***
+![](pic/tou.png)
+
+***
+![](pic/tb.jpg)
+
+[亚磊的博客](http://yalei.name/2016/06/wordcloud2)
+
 
 ---
 ## _Wordcloud2_ 主题
+- _仅在开发版中使用(2016/10)_
 
 ```r
-wc = wordcloud2(demoFreq)
+wc = wordcloud2(demoFreq,
+                fontFamily='微软雅黑')
 wc + WCtheme(class = 1)
 ## class: 1,2,3
 ```
 
+
+---
+## _Wordcloud2_ 主题
+![](pic/theme.png)
 
 ---&vertical
 ## _Wordcloud2_ 细节调整
@@ -178,9 +244,52 @@ wc + WCtheme(class = 1)
   - shape
   - figPath
   - hoverFunction
-  
+
+***
+参数名 | 含义 | 取值
+---|---|---
+size | 大小 | 1为默认值
+fontFamily | 字体 | 'Segoe UI'
+color | 颜色 | 'random-dark'
+backgroundColor | 背景色 | 'white'
+minRotation | 最小角度 | -pi/4
+maxRotation | 最大角度 | pi/4
+rotateRatio | 旋转比例 | 0.4
+shape | 形状 | 'circle'
+figPath | 图像 | 图片路径
+hoverFunction | JS函数 | 动态函数
+
+***
+## _size_
+
+```r
+wordcloud2(demoFreqC,size = 0.5,
+           fontFamily = '微软雅黑')
+wordcloud2(demoFreqC,size = 2,
+           fontFamily = '微软雅黑')
+```
+
+***
+![](pic/size.png)
 
 
+
+***
+## _Wordcloud2_ 主题
+![](pic/theme.png)
+
+
+***
+- theme1: 
+  - `minRotation = -pi/2`
+  - `maxRotation = -pi/2`
+- theme2:
+  - `minRotation = -pi/6`
+  - `maxRotation = -pi/6`
+  - `rotateRatio = 1`
+- theme3:
+  - color = "random-light"
+  - backgroundColor = "grey"
 
 ---
 ## 图片保存
@@ -194,7 +303,8 @@ webshot::install_phantomjs()
 library(wordcloud2)
 hw = wordcloud2(demoFreq,size = 3)
 saveWidget(hw,"demo.html",selfcontained = F)
-webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
+webshot::webshot("demo.html","demo.png",
+                 vwidth = 800, vheight = 600, delay =3)
 ```
 
 
@@ -203,8 +313,10 @@ webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
 ---
 ## _shiny_
 
-
-
+```r
+wordcloud2Output(outputId, width = "100%", height = "400px")
+renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
+```
 
 
 ---
@@ -214,7 +326,6 @@ webshot::webshot("demo.html","demo.png",vwidth = 800, vheight = 600, delay =3)
 install.packages("webshot")
 webshot::install_phantomjs()
 ```
-
 
 
 ---
