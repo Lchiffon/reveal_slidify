@@ -320,9 +320,10 @@ letterCloud(dat,&quot;R&quot;,
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-8'>
-  <h2><em>Wordcloud2</em> 主题</h2>
-  <ul>
+<section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 主题</h2>
+    <ul>
 <li><em>仅在开发版中使用(2016/10)</em></li>
 </ul>
 
@@ -332,11 +333,19 @@ wc + WCtheme(class = 1)
 ## class: 1,2,3
 </code></pre>
 
-</section>
-<section class='' data-state='' id='slide-9'>
-  <h2><em>Wordcloud2</em> 主题</h2>
-  <p><img src="pic/theme.png" alt=""></p>
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 主题</h2>
 
+<p><img src="pic/theme.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
 <section>
    <section class='' data-state=''>
@@ -456,15 +465,15 @@ wordcloud2(demoFreqC,size = 2,
 <li>theme1: 
 
 <ul>
-<li><code>minRotation = -pi/2</code></li>
-<li><code>maxRotation = -pi/2</code></li>
+<li>minRotation = -pi/2</li>
+<li>maxRotation = -pi/2</li>
 </ul></li>
 <li>theme2:
 
 <ul>
-<li><code>minRotation = -pi/6</code></li>
-<li><code>maxRotation = -pi/6</code></li>
-<li><code>rotateRatio = 1</code></li>
+<li>minRotation = -pi/6</li>
+<li>maxRotation = -pi/6</li>
+<li>rotateRatio = 1</li>
 </ul></li>
 <li>theme3:
 
@@ -479,7 +488,7 @@ wordcloud2(demoFreqC,size = 2,
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-11'>
+<section class='' data-state='' id='slide-10'>
   <h2>图片保存</h2>
   <ol>
 <li>Rstudio Export</li>
@@ -496,21 +505,40 @@ webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-12'>
-  <h2><em>shiny</em></h2>
-  <pre><code class="r">wordcloud2Output(outputId, width = &quot;100%&quot;, height = &quot;400px&quot;)
+<section>
+   <section class='' data-state=''>
+    <h2><em>shiny</em></h2>
+    <pre><code class="r">wordcloud2Output(outputId, width = &quot;100%&quot;, height = &quot;400px&quot;)
 renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
 </code></pre>
 
-</section>
-<section class='' data-state='' id='slide-13'>
-  <h2><em>knitr/slidify</em></h2>
-  <pre><code class="r">install.packages(&quot;webshot&quot;)
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>knitr/slidify</em></h2>
+
+<pre><code class="r">install.packages(&quot;webshot&quot;)
 webshot::install_phantomjs()
 </code></pre>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>中文支持</h2>
+
+<pre><code class="r">Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;chs&quot;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
-<section class='' data-state='' id='slide-14'>
+<section class='' data-state='' id='slide-12'>
   <h2>Thanks</h2>
   <ul>
 <li>微博@郎大为Chiffon</li>

@@ -216,7 +216,7 @@ letterCloud(dat,"R",
 [亚磊的博客](http://yalei.name/2016/06/wordcloud2)
 
 
----
+---&vertical
 ## _Wordcloud2_ 主题
 - _仅在开发版中使用(2016/10)_
 
@@ -228,7 +228,7 @@ wc + WCtheme(class = 1)
 ```
 
 
----
+***
 ## _Wordcloud2_ 主题
 ![](pic/theme.png)
 
@@ -281,15 +281,16 @@ wordcloud2(demoFreqC,size = 2,
 
 ***
 - theme1: 
-  - `minRotation = -pi/2`
-  - `maxRotation = -pi/2`
+  - minRotation = -pi/2
+  - maxRotation = -pi/2
 - theme2:
-  - `minRotation = -pi/6`
-  - `maxRotation = -pi/6`
-  - `rotateRatio = 1`
+  - minRotation = -pi/6
+  - maxRotation = -pi/6
+  - rotateRatio = 1
 - theme3:
   - color = "random-light"
   - backgroundColor = "grey"
+
 
 ---
 ## 图片保存
@@ -310,7 +311,7 @@ webshot::webshot("demo.html","demo.png",
 
 
 
----
+---&vertical
 ## _shiny_
 
 ```r
@@ -318,14 +319,21 @@ wordcloud2Output(outputId, width = "100%", height = "400px")
 renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
 ```
 
-
----
+***
 ## _knitr/slidify_
 
 ```r
 install.packages("webshot")
 webshot::install_phantomjs()
 ```
+
+***
+## 中文支持
+
+```r
+Sys.setlocale("LC_CTYPE", "chs")
+```
+
 
 
 ---
