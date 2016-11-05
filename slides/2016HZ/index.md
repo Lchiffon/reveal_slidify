@@ -340,7 +340,7 @@ Sys.setlocale("LC_CTYPE", "chs")
 ## Thanks
 - 微博@郎大为Chiffon
 
-[REmap主页](http://lchiffon.github.com/REmap)
+[wordcloud2主页](http://lchiffon.github.com/wordcloud2)
 [My Blog: 七风阁](http://lchiffon.github.io)
 <script>
 $('ul.incremental li').addClass('fragment')
