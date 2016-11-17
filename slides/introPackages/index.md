@@ -1,0 +1,350 @@
+---
+title: From Knitr to Jekyll
+author: Chiffon
+mode : selfcontained
+framework: revealjs
+hitheme : tomorrow
+url :  {lib: ../libraries}
+revealjs:
+  theme: Sky
+  transition: slide
+  center: "true"
+bootstrap:
+  theme: amelia
+navbar:
+  title: Slidify
+  items: 
+    - {item: Home, href: index,  icon: home}
+    - {item: "Start", href: start, icon: signin}
+    - {item: Author, href: about, icon: pencil}
+    - {item: Style, href: style, icon: hand-right, class: dropdown, 
+        dropdown: true, menu: [
+         {item: io2012, href: 'samples/intro'},
+         {item: deck.js, href: 'samples/deck.js'},
+         {item: shower, href: 'samples/shower'},
+         {item: landslide, href: 'samples/landslide'}
+        ]
+      }
+    - {item: Customize, href: customize, icon: gift}
+    - {item: Extend, href: extend, icon: cogs}
+    - {item: Publish, href: publish, icon: github}
+---
+
+
+
+<style>
+
+.title-slide {
+  background-color: #e2e2e2;
+}
+
+.title-slide hgroup > h1{
+  font-family: 'Oswald', '微软雅黑';
+  color: #202020;
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+.reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+strong{
+ color: #4876FF;
+}
+</style>
+
+## Intro to R packages
+### 常用R包介绍
+<small> Created by [Chiffon](http://lchiffon.github.io)郎大为</small><br/>
+<small>J.D.Power 数据分析师</small>
+<script src="./libraries/jquery.min.js"></script>
+<script>
+			document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+
+---
+![ds](pic/ds.png)
+<small><datacamp.com></small>
+
+
+---
+## arules
+- 关联分析包
+
+---
+## baidumap
+- 基于百度地图的R接口
+- [Link](https://github.com/badbye/baidumap)
+
+
+---
+## caret
+- 机器学习包(汇总)
+- [Link](http://topepo.github.io/caret/index.html)
+
+---
+## corrplot
+
+---
+## data.table
+- 高速数据清洗
+- 引入主键的概念
+- `fread`超好用
+
+---
+## DBI
+- 数据库接口包
+
+---
+## devtools
+- R包开发用包
+
+---
+## DiagrammeR
+- 高级版Visio
+- 高级版图数据可视化
+- [Link](http://rich-iannone.github.io/DiagrammeR/)
+
+
+---
+## doParallel
+- 并行包
+
+---
+## dplyr
+- 数据处理常用包
+- [Link](http://xueqing.tv/courses/31)
+
+---
+## DT
+- 数据表可视化
+- Excel条件格式
+
+---
+## e1071
+- knn
+- svm
+
+
+---
+## foreach
+- 并行包
+- `foreach(i=1:3) %do% sqrt(i)`
+
+---
+## forcast
+- 时间序列预测包
+
+---
+## foreign
+- 读取其他形式的数据
+
+---
+## formatR
+
+
+---
+## ggmap
+
+---
+## ggplot2
+- [Link](ggplot2.org)
+
+---
+## ggThemes
+
+---
+## glmnet
+- glmnet 回归
+
+---
+## gridExtra
+- 用于组合ggplot2
+
+---
+## haven
+- Vs. foreign
+
+
+---
+## htmlWidgets
+- [Link](http://gallery.htmlwidgets.org/)
+
+
+---
+## igraph
+
+---
+## jiebaR
+- R语言中文分词
+
+---
+## jsonlite
+- 解析json文件
+
+---
+## ks
+- Kernel Smooth
+
+---
+## knitr
+
+---
+## lattice
+
+---
+## leaflet
+- [Link](http://rstudio.github.io/leaflet/)
+
+
+---
+## map, mapproj
+
+
+---
+## Matrix
+
+---
+## mxnet
+- Deeplearning in R
+
+
+---
+## networkD3
+
+---
+## OpenCPU
+---
+## parallel
+
+---
+## plotly
+
+---
+## plyr
+- `colwise`
+
+---
+## Rattle
+
+---
+## R2PPT
+
+---
+## randomforest
+
+---
+## rCharts
+
+---
+## Rcpp
+
+---
+## Rcurl
+
+---
+## readr
+
+
+---
+## recharts
+
+---
+## REmap
+
+---
+## reshape2
+- dcast
+- melt
+
+---
+## RODBC
+
+
+---
+## roxygen2
+
+---
+## rpart
+
+
+---
+## rpart.plot
+
+---
+## rvest
+
+---
+## scale
+- `percent`
+
+
+---
+## shiny
+
+---
+## slidify
+
+---
+## splines
+- 样条回归
+
+---
+## stringr
+## stringi
+
+
+---
+## survial
+- 生存分析
+
+---
+## swirl
+
+---
+## tidyr
+- `spread`
+- `gather`
+
+---
+## tm
+## tmcn
+
+---
+## V8
+
+---
+## wordcloud
+## wordcloud2
+
+---
+## xgboost
+
+---
+## xlsx
+
+---
+## XML
+
+---
+## zoo
+
+
+---
+## Thanks
+- 邮箱 dawei_lang@sina.cn
+- 微博@郎大为Chiffon
+
+[My Blog: 七风阁](http://lchiffon.github.io)
+
+---
+## Play Data, Enjoy Data!
+
+<script>
+$('ul.incremental li').addClass('fragment')
+</script>

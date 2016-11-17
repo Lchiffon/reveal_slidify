@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>From Knitr to Jekyll</title>
+  <meta name="description" content="">
+  <meta name="author" content="Chiffon">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  
+  <style>
+
+.title-slide {
+  background-color: #e2e2e2;
+}
+
+.title-slide hgroup > h1{
+  font-family: 'Oswald', '微软雅黑';
+  color: #202020;
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+.reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+strong{
+ color: #4876FF;
+}
+</style>
+
+<h2>Intro to R packages</h2>
+
+<h3>常用R包介绍</h3>
+
+<p><small> Created by <a href="http://lchiffon.github.io">Chiffon</a>郎大为</small><br/>
+<small>J.D.Power 数据分析师</small></p>
+
+<script src="./libraries/jquery.min.js"></script>
+
+<script>
+            document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  
+  <p><img src="pic/ds.png" alt="ds">
+<small><datacamp.com></small></p>
+
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h2>arules</h2>
+  <ul>
+<li>关联分析包</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h2>baidumap</h2>
+  <ul>
+<li>基于百度地图的R接口</li>
+<li><a href="https://github.com/badbye/baidumap">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h2>caret</h2>
+  <ul>
+<li>机器学习包(汇总)</li>
+<li><a href="http://topepo.github.io/caret/index.html">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-6'>
+  <h2>corrplot</h2>
+  
+</section>
+<section class='' data-state='' id='slide-7'>
+  <h2>data.table</h2>
+  <ul>
+<li>高速数据清洗</li>
+<li>引入主键的概念</li>
+<li><code>fread</code>超好用</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-8'>
+  <h2>DBI</h2>
+  <ul>
+<li>数据库接口包</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h2>devtools</h2>
+  <ul>
+<li>R包开发用包</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-10'>
+  <h2>DiagrammeR</h2>
+  <ul>
+<li>高级版Visio</li>
+<li>高级版图数据可视化</li>
+<li><a href="http://rich-iannone.github.io/DiagrammeR/">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-11'>
+  <h2>doParallel</h2>
+  <ul>
+<li>并行包</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-12'>
+  <h2>dplyr</h2>
+  <ul>
+<li>数据处理常用包</li>
+<li><a href="http://xueqing.tv/courses/31">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-13'>
+  <h2>DT</h2>
+  <ul>
+<li>数据表可视化</li>
+<li>Excel条件格式</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-14'>
+  <h2>e1071</h2>
+  <ul>
+<li>knn</li>
+<li>svm</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-15'>
+  <h2>foreach</h2>
+  <ul>
+<li>并行包</li>
+<li><code>foreach(i=1:3) %do% sqrt(i)</code></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-16'>
+  <h2>forcast</h2>
+  <ul>
+<li>时间序列预测包</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  <h2>foreign</h2>
+  <ul>
+<li>读取其他形式的数据</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-18'>
+  <h2>formatR</h2>
+  
+</section>
+<section class='' data-state='' id='slide-19'>
+  <h2>ggmap</h2>
+  
+</section>
+<section class='' data-state='' id='slide-20'>
+  <h2>ggplot2</h2>
+  <ul>
+<li><a href="ggplot2.org">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-21'>
+  <h2>ggThemes</h2>
+  
+</section>
+<section class='' data-state='' id='slide-22'>
+  <h2>glmnet</h2>
+  <ul>
+<li>glmnet 回归</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-23'>
+  <h2>gridExtra</h2>
+  <ul>
+<li>用于组合ggplot2</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-24'>
+  <h2>haven</h2>
+  <ul>
+<li>Vs. foreign</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-25'>
+  <h2>htmlWidgets</h2>
+  <ul>
+<li><a href="http://gallery.htmlwidgets.org/">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-26'>
+  <h2>igraph</h2>
+  
+</section>
+<section class='' data-state='' id='slide-27'>
+  <h2>jiebaR</h2>
+  <ul>
+<li>R语言中文分词</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-28'>
+  <h2>jsonlite</h2>
+  <ul>
+<li>解析json文件</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-29'>
+  <h2>ks</h2>
+  <ul>
+<li>Kernel Smooth</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-30'>
+  <h2>knitr</h2>
+  
+</section>
+<section class='' data-state='' id='slide-31'>
+  <h2>lattice</h2>
+  
+</section>
+<section class='' data-state='' id='slide-32'>
+  <h2>leaflet</h2>
+  <ul>
+<li><a href="http://rstudio.github.io/leaflet/">Link</a></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-33'>
+  <h2>map, mapproj</h2>
+  
+</section>
+<section class='' data-state='' id='slide-34'>
+  <h2>Matrix</h2>
+  
+</section>
+<section class='' data-state='' id='slide-35'>
+  <h2>mxnet</h2>
+  <ul>
+<li>Deeplearning in R</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-36'>
+  <h2>networkD3</h2>
+  
+</section>
+<section class='' data-state='' id='slide-37'>
+  <h2>OpenCPU</h2>
+  <hr>
+
+<h2>parallel</h2>
+
+</section>
+<section class='' data-state='' id='slide-38'>
+  <h2>plotly</h2>
+  
+</section>
+<section class='' data-state='' id='slide-39'>
+  <h2>plyr</h2>
+  <ul>
+<li><code>colwise</code></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-40'>
+  <h2>Rattle</h2>
+  
+</section>
+<section class='' data-state='' id='slide-41'>
+  <h2>R2PPT</h2>
+  
+</section>
+<section class='' data-state='' id='slide-42'>
+  <h2>randomforest</h2>
+  
+</section>
+<section class='' data-state='' id='slide-43'>
+  <h2>rCharts</h2>
+  
+</section>
+<section class='' data-state='' id='slide-44'>
+  <h2>Rcpp</h2>
+  
+</section>
+<section class='' data-state='' id='slide-45'>
+  <h2>Rcurl</h2>
+  
+</section>
+<section class='' data-state='' id='slide-46'>
+  <h2>readr</h2>
+  
+</section>
+<section class='' data-state='' id='slide-47'>
+  <h2>recharts</h2>
+  
+</section>
+<section class='' data-state='' id='slide-48'>
+  <h2>REmap</h2>
+  
+</section>
+<section class='' data-state='' id='slide-49'>
+  <h2>reshape2</h2>
+  <ul>
+<li>dcast</li>
+<li>melt</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-50'>
+  <h2>RODBC</h2>
+  
+</section>
+<section class='' data-state='' id='slide-51'>
+  <h2>roxygen2</h2>
+  
+</section>
+<section class='' data-state='' id='slide-52'>
+  <h2>rpart</h2>
+  
+</section>
+<section class='' data-state='' id='slide-53'>
+  <h2>rpart.plot</h2>
+  
+</section>
+<section class='' data-state='' id='slide-54'>
+  <h2>rvest</h2>
+  
+</section>
+<section class='' data-state='' id='slide-55'>
+  <h2>scale</h2>
+  <ul>
+<li><code>percent</code></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-56'>
+  <h2>shiny</h2>
+  
+</section>
+<section class='' data-state='' id='slide-57'>
+  <h2>slidify</h2>
+  
+</section>
+<section class='' data-state='' id='slide-58'>
+  <h2>splines</h2>
+  <ul>
+<li>样条回归</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-59'>
+  <h2>stringr</h2>
+  <h2>stringi</h2>
+
+</section>
+<section class='' data-state='' id='slide-60'>
+  <h2>survial</h2>
+  <ul>
+<li>生存分析</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-61'>
+  <h2>swirl</h2>
+  
+</section>
+<section class='' data-state='' id='slide-62'>
+  <h2>tidyr</h2>
+  <ul>
+<li><code>spread</code></li>
+<li><code>gather</code></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-63'>
+  <h2>tm</h2>
+  <h2>tmcn</h2>
+
+</section>
+<section class='' data-state='' id='slide-64'>
+  <h2>V8</h2>
+  
+</section>
+<section class='' data-state='' id='slide-65'>
+  <h2>wordcloud</h2>
+  <h2>wordcloud2</h2>
+
+</section>
+<section class='' data-state='' id='slide-66'>
+  <h2>xgboost</h2>
+  
+</section>
+<section class='' data-state='' id='slide-67'>
+  <h2>xlsx</h2>
+  
+</section>
+<section class='' data-state='' id='slide-68'>
+  <h2>XML</h2>
+  
+</section>
+<section class='' data-state='' id='slide-69'>
+  <h2>zoo</h2>
+  
+</section>
+<section class='' data-state='' id='slide-70'>
+  <h2>Thanks</h2>
+  <ul>
+<li>邮箱 <a href="mailto:dawei_lang@sina.cn">dawei_lang@sina.cn</a></li>
+<li>微博@郎大为Chiffon</li>
+</ul>
+
+<p><a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
+
+</section>
+<section class='' data-state='' id='slide-71'>
+  <h2>Play Data, Enjoy Data!</h2>
+  <script>
+$('ul.incremental li').addClass('fragment')
+</script>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="../libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="../libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'Sky', 
+    transition: Reveal.getQueryHash().transition || 'slide', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: '../libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: '../libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: '../libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: '../libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
