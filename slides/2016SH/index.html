@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Wordcloud2</title>
+  <title>New Vistualization</title>
   <meta name="description" content="">
   <meta name="author" content="Chiffon">
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,493 +44,145 @@ font-size: 3
 strong{
  color: #4876FF;
 }
+
 </style>
 
-<h2>新版词云</h2>
+<h2>新瓶与新酒</h2>
 
-<h3>基于htmlWidgets的wordcloud2</h3>
+<h3>让R的可视化更炫酷</h3>
 
 <p><small> Created by <a href="http://lchiffon.github.io">Chiffon</a>郎大为</small><br/>
 <small>J.D. Power 数据分析师</small></p>
 
-<script src="./libraries/jquery.min.js"></script>
+<script src="../libraries/jquery.min.js"></script>
 
 <script>
             document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
 
 </section>
-<section>
-   <section class='' data-state=''>
-    <h2>绘图: 从静态到动态</h2>
-    <ul>
-<li>除了统计计算,机器学习以外</li>
-<li>R最出名的莫过于数据可视化</li>
-<li>翘楚:
-
-<ul>
-<li><code>lattice</code></li>
-<li><code>ggplot2</code></li>
-<li><code>corr</code></li>
-<li><code>map</code></li>
-<li class='..</li>'></ul></li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h1>JavaScript</h1>
-
-<h2>更适合可视化的语言</h2>
-
-<ul>
-<li>Echarts</li>
-<li>D3</li>
-<li>Highcharts</li>
-<li class='..</li>'></ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2>htmlwidgets</h2>
-
-<h3>连接R与JS可视化的桥梁</h3>
-
-<ul>
-<li>Rstudio 出品</li>
-<li>良好的框架</li>
-<li>方便的输出</li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2>htmlwidgets</h2>
-
-<h3>连接R与JS可视化的桥梁</h3>
-
-<ul>
-<li>良好的框架
-
-<ul>
-<li>配置文件(叙述如何配置HtmlWidgets)</li>
-<li>JS库(源生JS)</li>
-</ul></li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h1>htmlwidgets</h1>
-
-<h2>连接R与JS可视化的桥梁</h2>
-
-<ul>
-<li>方便的输出
-
-<ul>
-<li>Rstudio</li>
-<li>浏览器</li>
-<li>shiny</li>
-<li>knitr/slidify</li>
-</ul></li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2><a href="http://gallery.htmlwidgets.org/">htmlWidgets Gallery</a></h2>
-
-<p><img src="pic/htmlWidgets.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2><em>wordlcoud2</em> 流程图</h2>
-
-<p><img src="pic/flow.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>安装</h2>
-    <ul>
-<li>CRAN版:</li>
-</ul>
-
-<pre><code class="r">install.packages(&quot;wordcloud2&quot;)
-</code></pre>
-
-<ul>
-<li>开发版:</li>
-</ul>
-
-<pre><code class="r">devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
-</code></pre>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/gh.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>原始wordcloud</h2>
-    <pre><code class="r">library(wordcloud)
-wordcloud(demoFreq[,1],demoFreq[,2])
-</code></pre>
-
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <ul>
-<li>过大的margin
-
-<ul>
-<li>导致图案过小</li>
-</ul></li>
-<li>图案的设置
-
-<ul>
-<li>不能自定义形状</li>
-</ul></li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2>原始wordcloud</h2>
-
-<p><img src="pic/wordcloud1.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>基本使用</h2>
-    <pre><code class="r">library(wordcloud2)
-wordcloud2(demoFreq)
-</code></pre>
-
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <iframe src="pic/wc1.html" height="600px" width="800px"></iframe>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>基于图片的 <em>Wordcloud2</em></h2>
-    <pre><code class="r">figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
-wordcloud2(demoFreq, 
-           figPath = figPath,
-           size = 1.5, 
-           color = &quot;skyblue&quot;)
-</code></pre>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/bird.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/hs.jpg" alt=""></p>
-
-<p>@微信: wetalkdata</p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2>基于文字的 <em>Wordcloud2</em></h2>
-    <pre><code class="r">library(wordcloud2)
-letterCloud(dat,&quot;R&quot;, 
-            color = &quot;random-light&quot;,
-            backgroundColor = &quot;black&quot;,
-            size = 0.3)
-</code></pre>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/tou.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/tb.jpg" alt=""></p>
-
-<p><a href="http://yalei.name/2016/06/wordcloud2">亚磊的博客</a></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2><em>Wordcloud2</em> 主题</h2>
-    <ul>
-<li><em>仅在开发版中使用(2016/10)</em></li>
-</ul>
-
-<pre><code class="r">wc = wordcloud2(demoFreq,
-                fontFamily=&#39;微软雅黑&#39;)
-wc + WCtheme(class = 1)
-## class: 1,2,3
-</code></pre>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2><em>Wordcloud2</em> 主题</h2>
-
-<p><img src="pic/theme.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section>
-   <section class='' data-state=''>
-    <h2><em>Wordcloud2</em> 细节调整</h2>
-    <p>可用参数:</p>
-
-<ul>
-<li>size</li>
-<li>fontFamily</li>
-<li>color/backgroundColor</li>
-<li>minRotation/maxRotation</li>
-<li>rotateRatio</li>
-<li>shape</li>
-<li>figPath</li>
-<li>hoverFunction</li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <table><thead>
+<section class='' data-state='' id='slide-2'>
+  <h2>可视化是手段</h2>
+  <table><thead>
 <tr>
-<th>参数名</th>
-<th>含义</th>
-<th>取值</th>
+<th align="right">id</th>
+<th align="left">name</th>
+<th align="right">age</th>
+<th align="left">grade</th>
+<th align="right">test1</th>
+<th align="right">test2</th>
+<th align="right">final</th>
+<th align="left">registered</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>size</td>
-<td>大小</td>
-<td>1为默认值</td>
+<td align="right">1</td>
+<td align="left">Bob</td>
+<td align="right">28</td>
+<td align="left">C</td>
+<td align="right">8.9</td>
+<td align="right">9.1</td>
+<td align="right">9.0</td>
+<td align="left">TRUE</td>
 </tr>
 <tr>
-<td>fontFamily</td>
-<td>字体</td>
-<td>&#39;Segoe UI&#39;</td>
+<td align="right">2</td>
+<td align="left">Ashley</td>
+<td align="right">27</td>
+<td align="left">A</td>
+<td align="right">9.5</td>
+<td align="right">9.1</td>
+<td align="right">9.3</td>
+<td align="left">FALSE</td>
 </tr>
 <tr>
-<td>color</td>
-<td>颜色</td>
-<td>&#39;random-dark&#39;</td>
+<td align="right">3</td>
+<td align="left">James</td>
+<td align="right">30</td>
+<td align="left">A</td>
+<td align="right">9.6</td>
+<td align="right">9.2</td>
+<td align="right">9.4</td>
+<td align="left">TRUE</td>
 </tr>
 <tr>
-<td>backgroundColor</td>
-<td>背景色</td>
-<td>&#39;white&#39;</td>
+<td align="right">4</td>
+<td align="left">David</td>
+<td align="right">28</td>
+<td align="left">C</td>
+<td align="right">8.9</td>
+<td align="right">9.1</td>
+<td align="right">9.0</td>
+<td align="left">FALSE</td>
 </tr>
 <tr>
-<td>minRotation</td>
-<td>最小角度</td>
-<td>-pi/4</td>
+<td align="right">5</td>
+<td align="left">Jenny</td>
+<td align="right">29</td>
+<td align="left">B</td>
+<td align="right">9.1</td>
+<td align="right">8.9</td>
+<td align="right">9.0</td>
+<td align="left">TRUE</td>
 </tr>
 <tr>
-<td>maxRotation</td>
-<td>最大角度</td>
-<td>pi/4</td>
-</tr>
-<tr>
-<td>rotateRatio</td>
-<td>旋转比例</td>
-<td>0.4</td>
-</tr>
-<tr>
-<td>shape</td>
-<td>形状</td>
-<td>&#39;circle&#39;</td>
-</tr>
-<tr>
-<td>figPath</td>
-<td>图像</td>
-<td>图片路径</td>
-</tr>
-<tr>
-<td>hoverFunction</td>
-<td>JS函数</td>
-<td>动态函数</td>
+<td align="right">6</td>
+<td align="left">Hans</td>
+<td align="right">29</td>
+<td align="left">B</td>
+<td align="right">9.3</td>
+<td align="right">8.5</td>
+<td align="right">8.9</td>
+<td align="left">TRUE</td>
 </tr>
 </tbody></table>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2><em>size</em></h2>
-
-<pre><code class="r">wordcloud2(demoFreqC,size = 0.5,
-           fontFamily = &#39;微软雅黑&#39;)
-wordcloud2(demoFreqC,size = 2,
-           fontFamily = &#39;微软雅黑&#39;)
-</code></pre>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <p><img src="pic/size.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2><em>Wordcloud2</em> 主题</h2>
-
-<p><img src="pic/theme.png" alt=""></p>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <ul>
-<li>theme1: 
-
-<ul>
-<li>minRotation = -pi/2</li>
-<li>maxRotation = -pi/2</li>
-</ul></li>
-<li>theme2:
-
-<ul>
-<li>minRotation = -pi/6</li>
-<li>maxRotation = -pi/6</li>
-<li>rotateRatio = 1</li>
-</ul></li>
-<li>theme3:
-
-<ul>
-<li>color = &quot;random-light&quot;</li>
-<li>backgroundColor = &quot;grey&quot;</li>
-</ul></li>
-</ul>
-
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-</section>
-<section class='' data-state='' id='slide-10'>
-  <h2>图片保存</h2>
-  <ol>
-<li>Rstudio Export</li>
-<li><code>webshot</code> packages</li>
-</ol>
-
-<pre><code class="r">install.packages(&quot;webshot&quot;)
-webshot::install_phantomjs()
-library(wordcloud2)
-hw = wordcloud2(demoFreq,size = 3)
-saveWidget(hw,&quot;demo.html&quot;,selfcontained = F)
-webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,
-                 vwidth = 800, vheight = 600, delay =3)
-</code></pre>
 
 </section>
 <section>
    <section class='' data-state=''>
-    <h2><em>shiny</em></h2>
-    <pre><code class="r">wordcloud2Output(outputId, width = &quot;100%&quot;, height = &quot;400px&quot;)
-renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
-</code></pre>
+    <h2>新的瓶子: HtmlWidgets</h2>
+    <ul>
+<li>动态，可交互并有更炫酷的效果</li>
+</ul>
+
+<iframe src="./html/formattable.html" height="600px" width="800px"></iframe>
+
+<p><small>package:formatR</small></p>
 
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2><em>knitr/slidify</em></h2>
+    <h2>Codes</h2>
 
-<pre><code class="r">install.packages(&quot;webshot&quot;)
-webshot::install_phantomjs()
-</code></pre>
+<pre><code class="r">install.packages(&quot;formattable&quot;)
+library(formattable)
 
-    <aside class='notes'>
-      
-    </aside>
-   </section>
-   <section class='' data-state=''>
-    <h2>中文支持</h2>
+df &lt;- data.frame(
+  id = 1:10,
+  name = c(&quot;Bob&quot;, &quot;Ashley&quot;, &quot;James&quot;, &quot;David&quot;, &quot;Jenny&quot;, 
+    &quot;Hans&quot;, &quot;Leo&quot;, &quot;John&quot;, &quot;Emily&quot;, &quot;Lee&quot;), 
+  age = c(28, 27, 30, 28, 29, 29, 27, 27, 31, 30),
+  grade = c(&quot;C&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;B&quot;, &quot;A&quot;, &quot;C&quot;, &quot;C&quot;),
+  test1_score = c(8.9, 9.5, 9.6, 8.9, 9.1, 9.3, 9.3, 9.9, 8.5, 8.6),
+  test2_score = c(9.1, 9.1, 9.2, 9.1, 8.9, 8.5, 9.2, 9.3, 9.1, 8.8),
+  final_score = c(9, 9.3, 9.4, 9, 9, 8.9, 9.25, 9.6, 8.8, 8.7),
+  registered = c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+  stringsAsFactors = FALSE)
 
-<pre><code class="r">Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;chs&quot;)
+formattable(df, list(
+  age = color_tile(&quot;white&quot;, &quot;orange&quot;),
+  grade = formatter(&quot;span&quot;, style = x ~ ifelse(x == &quot;A&quot;, 
+                                               style(color = &quot;green&quot;, font.weight = &quot;bold&quot;), NA)),
+  area(col = c(test1_score, test2_score)) ~ normalize_bar(&quot;pink&quot;, 0.2),
+  final_score = formatter(&quot;span&quot;,
+                          style = x ~ style(color = ifelse(rank(-x) &lt;= 3, &quot;green&quot;, &quot;gray&quot;)),
+                          x ~ sprintf(&quot;%.2f (rank: %02d)&quot;, x, rank(-x))),
+  registered = formatter(&quot;span&quot;,
+                         style = x ~ style(color = ifelse(x, &quot;green&quot;, &quot;red&quot;)),
+                         x ~ icontext(ifelse(x, &quot;ok&quot;, &quot;remove&quot;), ifelse(x, &quot;Yes&quot;, &quot;No&quot;)))
+))
 </code></pre>
 
     <aside class='notes'>
@@ -538,14 +190,554 @@ webshot::install_phantomjs()
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-12'>
-  <h2>Thanks</h2>
-  <ul>
-<li>微博@郎大为Chiffon</li>
+<section>
+   <section class='' data-state=''>
+    <h2>基础图形的局限</h2>
+    
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>基础图形的局限</h2>
+
+<ul>
+<li>基础的图形已经能解决90%的问题
+
+<ul>
+<li>饼图 一维世界</li>
+<li>条形图 二维世界</li>
+<li>散点、折线图 努力展示高维世界</li>
+</ul></li>
 </ul>
 
-<p><a href="http://lchiffon.github.com/wordcloud2">wordcloud2主页</a>
-<a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>如何在一张图中展示5个维度</h2>
+
+<p><img src="pic/ggplot2.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <pre><code class="r">library(ggplot2)
+ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position=&quot;jitter&quot;)+facet_wrap(~year)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>值得展示的高维数据</h2>
+    <ul>
+<li>不同污染物的情况</li>
+<li>城市基本指标</li>
+<li>运动员/候选人的数据</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>多维坐标轴</h2>
+
+<iframe src="html/pall.html" height="600px" width="800px"></iframe>
+
+<p><small>recharts::eParaell</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Codes</h2>
+
+<pre><code class="r">devtools::install_github(&quot;taiyun/recharts&quot;)
+library(recharts)
+require(plyr)
+axisList = list(
+  list(index=7, type=&quot;category&quot;, data = c(&quot;low&quot;, &quot;middle&quot;, &quot;high&quot;)), 
+  list(index=6, inverse=TRUE, max=50, nameLocation=&quot;start&quot;)
+)
+eParallel(head(parallelDf, 20), 
+          series=~groupName,
+          axisList = axisList)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>雷达图</h2>
+    <ul>
+<li>数据科学家的战斗力</li>
+</ul>
+
+<iframe src="html/radar.html" height="600px" width="800px"></iframe>
+
+<p><small>radarchart::chartJSRadar</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>雷达图</h2>
+
+<ul>
+<li>数据科学家的战斗力
+TODO5
+<iframe src="html/radar2.html" height="600px" width="800px"></iframe></li>
+</ul>
+
+<p><small>recharts::eRadar</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Codes</h2>
+
+<pre><code class="r">install.packages(&quot;radarchart&quot;)
+library(radarchart)
+labs &lt;- c(&quot;Communicator&quot;, &quot;Data Wangler&quot;, &quot;Programmer&quot;,
+          &quot;Technologist&quot;,  &quot;Modeller&quot;, &quot;Visualizer&quot;)
+scores &lt;- list(
+  &quot;Rich&quot; = c(9, 7, 4, 5, 3, 7),
+  &quot;Andy&quot; = c(7, 6, 6, 2, 6, 9),
+  &quot;Aimee&quot; = c(6, 5, 8, 4, 7, 6)
+)
+chartJSRadar(scores = scores, labs = labs, maxScale = 10)
+
+library(recharts)
+dat  &lt;- data.frame(
+  saleNum=c(scores[[1]],scores[[2]],scores[[3]]),
+    names=c(rep(&quot;Rich&quot;,6), rep(&quot;Andy&quot;,6), rep(&quot;Aimee&quot;,6)),
+  ability = labs
+)
+
+eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>流程的转化</h2>
+    <ul>
+<li>App每天的用户都干什么了</li>
+<li>为什么这次的活动没有带来收益</li>
+<li>用户进入网站都干什么了</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>漏斗图</h2>
+
+<ul>
+<li>到底哪个环节出问题了？</li>
+</ul>
+
+<iframe src="html/funnel.html" height="600px" width="800px"></iframe>
+
+<p><small>recharts::eFunnel</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Codes</h2>
+
+<pre><code class="r">library(recharts)
+x = c(&quot;Exposure&quot; = 100, &quot;Click&quot; = 80, &quot;Visit&quot; = 60, &quot;Query&quot;=40, &quot;Buy&quot;=20)
+eFunnel(x) 
+funnelDf &lt;- data.frame(namevar = c(&quot;Exposure&quot;, &quot;Click&quot;, &quot;Visit&quot;, &quot;Query&quot;, &quot;Buy&quot;), 
+   datavar = c(100, 80, 60, 40, 20), stringsAsFactors=FALSE)
+eFunnel(funnelDf, ~namevar, ~datavar)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>多维关系的展示</h2>
+    <p><img src ='pic\sun1.png'/></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>SunBrust</h2>
+
+<iframe src="html/sun.html" height="600px" width="800px"></iframe>
+
+<p><small>sunburstR::sunburst</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Codes</h2>
+
+<pre><code class="r">library(TraMineR)
+library(sunburstR)
+library(pipeR)
+# use example from TraMineR vignette
+data(&quot;mvad&quot;)
+mvad.alphab &lt;- c(
+  &quot;employment&quot;, &quot;FE&quot;, &quot;HE&quot;, &quot;joblessness&quot;,
+  &quot;school&quot;, &quot;training&quot;
+)
+mvad.seq &lt;- seqdef(mvad, 17:86, xtstep = 6, alphabet = mvad.alphab)
+
+# to make this work, we&#39;ll compress the sequences with seqdss
+#   could also aggregate with dply later
+seqtab( seqdss(mvad.seq), tlim = 0, format = &quot;SPS&quot; ) %&gt;&gt;%
+  attr(&quot;freq&quot;) %&gt;&gt;%
+  (
+    data.frame(
+      # appending &quot;-end&quot; is necessary for this to work
+      sequence = paste0(
+        gsub(
+          x = names(.$Freq)
+          , pattern = &quot;(/[0-9]*)&quot;
+          , replacement = &quot;&quot;
+          , perl = T
+        )
+        ,&quot;-end&quot;
+      )
+      ,freq = as.numeric(.$Freq)
+      ,stringsAsFactors = FALSE
+    )
+  ) %&gt;&gt;%
+  sunburst
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-9'>
+  <h2>关系的可视化</h2>
+  <p>图数据的可视化</p>
+
+<ul>
+<li>igraph (旧瓶)</li>
+<li><del>D3Network (破瓶)</del></li>
+<li>networkD3 (新瓶)</li>
+<li>diagrammeR</li>
+</ul>
+
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>网络图</h2>
+    <iframe src="html/graph.html" height="600px" width="800px"></iframe>
+
+<p><small>DiagrammeR</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <pre><code class="r">library(DiagrammeR)
+library(magrittr)
+
+# Create a graph with fruit, vegetables,
+# and nuts
+nodes &lt;-
+  create_nodes(
+    nodes = 1:9,
+    type = c(&quot;fruit&quot;, &quot;fruit&quot;, &quot;fruit&quot;,
+             &quot;veg&quot;, &quot;veg&quot;, &quot;veg&quot;,
+             &quot;nut&quot;, &quot;nut&quot;, &quot;nut&quot;),
+    label = c(&quot;pineapple&quot;, &quot;apple&quot;,
+              &quot;apricot&quot;, &quot;cucumber&quot;,
+              &quot;celery&quot;, &quot;endive&quot;,
+              &quot;hazelnut&quot;, &quot;almond&quot;,
+              &quot;chestnut&quot;))
+
+edges &lt;-
+  create_edges(
+    from = c(9, 3, 6, 2, 6, 2, 8, 2, 5, 5),
+    to = c(1, 1, 4, 3, 7, 8, 1, 5, 3, 6))
+
+graph &lt;-
+  create_graph(
+    nodes_df = nodes,
+    edges_df = edges,
+    graph_attrs = &quot;output = visNetwork&quot;)
+
+# View the graph
+render_graph(graph)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-11'>
+  <h2>弦图</h2>
+  <p><img src="pic/chord.png" alt=""></p>
+
+</section>
+<section class='' data-state='' id='slide-12'>
+  <h2>桑基图</h2>
+  <p><img src="pic/sankey.png" alt=""></p>
+
+<p><small>networkD3::sankeyNetwork</small></p>
+
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>地理信息的可视化</h2>
+    
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>美国大选</h2>
+
+<p><img src="pic/map.png" alt="">
+<small><a href="http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/">http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</a></small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>中国GDP</h2>
+
+<p><img src="pic/c1" alt=""></p>
+
+<p><small>REmap::remapC</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>leaflet</h2>
+
+<p><img src="pic/remapB.png" alt=""></p>
+
+<p><small>leaflet</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>百度地图</h2>
+
+<p><img src="pic/1-1.png" alt="">
+<small>REmap::remapB</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>3D</h2>
+
+<p><img src="pic/three.png" alt=""></p>
+
+<p><small>threejs</small></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Codes</h2>
+
+<pre><code class="r">library(REmap)
+GDP = read.csv(&quot;data/GDP.csv&quot;,encoding = &quot;UTF-8&quot;)
+remapC(GDP,
+         color = c(&quot;red&quot;,&quot;yellow&quot;),
+         title = &quot;2015年第二季度中国各省份GDP(亿元)&quot;,
+         subtitle = &quot;数据来源中国统计年鉴&quot;)
+
+library(leaflet)
+m &lt;- leaflet() %&gt;%
+  addTiles() %&gt;%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup=&quot;The birthplace of R&quot;)
+m  # Print the map
+
+library(threejs)
+
+# Plot flights to frequent destinations from
+# Callum Prentice&#39;s global flight data set,
+# http://callumprentice.github.io/apps/flight_stream/index.html
+data(flights)
+
+# Approximate locations as factors
+dest   &lt;- factor(sprintf(&quot;%.2f:%.2f&quot;,flights[,3], flights[,4]))
+
+# A table of destination frequencies
+freq &lt;- sort(table(dest), decreasing=TRUE)
+
+# The most frequent destinations in these data, possibly hub airports?
+frequent_destinations &lt;- names(freq)[1:10]
+
+# Subset the flight data by destination frequency
+idx &lt;- dest %in% frequent_destinations
+frequent_flights &lt;- flights[idx, ]
+
+# Lat/long of frequent destinations
+latlong &lt;- unique(frequent_flights[,3:4])
+
+# Plot frequent destinations as bars, and the flights to and from
+# them as arcs. Adjust arc width and color by frequency.
+earth &lt;- system.file(&quot;images/world.jpg&quot;,  package=&quot;threejs&quot;)
+globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
+        arcsHeight=0.3, arcsLwd=2, arcsColor=&quot;#ffff00&quot;, arcsOpacity=0.15,
+        atmosphere=TRUE)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>其他有意思的可视化</h2>
+    
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>词云</h2>
+
+<p><img src="pic/wc.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>时间轴</h2>
+
+<p><img src="pic/wcup.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>热图</h2>
+
+<p><img src="pic/heatmap.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Codes</h2>
+
+<pre><code class="r">library(wordcloud2)
+# Sys.setlocale(&quot;LC_CTYPE&quot;,&quot;eng&quot;)
+letterCloud(demoFreqC,&quot;R&quot;,
+            fontFamily=&#39;微软雅黑&#39;,
+            backgroundColor=&#39;black&#39;,
+            color=&#39;random-light&#39;)
+
+library(timevis)
+if (interactive()) {
+  runExample()
+}
+
+library(d3heatmap)
+d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-15'>
+  <h2>前端可视化的框架</h2>
+  <ul>
+<li>plotly
+
+<ul>
+<li>Rstudio团队ggplot2原班人马</li>
+</ul></li>
+<li>rbokeh
+
+<ul>
+<li>python中bokeh的接口</li>
+</ul></li>
+<li>recharts
+
+<ul>
+<li>百度echarts库</li>
+</ul></li>
+<li>rCharts，highchartsR
+
+<ul>
+<li>基于其他JS库的可视化</li>
+</ul></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-16'>
+  <h2>一点建议</h2>
+  <ul>
+<li>可视化不是炫技, 而是合理的展示数据
+
+<ul>
+<li>再合理展示的前提下再考虑更炫</li>
+</ul></li>
+<li>奥卡姆剃刀： 如无必要, 勿增实例
+
+<ul>
+<li>简洁而扁平的风格</li>
+</ul></li>
+<li>不要让工具束缚你的想象力
+
+<ul>
+<li>Try JavaScript!</li>
+</ul></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-17'>
+  <h2>Thanks</h2>
+  <p><a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
 
 <script>
 $('ul.incremental li').addClass('fragment')

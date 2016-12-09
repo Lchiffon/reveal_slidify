@@ -1,5 +1,5 @@
 ---
-title: Wordcloud2
+title: New Vistualization
 author: Chiffon
 mode : selfcontained
 framework: revealjs
@@ -9,6 +9,7 @@ revealjs:
   theme: Sky
   transition: slide
   center: "true"
+  viewDistance: 2
 bootstrap:
   theme: amelia
 navbar:
@@ -57,290 +58,506 @@ font-size: 3
 strong{
  color: #4876FF;
 }
+
 </style>
 
-##  新版词云
-### 基于htmlWidgets的wordcloud2
+## 新瓶与新酒
+### 让R的可视化更炫酷
 <small> Created by [Chiffon](http://lchiffon.github.io)郎大为</small><br/>
 <small>J.D. Power 数据分析师</small>
-<script src="./libraries/jquery.min.js"></script>
+<script src="../libraries/jquery.min.js"></script>
 <script>
 			document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
 
 
----&vertical
-## 绘图: 从静态到动态
-- 除了统计计算,机器学习以外
-- R最出名的莫过于数据可视化
-- 翘楚:
-  - `lattice`
-  - `ggplot2`
-  - `corr`
-  - `map`
-  - ...
+---
+## 可视化是手段
 
+| id|name   | age|grade | test1| test2| final|registered |
+|--:|:------|---:|:-----|-----:|-----:|-----:|:----------|
+|  1|Bob    |  28|C     |   8.9|   9.1|   9.0|TRUE       |
+|  2|Ashley |  27|A     |   9.5|   9.1|   9.3|FALSE      |
+|  3|James  |  30|A     |   9.6|   9.2|   9.4|TRUE       |
+|  4|David  |  28|C     |   8.9|   9.1|   9.0|FALSE      |
+|  5|Jenny  |  29|B     |   9.1|   8.9|   9.0|TRUE       |
+|  6|Hans   |  29|B     |   9.3|   8.5|   8.9|TRUE       |
 
-
-
-***
-# JavaScript
-## 更适合可视化的语言
-- Echarts
-- D3
-- Highcharts
-- ...
-
-***
-## htmlwidgets
-### 连接R与JS可视化的桥梁
-- Rstudio 出品
-- 良好的框架
-- 方便的输出
-
-***
-## htmlwidgets
-### 连接R与JS可视化的桥梁
-- 良好的框架
-  - 配置文件(叙述如何配置HtmlWidgets)
-  - JS库(源生JS)
-
-
-***
-# htmlwidgets
-## 连接R与JS可视化的桥梁
-- 方便的输出
-  - Rstudio
-  - 浏览器
-  - shiny
-  - knitr/slidify
-
-***
-## [htmlWidgets Gallery](http://gallery.htmlwidgets.org/)
-![](pic/htmlWidgets.png)
-
-***
-## _wordlcoud2_ 流程图
-![](pic/flow.png)
-
----&vertical
-## 安装
-- CRAN版:
-
-```r
-install.packages("wordcloud2")
-```
-- 开发版:
-
-```r
-devtools::install_github("lchiffon/wordcloud2")
-```
-
-
-
-***
-![](pic/gh.png)
-
----&vertical
-## 原始wordcloud
-
-```r
-library(wordcloud)
-wordcloud(demoFreq[,1],demoFreq[,2])
-```
-
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
-
-***
-- 过大的margin
-  - 导致图案过小
-- 图案的设置
-  - 不能自定义形状
-
-
-***
-## 原始wordcloud
-![](pic/wordcloud1.png)
 
 
 
 ---&vertical
-## 基本使用
+## 新的瓶子: HtmlWidgets
+- 动态，可交互并有更炫酷的效果
+
+<iframe src="./html/formattable.html" height="600px" width="800px"></iframe>
+
+<small>package:formatR</small>
+
+
+*** 
+## Codes
+
 
 ```r
-library(wordcloud2)
-wordcloud2(demoFreq)
+install.packages("formattable")
+library(formattable)
+
+df <- data.frame(
+  id = 1:10,
+  name = c("Bob", "Ashley", "James", "David", "Jenny", 
+    "Hans", "Leo", "John", "Emily", "Lee"), 
+  age = c(28, 27, 30, 28, 29, 29, 27, 27, 31, 30),
+  grade = c("C", "A", "A", "C", "B", "B", "B", "A", "C", "C"),
+  test1_score = c(8.9, 9.5, 9.6, 8.9, 9.1, 9.3, 9.3, 9.9, 8.5, 8.6),
+  test2_score = c(9.1, 9.1, 9.2, 9.1, 8.9, 8.5, 9.2, 9.3, 9.1, 8.8),
+  final_score = c(9, 9.3, 9.4, 9, 9, 8.9, 9.25, 9.6, 8.8, 8.7),
+  registered = c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+  stringsAsFactors = FALSE)
+
+formattable(df, list(
+  age = color_tile("white", "orange"),
+  grade = formatter("span", style = x ~ ifelse(x == "A", 
+                                               style(color = "green", font.weight = "bold"), NA)),
+  area(col = c(test1_score, test2_score)) ~ normalize_bar("pink", 0.2),
+  final_score = formatter("span",
+                          style = x ~ style(color = ifelse(rank(-x) <= 3, "green", "gray")),
+                          x ~ sprintf("%.2f (rank: %02d)", x, rank(-x))),
+  registered = formatter("span",
+                         style = x ~ style(color = ifelse(x, "green", "red")),
+                         x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Yes", "No")))
+))
 ```
-
-<div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
-
-***
-<iframe src="pic/wc1.html" height="600px" width="800px"></iframe>
-
----&vertical
-## 基于图片的 _Wordcloud2_
-
-```r
-figPath = system.file("examples/t.png",package = "wordcloud2")
-wordcloud2(demoFreq, 
-           figPath = figPath,
-           size = 1.5, 
-           color = "skyblue")
-```
-
-***
-![](pic/bird.png)
-
-***
-![](pic/hs.jpg)
-
-@微信: wetalkdata
-
----&vertical
-## 基于文字的 _Wordcloud2_
-
-```r
-library(wordcloud2)
-letterCloud(dat,"R", 
-            color = "random-light",
-            backgroundColor = "black",
-            size = 0.3)
-```
-
-***
-![](pic/tou.png)
-
-***
-![](pic/tb.jpg)
-
-[亚磊的博客](http://yalei.name/2016/06/wordcloud2)
 
 
 ---&vertical
-## _Wordcloud2_ 主题
-- _仅在开发版中使用(2016/10)_
-
-```r
-wc = wordcloud2(demoFreq,
-                fontFamily='微软雅黑')
-wc + WCtheme(class = 1)
-## class: 1,2,3
-```
-
+## 基础图形的局限
 
 ***
-## _Wordcloud2_ 主题
-![](pic/theme.png)
+## 基础图形的局限
+- 基础的图形已经能解决90%的问题
+  - 饼图 一维世界
+  - 条形图 二维世界
+  - 散点、折线图 努力展示高维世界
+
+***
+## 如何在一张图中展示5个维度
+![](pic/ggplot2.png)
+
+***
+
+```r
+library(ggplot2)
+ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position="jitter")+facet_wrap(~year)
+```
 
 ---&vertical
-## _Wordcloud2_ 细节调整
-
-可用参数:
-  - size
-  - fontFamily
-  - color/backgroundColor
-  - minRotation/maxRotation
-  - rotateRatio
-  - shape
-  - figPath
-  - hoverFunction
+## 值得展示的高维数据
+- 不同污染物的情况
+- 城市基本指标
+- 运动员/候选人的数据
 
 ***
-参数名 | 含义 | 取值
----|---|---
-size | 大小 | 1为默认值
-fontFamily | 字体 | 'Segoe UI'
-color | 颜色 | 'random-dark'
-backgroundColor | 背景色 | 'white'
-minRotation | 最小角度 | -pi/4
-maxRotation | 最大角度 | pi/4
-rotateRatio | 旋转比例 | 0.4
-shape | 形状 | 'circle'
-figPath | 图像 | 图片路径
-hoverFunction | JS函数 | 动态函数
+## 多维坐标轴
 
-***
-## _size_
+<iframe src="html/pall.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eParaell</small>
+
+
+*** 
+## Codes
 
 ```r
-wordcloud2(demoFreqC,size = 0.5,
-           fontFamily = '微软雅黑')
-wordcloud2(demoFreqC,size = 2,
-           fontFamily = '微软雅黑')
+devtools::install_github("taiyun/recharts")
+library(recharts)
+require(plyr)
+axisList = list(
+  list(index=7, type="category", data = c("low", "middle", "high")), 
+  list(index=6, inverse=TRUE, max=50, nameLocation="start")
+)
+eParallel(head(parallelDf, 20), 
+          series=~groupName,
+          axisList = axisList)
 ```
 
+
+---&vertical
+## 雷达图
+- 数据科学家的战斗力
+
+<iframe src="html/radar.html" height="600px" width="800px"></iframe>
+
+<small>radarchart::chartJSRadar</small>
+
 ***
-![](pic/size.png)
+## 雷达图
+- 数据科学家的战斗力
+TODO5
+<iframe src="html/radar2.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eRadar</small>
+
+
+*** 
+## Codes
+
+```r
+install.packages("radarchart")
+library(radarchart)
+labs <- c("Communicator", "Data Wangler", "Programmer",
+          "Technologist",  "Modeller", "Visualizer")
+scores <- list(
+  "Rich" = c(9, 7, 4, 5, 3, 7),
+  "Andy" = c(7, 6, 6, 2, 6, 9),
+  "Aimee" = c(6, 5, 8, 4, 7, 6)
+)
+chartJSRadar(scores = scores, labs = labs, maxScale = 10)
+
+library(recharts)
+dat  <- data.frame(
+  saleNum=c(scores[[1]],scores[[2]],scores[[3]]),
+	names=c(rep("Rich",6), rep("Andy",6), rep("Aimee",6)),
+  ability = labs
+)
+
+eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
+```
+
+
+
+
+---&vertical
+## 流程的转化
+
+- App每天的用户都干什么了
+- 为什么这次的活动没有带来收益
+- 用户进入网站都干什么了
+
+***
+## 漏斗图
+- 到底哪个环节出问题了？
+
+<iframe src="html/funnel.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eFunnel</small>
+
+
+*** 
+## Codes
+
+```r
+library(recharts)
+x = c("Exposure" = 100, "Click" = 80, "Visit" = 60, "Query"=40, "Buy"=20)
+eFunnel(x) 
+funnelDf <- data.frame(namevar = c("Exposure", "Click", "Visit", "Query", "Buy"), 
+   datavar = c(100, 80, 60, 40, 20), stringsAsFactors=FALSE)
+eFunnel(funnelDf, ~namevar, ~datavar)
+```
+
+---&vertical
+## 多维关系的展示
+<img src ='pic\sun1.png'/>
 
 
 
 ***
-## _Wordcloud2_ 主题
-![](pic/theme.png)
+## SunBrust
+<iframe src="html/sun.html" height="600px" width="800px"></iframe>
+
+<small>sunburstR::sunburst</small>
 
 
-***
-- theme1: 
-  - minRotation = -pi/2
-  - maxRotation = -pi/2
-- theme2:
-  - minRotation = -pi/6
-  - maxRotation = -pi/6
-  - rotateRatio = 1
-- theme3:
-  - color = "random-light"
-  - backgroundColor = "grey"
+
+*** 
+## Codes
+
+```r
+library(TraMineR)
+library(sunburstR)
+library(pipeR)
+# use example from TraMineR vignette
+data("mvad")
+mvad.alphab <- c(
+  "employment", "FE", "HE", "joblessness",
+  "school", "training"
+)
+mvad.seq <- seqdef(mvad, 17:86, xtstep = 6, alphabet = mvad.alphab)
+
+# to make this work, we'll compress the sequences with seqdss
+#   could also aggregate with dply later
+seqtab( seqdss(mvad.seq), tlim = 0, format = "SPS" ) %>>%
+  attr("freq") %>>%
+  (
+    data.frame(
+      # appending "-end" is necessary for this to work
+      sequence = paste0(
+        gsub(
+          x = names(.$Freq)
+          , pattern = "(/[0-9]*)"
+          , replacement = ""
+          , perl = T
+        )
+        ,"-end"
+      )
+      ,freq = as.numeric(.$Freq)
+      ,stringsAsFactors = FALSE
+    )
+  ) %>>%
+  sunburst
+```
+
 
 
 ---
-## 图片保存
-1. Rstudio Export
-2. `webshot` packages
+## 关系的可视化
+图数据的可视化
+- igraph (旧瓶)
+- ~~D3Network (破瓶)~~
+- networkD3 (新瓶)
+- diagrammeR
+
+---&vertical
+## 网络图
+<iframe src="html/graph.html" height="600px" width="800px"></iframe>
+
+<small>DiagrammeR</small>
+
+
+***
+
+```r
+library(DiagrammeR)
+library(magrittr)
+
+# Create a graph with fruit, vegetables,
+# and nuts
+nodes <-
+  create_nodes(
+    nodes = 1:9,
+    type = c("fruit", "fruit", "fruit",
+             "veg", "veg", "veg",
+             "nut", "nut", "nut"),
+    label = c("pineapple", "apple",
+              "apricot", "cucumber",
+              "celery", "endive",
+              "hazelnut", "almond",
+              "chestnut"))
+
+edges <-
+  create_edges(
+    from = c(9, 3, 6, 2, 6, 2, 8, 2, 5, 5),
+    to = c(1, 1, 4, 3, 7, 8, 1, 5, 3, 6))
+
+graph <-
+  create_graph(
+    nodes_df = nodes,
+    edges_df = edges,
+    graph_attrs = "output = visNetwork")
+
+# View the graph
+render_graph(graph)
+```
+
+
+---
+## 弦图
+![](pic/chord.png)
+
+
+***
 
 
 ```r
-install.packages("webshot")
-webshot::install_phantomjs()
-library(wordcloud2)
-hw = wordcloud2(demoFreq,size = 3)
-saveWidget(hw,"demo.html",selfcontained = F)
-webshot::webshot("demo.html","demo.png",
-                 vwidth = 800, vheight = 600, delay =3)
+library(networkD3)
+hairColourData <- matrix(c(11975,  1951,  8010, 1013,
+                           5871, 10048, 16145,  990,
+                           8916,  2060,  8090,  940,
+                           2868,  6171,  8045, 6907),
+                         nrow = 4)
+
+chordNetwork(Data = hairColourData, 
+             width = 500, 
+             height = 500,
+             colourScale = c("#000000", 
+                             "#FFDD89", 
+                             "#957244", 
+                             "#F26223"),
+             labels = c("red", "brown", "blond", "gray"))
 ```
 
+
+---
+## 桑基图
+![](pic/sankey.png)
+
+<small>networkD3::sankeyNetwork</small>
+
+
+***
+## Code
+
+```r
+library(networkD3)
+# Load energy projection data
+# Load energy projection data
+URL <- paste0(
+  "https://cdn.rawgit.com/christophergandrud/networkD3/",
+  "master/JSONdata/energy.json")
+Energy <- jsonlite::fromJSON(readLines(URL))
+# Plot
+sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
+              Target = "target", Value = "value", NodeID = "name",
+              units = "TWh", fontSize = 12, nodeWidth = 30)
+```
+
+
+---&vertical
+## 地理信息的可视化
+
+
+***
+## 美国大选
+
+![](pic/map.png)
+<small>http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</small>
+
+***
+## 中国GDP
+![](pic/c1)
+
+<small>REmap::remapC</small>
+
+***
+## leaflet
+![](pic/remapB.png)
+
+<small>leaflet</small>
+
+***
+## 百度地图
+![](pic/1-1.png)
+<small>REmap::remapB</small>
+
+***
+## 3D
+![](pic/three.png)
+
+<small>threejs</small>
+
+***
+## Codes
+
+```r
+library(REmap)
+GDP = read.csv("data/GDP.csv",encoding = "UTF-8")
+remapC(GDP,
+         color = c("red","yellow"),
+         title = "2015年第二季度中国各省份GDP(亿元)",
+         subtitle = "数据来源中国统计年鉴")
+
+library(leaflet)
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+m  # Print the map
+
+library(threejs)
+
+# Plot flights to frequent destinations from
+# Callum Prentice's global flight data set,
+# http://callumprentice.github.io/apps/flight_stream/index.html
+data(flights)
+
+# Approximate locations as factors
+dest   <- factor(sprintf("%.2f:%.2f",flights[,3], flights[,4]))
+
+# A table of destination frequencies
+freq <- sort(table(dest), decreasing=TRUE)
+
+# The most frequent destinations in these data, possibly hub airports?
+frequent_destinations <- names(freq)[1:10]
+
+# Subset the flight data by destination frequency
+idx <- dest %in% frequent_destinations
+frequent_flights <- flights[idx, ]
+
+# Lat/long of frequent destinations
+latlong <- unique(frequent_flights[,3:4])
+
+# Plot frequent destinations as bars, and the flights to and from
+# them as arcs. Adjust arc width and color by frequency.
+earth <- system.file("images/world.jpg",  package="threejs")
+globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
+        arcsHeight=0.3, arcsLwd=2, arcsColor="#ffff00", arcsOpacity=0.15,
+        atmosphere=TRUE)
+```
 
 
 
 ---&vertical
-## _shiny_
-
-```r
-wordcloud2Output(outputId, width = "100%", height = "400px")
-renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
-```
+## 其他有意思的可视化
 
 ***
-## _knitr/slidify_
-
-```r
-install.packages("webshot")
-webshot::install_phantomjs()
-```
+## 词云
+![](pic/wc.png)
 
 ***
-## 中文支持
+## 时间轴
+![](pic/wcup.png)
+
+***
+## 热图
+![](pic/heatmap.png)
+
+***
+## Codes
 
 ```r
-Sys.setlocale("LC_CTYPE", "chs")
+library(wordcloud2)
+# Sys.setlocale("LC_CTYPE","eng")
+letterCloud(demoFreqC,"R",
+            fontFamily='微软雅黑',
+            backgroundColor='black',
+            color='random-light')
+
+library(timevis)
+if (interactive()) {
+  runExample()
+}
+
+library(d3heatmap)
+d3heatmap(mtcars, scale = "column", colors = "Spectral")
 ```
+
+
+---
+## 前端可视化的框架
+- plotly
+  - Rstudio团队ggplot2原班人马
+- rbokeh
+  - python中bokeh的接口
+- recharts
+  - 百度echarts库
+- rCharts，highchartsR
+  - 基于其他JS库的可视化
+
+---
+## 一点建议
+- 可视化不是炫技, 而是合理的展示数据
+  - 再合理展示的前提下再考虑更炫
+- 奥卡姆剃刀： 如无必要, 勿增实例
+  - 简洁而扁平的风格
+- 不要让工具束缚你的想象力
+  - Try JavaScript!
+
+
 
 
 
 ---
 ## Thanks
-- 微博@郎大为Chiffon
 
-[wordcloud2主页](http://lchiffon.github.com/wordcloud2)
 [My Blog: 七风阁](http://lchiffon.github.io)
 <script>
 $('ul.incremental li').addClass('fragment')

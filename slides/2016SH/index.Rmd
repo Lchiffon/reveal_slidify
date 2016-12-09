@@ -9,6 +9,7 @@ revealjs:
   theme: Sky
   transition: slide
   center: "true"
+  viewDistance: 2
 bootstrap:
   theme: amelia
 navbar:
@@ -65,13 +66,14 @@ font-size: 3
 strong{
  color: #4876FF;
 }
+
 </style>
 
 ## 新瓶与新酒
 ### 让R的可视化更炫酷
 <small> Created by [Chiffon](http://lchiffon.github.io)郎大为</small><br/>
 <small>J.D. Power 数据分析师</small>
-<script src="./libraries/jquery.min.js"></script>
+<script src="../libraries/jquery.min.js"></script>
 <script>
 			document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
@@ -79,24 +81,64 @@ strong{
 
 ---
 ## 可视化是手段
-- #TODO1 formatter表格
+```{r echo=F}
+kable(head( data.frame(
+  id = 1:10,
+  name = c("Bob", "Ashley", "James", "David", "Jenny", 
+    "Hans", "Leo", "John", "Emily", "Lee"), 
+  age = c(28, 27, 30, 28, 29, 29, 27, 27, 31, 30),
+  grade = c("C", "A", "A", "C", "B", "B", "B", "A", "C", "C"),
+  test1 = c(8.9, 9.5, 9.6, 8.9, 9.1, 9.3, 9.3, 9.9, 8.5, 8.6),
+  test2 = c(9.1, 9.1, 9.2, 9.1, 8.9, 8.5, 9.2, 9.3, 9.1, 8.8),
+  final = c(9, 9.3, 9.4, 9, 9, 8.9, 9.25, 9.6, 8.8, 8.7),
+  registered = c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+  stringsAsFactors = FALSE)))
+```
+
 
 
 
 ---&vertical
 ## 新的瓶子: HtmlWidgets
 - 动态，可交互并有更炫酷的效果
-TODO2
-<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<iframe src="./html/formattable.html" height="600px" width="800px"></iframe>
 
 <small>package:formatR</small>
 
 
 *** 
 ## Codes
+
 ```{r eval=F}
-install.packages(formatR)
-library(formatR)
+install.packages("formattable")
+library(formattable)
+
+df <- data.frame(
+  id = 1:10,
+  name = c("Bob", "Ashley", "James", "David", "Jenny", 
+    "Hans", "Leo", "John", "Emily", "Lee"), 
+  age = c(28, 27, 30, 28, 29, 29, 27, 27, 31, 30),
+  grade = c("C", "A", "A", "C", "B", "B", "B", "A", "C", "C"),
+  test1_score = c(8.9, 9.5, 9.6, 8.9, 9.1, 9.3, 9.3, 9.9, 8.5, 8.6),
+  test2_score = c(9.1, 9.1, 9.2, 9.1, 8.9, 8.5, 9.2, 9.3, 9.1, 8.8),
+  final_score = c(9, 9.3, 9.4, 9, 9, 8.9, 9.25, 9.6, 8.8, 8.7),
+  registered = c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE),
+  stringsAsFactors = FALSE)
+
+formattable(df, list(
+  age = color_tile("white", "orange"),
+  grade = formatter("span", style = x ~ ifelse(x == "A", 
+                                               style(color = "green", font.weight = "bold"), NA)),
+  area(col = c(test1_score, test2_score)) ~ normalize_bar("pink", 0.2),
+  final_score = formatter("span",
+                          style = x ~ style(color = ifelse(rank(-x) <= 3, "green", "gray")),
+                          x ~ sprintf("%.2f (rank: %02d)", x, rank(-x))),
+  registered = formatter("span",
+                         style = x ~ style(color = ifelse(x, "green", "red")),
+                         x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Yes", "No")))
+))
+
 ```
 
 
@@ -128,8 +170,8 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position="jitter")+
 
 ***
 ## 多维坐标轴
-TODO3
-<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<iframe src="html/pall.html" height="600px" width="800px"></iframe>
 
 <small>recharts::eParaell</small>
 
@@ -139,31 +181,57 @@ TODO3
 ```{r eval=F}
 devtools::install_github("taiyun/recharts")
 library(recharts)
+require(plyr)
+axisList = list(
+  list(index=7, type="category", data = c("low", "middle", "high")), 
+  list(index=6, inverse=TRUE, max=50, nameLocation="start")
+)
+eParallel(head(parallelDf, 20), 
+          series=~groupName,
+          axisList = axisList)
+
 ```
 
 
 ---&vertical
 ## 雷达图
 - 数据科学家的战斗力
-TODO4
-<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
 
-<small>recharts::eParaell</small>
+<iframe src="html/radar.html" height="600px" width="800px"></iframe>
+
+<small>radarchart::chartJSRadar</small>
 
 ***
 ## 雷达图
 - 数据科学家的战斗力
 TODO5
-<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+<iframe src="html/radar2.html" height="600px" width="800px"></iframe>
 
-<small>recharts::eParaell</small>
+<small>recharts::eRadar</small>
 
 
 *** 
 ## Codes
 ```{r eval=F}
-devtools::install_github("taiyun/recharts")
+install.packages("radarchart")
+library(radarchart)
+labs <- c("Communicator", "Data Wangler", "Programmer",
+          "Technologist",  "Modeller", "Visualizer")
+scores <- list(
+  "Rich" = c(9, 7, 4, 5, 3, 7),
+  "Andy" = c(7, 6, 6, 2, 6, 9),
+  "Aimee" = c(6, 5, 8, 4, 7, 6)
+)
+chartJSRadar(scores = scores, labs = labs, maxScale = 10)
+
 library(recharts)
+dat  <- data.frame(
+  saleNum=c(scores[[1]],scores[[2]],scores[[3]]),
+	names=c(rep("Rich",6), rep("Andy",6), rep("Aimee",6)),
+  ability = labs
+)
+
+eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 ```
 
 
@@ -180,48 +248,175 @@ library(recharts)
 ## 漏斗图
 - 到底哪个环节出问题了？
 
-TODO5
-<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+<iframe src="html/funnel.html" height="600px" width="800px"></iframe>
 
-<small>recharts::eParaell</small>
+<small>recharts::eFunnel</small>
 
 
 *** 
 ## Codes
 ```{r eval=F}
-devtools::install_github("taiyun/recharts")
 library(recharts)
+x = c("Exposure" = 100, "Click" = 80, "Visit" = 60, "Query"=40, "Buy"=20)
+eFunnel(x) 
+funnelDf <- data.frame(namevar = c("Exposure", "Click", "Visit", "Query", "Buy"), 
+   datavar = c(100, 80, 60, 40, 20), stringsAsFactors=FALSE)
+eFunnel(funnelDf, ~namevar, ~datavar)
 ```
 
-
 ---&vertical
-## Sunbrust
-- 数据科学家的战斗力
-TODO5
-<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+## 多维关系的展示
+<img src ='pic\sun1.png'/>
 
-<small>recharts::eParaell</small>
+
+
+***
+## SunBrust
+<iframe src="html/sun.html" height="600px" width="800px"></iframe>
+
+<small>sunburstR::sunburst</small>
+
+
+
+*** 
+## Codes
+```{r eval=F}
+library(TraMineR)
+library(sunburstR)
+library(pipeR)
+# use example from TraMineR vignette
+data("mvad")
+mvad.alphab <- c(
+  "employment", "FE", "HE", "joblessness",
+  "school", "training"
+)
+mvad.seq <- seqdef(mvad, 17:86, xtstep = 6, alphabet = mvad.alphab)
+
+# to make this work, we'll compress the sequences with seqdss
+#   could also aggregate with dply later
+seqtab( seqdss(mvad.seq), tlim = 0, format = "SPS" ) %>>%
+  attr("freq") %>>%
+  (
+    data.frame(
+      # appending "-end" is necessary for this to work
+      sequence = paste0(
+        gsub(
+          x = names(.$Freq)
+          , pattern = "(/[0-9]*)"
+          , replacement = ""
+          , perl = T
+        )
+        ,"-end"
+      )
+      ,freq = as.numeric(.$Freq)
+      ,stringsAsFactors = FALSE
+    )
+  ) %>>%
+  sunburst
+```
+
 
 
 ---
 ## 关系的可视化
 图数据的可视化
 - igraph (旧瓶)
-- --D3Network (破瓶)--
+- ~~D3Network (破瓶)~~
 - networkD3 (新瓶)
 - diagrammeR
 
----
+---&vertical
 ## 网络图
-TODO
+<iframe src="html/graph.html" height="600px" width="800px"></iframe>
+
+<small>DiagrammeR</small>
+
+
+***
+```{r eval=F}
+library(DiagrammeR)
+library(magrittr)
+
+# Create a graph with fruit, vegetables,
+# and nuts
+nodes <-
+  create_nodes(
+    nodes = 1:9,
+    type = c("fruit", "fruit", "fruit",
+             "veg", "veg", "veg",
+             "nut", "nut", "nut"),
+    label = c("pineapple", "apple",
+              "apricot", "cucumber",
+              "celery", "endive",
+              "hazelnut", "almond",
+              "chestnut"))
+
+edges <-
+  create_edges(
+    from = c(9, 3, 6, 2, 6, 2, 8, 2, 5, 5),
+    to = c(1, 1, 4, 3, 7, 8, 1, 5, 3, 6))
+
+graph <-
+  create_graph(
+    nodes_df = nodes,
+    edges_df = edges,
+    graph_attrs = "output = visNetwork")
+
+# View the graph
+render_graph(graph)
+```
+
 
 ---
 ## 弦图
-TODO
+![](pic/chord.png)
+
+
+***
+
+```{r eval=F}
+library(networkD3)
+hairColourData <- matrix(c(11975,  1951,  8010, 1013,
+                           5871, 10048, 16145,  990,
+                           8916,  2060,  8090,  940,
+                           2868,  6171,  8045, 6907),
+                         nrow = 4)
+
+chordNetwork(Data = hairColourData, 
+             width = 500, 
+             height = 500,
+             colourScale = c("#000000", 
+                             "#FFDD89", 
+                             "#957244", 
+                             "#F26223"),
+             labels = c("red", "brown", "blond", "gray"))
+```
+
 
 ---
 ## 桑基图
-TODO
+![](pic/sankey.png)
+
+<small>networkD3::sankeyNetwork</small>
+
+
+***
+## Code
+```{r eval = F}
+library(networkD3)
+# Load energy projection data
+# Load energy projection data
+URL <- paste0(
+  "https://cdn.rawgit.com/christophergandrud/networkD3/",
+  "master/JSONdata/energy.json")
+Energy <- jsonlite::fromJSON(readLines(URL))
+# Plot
+sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
+              Target = "target", Value = "value", NodeID = "name",
+              units = "TWh", fontSize = 12, nodeWidth = 30)
+
+```
+
 
 ---&vertical
 ## 地理信息的可视化
@@ -230,17 +425,79 @@ TODO
 ***
 ## 美国大选
 
+![](pic/map.png)
+<small>http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</small>
+
 ***
 ## 中国GDP
+![](pic/c1)
+
+<small>REmap::remapC</small>
 
 ***
 ## leaflet
+![](pic/remapB.png)
+
+<small>leaflet</small>
 
 ***
 ## 百度地图
+![](pic/1-1.png)
+<small>REmap::remapB</small>
 
 ***
 ## 3D
+![](pic/three.png)
+
+<small>threejs</small>
+
+***
+## Codes
+```{r eval = F}
+library(REmap)
+GDP = read.csv("data/GDP.csv",encoding = "UTF-8")
+remapC(GDP,
+         color = c("red","yellow"),
+         title = "2015年第二季度中国各省份GDP(亿元)",
+         subtitle = "数据来源中国统计年鉴")
+
+library(leaflet)
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+m  # Print the map
+
+library(threejs)
+
+# Plot flights to frequent destinations from
+# Callum Prentice's global flight data set,
+# http://callumprentice.github.io/apps/flight_stream/index.html
+data(flights)
+
+# Approximate locations as factors
+dest   <- factor(sprintf("%.2f:%.2f",flights[,3], flights[,4]))
+
+# A table of destination frequencies
+freq <- sort(table(dest), decreasing=TRUE)
+
+# The most frequent destinations in these data, possibly hub airports?
+frequent_destinations <- names(freq)[1:10]
+
+# Subset the flight data by destination frequency
+idx <- dest %in% frequent_destinations
+frequent_flights <- flights[idx, ]
+
+# Lat/long of frequent destinations
+latlong <- unique(frequent_flights[,3:4])
+
+# Plot frequent destinations as bars, and the flights to and from
+# them as arcs. Adjust arc width and color by frequency.
+earth <- system.file("images/world.jpg",  package="threejs")
+globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
+        arcsHeight=0.3, arcsLwd=2, arcsColor="#ffff00", arcsOpacity=0.15,
+        atmosphere=TRUE)
+```
+
 
 
 ---&vertical
@@ -248,17 +505,37 @@ TODO
 
 ***
 ## 词云
+![](pic/wc.png)
 
 ***
 ## 时间轴
+![](pic/wcup.png)
 
 ***
 ## 热图
+![](pic/heatmap.png)
 
 ***
-## 仪表盘
+## Codes
+```{r eval=F}
+library(wordcloud2)
+# Sys.setlocale("LC_CTYPE","eng")
+letterCloud(demoFreqC,"R",
+            fontFamily='微软雅黑',
+            backgroundColor='black',
+            color='random-light')
 
----
+library(timevis)
+if (interactive()) {
+  runExample()
+}
+
+library(d3heatmap)
+d3heatmap(mtcars, scale = "column", colors = "Spectral")
+```
+
+
+---&vertical
 ## 前端可视化的框架
 - plotly
   - Rstudio团队ggplot2原班人马
@@ -269,6 +546,19 @@ TODO
 - rCharts，highchartsR
   - 基于其他JS库的可视化
 
+
+***
+## *plotly*
+<iframe src="https://plot.ly/r/" height="600px" width="800px"></iframe>
+
+
+***
+## *rbokeh*
+![](pic/bokeh.png)
+
+
+
+  
 ---
 ## 一点建议
 - 可视化不是炫技, 而是合理的展示数据
