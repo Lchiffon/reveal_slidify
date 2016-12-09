@@ -1618,7 +1618,7 @@
 				// Don't use zoom to scale down since that can lead to shifts
 				// in text layout/line breaks.
 				if( scale > 1 && features.zoom ) {
-					dom.slides.style.zoom = scale;
+					// dom.slides.style.zoom = scale;
 					dom.slides.style.left = '';
 					dom.slides.style.top = '';
 					dom.slides.style.bottom = '';

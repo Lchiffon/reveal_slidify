@@ -3,8 +3,8 @@
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
-/* @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700); */
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 .reveal a {
   line-height: 1.3em; }
 
@@ -22,7 +22,7 @@ body {
   background-color: #f7fbfc; }
 
 .reveal {
-  font-family: "Open Sans",'微软雅黑';
+  font-family: "Open Sans", sans-serif, '微软雅黑';
   font-size: 36px;
   font-weight: normal;
   color: #333; }
@@ -48,12 +48,11 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #333;
-  font-family: "Quicksand", '微软雅黑';
+  font-family: "Quicksand", sans-serif, , '微软雅黑';
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  /* letter-spacing: -0.08em; */
-/*   text-transform: uppercase; */
+  /*text-transform: uppercase;*/
   text-shadow: none;
   word-wrap: break-word; }
 
@@ -83,8 +82,9 @@ body {
 .reveal img,
 .reveal video,
 .reveal iframe {
-  max-width: 95%;
-  max-height: 95%; }
+  /*max-width: 95%;
+  max-height: 95%; */
+}
 
 .reveal strong,
 .reveal b {
@@ -152,7 +152,7 @@ body {
   width: 90%;
   margin: 20px auto;
   text-align: left;
-  font-size: 0.65em;
+  font-size: 0.55em;
   font-family: monospace;
   line-height: 1.2em;
   word-wrap: break-word;
@@ -165,7 +165,7 @@ body {
   display: block;
   padding: 5px;
   overflow: auto;
-  max-height: 800px;
+  max-height: 400px;
   word-wrap: normal; }
 
 .reveal table {
@@ -190,7 +190,8 @@ body {
 .reveal table td[align="right"] {
   text-align: right; }
 
-.reveal table tr:last-child td {
+.reveal table tbody tr:last-child th,
+.reveal table tbody tr:last-child td {
   border-bottom: none; }
 
 .reveal sup {
@@ -214,9 +215,9 @@ body {
 .reveal a {
   color: #3b759e;
   text-decoration: none;
-  -webkit-transition: color 0.15s ease;
-  -moz-transition: color 0.15s ease;
-  transition: color 0.15s ease; }
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  transition: color .15s ease; }
 
 .reveal a:hover {
   color: #74a7cb;
@@ -241,9 +242,9 @@ body {
   box-shadow: none; }
 
 .reveal a img {
-  -webkit-transition: all 0.15s linear;
-  -moz-transition: all 0.15s linear;
-  transition: all 0.15s linear; }
+  -webkit-transition: all .15s linear;
+  -moz-transition: all .15s linear;
+  transition: all .15s linear; }
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
@@ -292,9 +293,3 @@ body {
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
-
-/*********************************************
- * SLIDE NUMBER
- *********************************************/
-.reveal .slide-number {
-  color: #3b759e; }

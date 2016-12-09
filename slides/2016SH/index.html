@@ -7,7 +7,7 @@
   <meta name="author" content="Chiffon">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/reveal.css">
   <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
   <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
   <!--[if lt IE 9]>
@@ -30,11 +30,13 @@ font-size: 3
 .title-slide hgroup > h1{
   font-family: 'Oswald', '微软雅黑';
   color: #202020;
+  letter-spacing: 2px;
 }
 
 .title-slide hgroup > h2{
   font-family: 'Signika Negative', 'Calibri', '微软雅黑';
   color: #202020;
+  letter-spacing: 2px;
 }
 
 .reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
@@ -145,7 +147,7 @@ strong{
 <li>动态，可交互并有更炫酷的效果</li>
 </ul>
 
-<iframe src="./html/formattable.html" height="600px" width="800px"></iframe>
+<iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
 
 <p><small>package:formatR</small></p>
 
@@ -250,7 +252,7 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position=&quot;jitt
    <section class='' data-state=''>
     <h2>多维坐标轴</h2>
 
-<iframe src="html/pall.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/pall.html" height="600px" width="800px"></iframe>
 
 <p><small>recharts::eParaell</small></p>
 
@@ -285,7 +287,7 @@ eParallel(head(parallelDf, 20),
 <li>数据科学家的战斗力</li>
 </ul>
 
-<iframe src="html/radar.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/radar.html" height="600px" width="800px"></iframe>
 
 <p><small>radarchart::chartJSRadar</small></p>
 
@@ -299,7 +301,7 @@ eParallel(head(parallelDf, 20),
 <ul>
 <li>数据科学家的战斗力
 TODO5
-<iframe src="html/radar2.html" height="600px" width="800px"></iframe></li>
+<iframe data-src="html/radar2.html" height="600px" width="800px"></iframe></li>
 </ul>
 
 <p><small>recharts::eRadar</small></p>
@@ -357,7 +359,7 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 <li>到底哪个环节出问题了？</li>
 </ul>
 
-<iframe src="html/funnel.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/funnel.html" height="600px" width="800px"></iframe>
 
 <p><small>recharts::eFunnel</small></p>
 
@@ -384,7 +386,7 @@ eFunnel(funnelDf, ~namevar, ~datavar)
 <section>
    <section class='' data-state=''>
     <h2>多维关系的展示</h2>
-    <p><img src ='pic\sun1.png'/></p>
+    <p><img data-src ='pic\sun1.png'/></p>
 
     <aside class='notes'>
       
@@ -393,7 +395,7 @@ eFunnel(funnelDf, ~namevar, ~datavar)
    <section class='' data-state=''>
     <h2>SunBrust</h2>
 
-<iframe src="html/sun.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/sun.html" height="600px" width="800px"></iframe>
 
 <p><small>sunburstR::sunburst</small></p>
 
@@ -458,7 +460,7 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = &quot;SPS&quot; ) %&gt;&gt;%
 <section>
    <section class='' data-state=''>
     <h2>网络图</h2>
-    <iframe src="html/graph.html" height="600px" width="800px"></iframe>
+    <iframe data-src="html/graph.html" height="600px" width="800px"></iframe>
 
 <p><small>DiagrammeR</small></p>
 
@@ -511,7 +513,7 @@ render_graph(graph)
 </section>
 <section class='' data-state='' id='slide-12'>
   <h2>桑基图</h2>
-  <p><img src="pic/sankey.png" alt=""></p>
+  <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
 
 <p><small>networkD3::sankeyNetwork</small></p>
 
@@ -537,7 +539,7 @@ render_graph(graph)
    <section class='' data-state=''>
     <h2>中国GDP</h2>
 
-<p><img src="pic/c1" alt=""></p>
+<iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
 <p><small>REmap::remapC</small></p>
 
@@ -548,7 +550,7 @@ render_graph(graph)
    <section class='' data-state=''>
     <h2>leaflet</h2>
 
-<p><img src="pic/remapB.png" alt=""></p>
+<iframe data-src="html/R-birth.html" height="600px" width="800px"></iframe>
 
 <p><small>leaflet</small></p>
 
@@ -559,8 +561,9 @@ render_graph(graph)
    <section class='' data-state=''>
     <h2>百度地图</h2>
 
-<p><img src="pic/1-1.png" alt="">
-<small>REmap::remapB</small></p>
+<iframe data-src="html/4bmap2.html" height="600px" width="800px"></iframe>
+
+<p><small>REmap::remapB</small></p>
 
     <aside class='notes'>
       
@@ -569,7 +572,7 @@ render_graph(graph)
    <section class='' data-state=''>
     <h2>3D</h2>
 
-<p><img src="pic/three.png" alt=""></p>
+<iframe data-src="html/threejs.html" height="600px" width="800px"></iframe>
 
 <p><small>threejs</small></p>
 
@@ -640,7 +643,9 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
    <section class='' data-state=''>
     <h2>词云</h2>
 
-<p><img src="pic/wc.png" alt=""></p>
+<iframe data-src="html/R.html" height="600px" width="800px"></iframe>
+
+<p><small>wordcloud2</small></p>
 
     <aside class='notes'>
       
@@ -658,7 +663,9 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
    <section class='' data-state=''>
     <h2>热图</h2>
 
-<p><img src="pic/heatmap.png" alt=""></p>
+<iframe data-src="html/heatmap.html" height="600px" width="800px"></iframe>
+
+<p><small>d3heatmap</small></p>
 
     <aside class='notes'>
       
@@ -688,9 +695,10 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-15'>
-  <h2>前端可视化的框架</h2>
-  <ul>
+<section>
+   <section class='' data-state=''>
+    <h2>前端可视化的框架</h2>
+    <ul>
 <li>plotly
 
 <ul>
@@ -713,6 +721,94 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 </ul></li>
 </ul>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>plotly</em></h2>
+
+<iframe data-src="https://plot.ly/r/" style=" height:600px; width:800px" ></iframe>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>rbokeh</em></h2>
+
+<iframe data-src="html/p.html" style=" height:600px; width:800px" ></iframe>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/rbok.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Code</h2>
+
+<pre><code class="r">library(rbokeh)
+# prepare data
+elements &lt;- subset(elements, !is.na(group))
+elements$group &lt;- as.character(elements$group)
+elements$period &lt;- as.character(elements$period)
+
+# add colors for groups
+metals &lt;- c(&quot;alkali metal&quot;, &quot;alkaline earth metal&quot;, &quot;halogen&quot;,
+  &quot;metal&quot;, &quot;metalloid&quot;, &quot;noble gas&quot;, &quot;nonmetal&quot;, &quot;transition metal&quot;)
+colors &lt;- c(&quot;#a6cee3&quot;, &quot;#1f78b4&quot;, &quot;#fdbf6f&quot;, &quot;#b2df8a&quot;, &quot;#33a02c&quot;,
+  &quot;#bbbb88&quot;, &quot;#baa2a6&quot;, &quot;#e08e79&quot;)
+elements$color &lt;- colors[match(elements$metal, metals)]
+elements$type &lt;- elements$metal
+
+# make coordinates for labels
+elements$symx &lt;- paste(elements$group, &quot;:0.1&quot;, sep = &quot;&quot;)
+elements$numbery &lt;- paste(elements$period, &quot;:0.8&quot;, sep = &quot;&quot;)
+elements$massy &lt;- paste(elements$period, &quot;:0.15&quot;, sep = &quot;&quot;)
+elements$namey &lt;- paste(elements$period, &quot;:0.3&quot;, sep = &quot;&quot;)
+
+# create figure
+p &lt;- figure(title = &quot;Periodic Table&quot;, tools = c(&quot;resize&quot;, &quot;hover&quot;),
+  ylim = as.character(c(7:1)), xlim = as.character(1:18),
+  xgrid = FALSE, ygrid = FALSE, xlab = &quot;&quot;, ylab = &quot;&quot;,
+  height = 445, width = 800) %&gt;%
+
+# plot rectangles
+ly_crect(group, period, data = elements, 0.9, 0.9,
+  fill_color = color, line_color = color, fill_alpha = 0.6,
+  hover = list(name, atomic.number, type, atomic.mass,
+    electronic.configuration)) %&gt;%
+
+# add symbol text
+ly_text(symx, period, text = symbol, data = elements,
+  font_style = &quot;bold&quot;, font_size = &quot;10pt&quot;,
+  align = &quot;left&quot;, baseline = &quot;middle&quot;) %&gt;%
+
+# add atomic number text
+ly_text(symx, numbery, text = atomic.number, data = elements,
+  font_size = &quot;6pt&quot;, align = &quot;left&quot;, baseline = &quot;middle&quot;) %&gt;%
+
+# add name text
+ly_text(symx, namey, text = name, data = elements,
+  font_size = &quot;4pt&quot;, align = &quot;left&quot;, baseline = &quot;middle&quot;) %&gt;%
+
+# add atomic mass text
+ly_text(symx, massy, text = atomic.mass, data = elements,
+  font_size = &quot;4pt&quot;, align = &quot;left&quot;, baseline = &quot;middle&quot;)
+
+p
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
 <section class='' data-state='' id='slide-16'>
   <h2>一点建议</h2>
@@ -720,7 +816,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 <li>可视化不是炫技, 而是合理的展示数据
 
 <ul>
-<li>再合理展示的前提下再考虑更炫</li>
+<li>合理展示的前提下再考虑更炫</li>
 </ul></li>
 <li>奥卡姆剃刀： 如无必要, 勿增实例
 
@@ -739,6 +835,10 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
   <h2>Thanks</h2>
   <p><a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
 
+<p><small><a href="mailto:dawei_lang@sina.com">dawei_lang@sina.com</a></small>
+<br/>
+<small>Writing in Rstudio, power support by revealjs, link by slidify</small></p>
+
 <script>
 $('ul.incremental li').addClass('fragment')
 </script>
@@ -748,7 +848,7 @@ $('ul.incremental li').addClass('fragment')
   </div>
 </body>
   <script src="../libraries/frameworks/revealjs/lib/js/head.min.js"></script>
-  <script src="../libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script src="../libraries/frameworks/revealjs/js/reveal.js"></script>
   <script>
   // Full list of configuration options available here:
   // https://github.com/hakimel/reveal.js#configuration
@@ -756,9 +856,10 @@ $('ul.incremental li').addClass('fragment')
     controls: true,
     progress: true,
     history: true,
+    zoom: false,
     center: true,
-    theme: Reveal.getQueryHash().theme || 'Sky', 
-    transition: Reveal.getQueryHash().transition || 'slide', 
+    theme: Reveal.getQueryHash().theme || 'Sky',
+    transition: Reveal.getQueryHash().transition || 'slide',
     dependencies: [
     // Cross-browser shim that fully implements classList -
     // https://github.com/eligrey/classList.js/

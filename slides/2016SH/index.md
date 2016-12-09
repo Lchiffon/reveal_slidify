@@ -12,23 +12,6 @@ revealjs:
   viewDistance: 2
 bootstrap:
   theme: amelia
-navbar:
-  title: Slidify
-  items: 
-    - {item: Home, href: index,  icon: home}
-    - {item: "Start", href: start, icon: signin}
-    - {item: Author, href: about, icon: pencil}
-    - {item: Style, href: style, icon: hand-right, class: dropdown, 
-        dropdown: true, menu: [
-         {item: io2012, href: 'samples/intro'},
-         {item: deck.js, href: 'samples/deck.js'},
-         {item: shower, href: 'samples/shower'},
-         {item: landslide, href: 'samples/landslide'}
-        ]
-      }
-    - {item: Customize, href: customize, icon: gift}
-    - {item: Extend, href: extend, icon: cogs}
-    - {item: Publish, href: publish, icon: github}
 ---
 
 
@@ -44,11 +27,13 @@ font-size: 3
 .title-slide hgroup > h1{
   font-family: 'Oswald', '微软雅黑';
   color: #202020;
+  letter-spacing: 2px;
 }
 
 .title-slide hgroup > h2{
   font-family: 'Signika Negative', 'Calibri', '微软雅黑';
   color: #202020;
+  letter-spacing: 2px;
 }
 
 .reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
@@ -90,7 +75,7 @@ strong{
 ## 新的瓶子: HtmlWidgets
 - 动态，可交互并有更炫酷的效果
 
-<iframe src="./html/formattable.html" height="600px" width="800px"></iframe>
+<iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
 
 <small>package:formatR</small>
 
@@ -160,7 +145,7 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position="jitter")+
 ***
 ## 多维坐标轴
 
-<iframe src="html/pall.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/pall.html" height="600px" width="800px"></iframe>
 
 <small>recharts::eParaell</small>
 
@@ -186,7 +171,7 @@ eParallel(head(parallelDf, 20),
 ## 雷达图
 - 数据科学家的战斗力
 
-<iframe src="html/radar.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/radar.html" height="600px" width="800px"></iframe>
 
 <small>radarchart::chartJSRadar</small>
 
@@ -194,7 +179,7 @@ eParallel(head(parallelDf, 20),
 ## 雷达图
 - 数据科学家的战斗力
 TODO5
-<iframe src="html/radar2.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/radar2.html" height="600px" width="800px"></iframe>
 
 <small>recharts::eRadar</small>
 
@@ -238,7 +223,7 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 ## 漏斗图
 - 到底哪个环节出问题了？
 
-<iframe src="html/funnel.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/funnel.html" height="600px" width="800px"></iframe>
 
 <small>recharts::eFunnel</small>
 
@@ -257,13 +242,13 @@ eFunnel(funnelDf, ~namevar, ~datavar)
 
 ---&vertical
 ## 多维关系的展示
-<img src ='pic\sun1.png'/>
+<img data-src ='pic\sun1.png'/>
 
 
 
 ***
 ## SunBrust
-<iframe src="html/sun.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/sun.html" height="600px" width="800px"></iframe>
 
 <small>sunburstR::sunburst</small>
 
@@ -319,7 +304,7 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = "SPS" ) %>>%
 
 ---&vertical
 ## 网络图
-<iframe src="html/graph.html" height="600px" width="800px"></iframe>
+<iframe data-src="html/graph.html" height="600px" width="800px"></iframe>
 
 <small>DiagrammeR</small>
 
@@ -389,7 +374,7 @@ chordNetwork(Data = hairColourData,
 
 ---
 ## 桑基图
-![](pic/sankey.png)
+<iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
 
 <small>networkD3::sankeyNetwork</small>
 
@@ -424,26 +409,30 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
 
 ***
 ## 中国GDP
-![](pic/c1)
+<iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
 <small>REmap::remapC</small>
 
 ***
 ## leaflet
-![](pic/remapB.png)
+<iframe data-src="html/R-birth.html" height="600px" width="800px"></iframe>
+
 
 <small>leaflet</small>
 
 ***
 ## 百度地图
-![](pic/1-1.png)
+<iframe data-src="html/4bmap2.html" height="600px" width="800px"></iframe>
+
 <small>REmap::remapB</small>
 
 ***
 ## 3D
-![](pic/three.png)
+<iframe data-src="html/threejs.html" height="600px" width="800px"></iframe>
 
 <small>threejs</small>
+
+
 
 ***
 ## Codes
@@ -500,7 +489,9 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 
 ***
 ## 词云
-![](pic/wc.png)
+<iframe data-src="html/R.html" height="600px" width="800px"></iframe>
+
+<small>wordcloud2</small>
 
 ***
 ## 时间轴
@@ -508,7 +499,9 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 
 ***
 ## 热图
-![](pic/heatmap.png)
+<iframe data-src="html/heatmap.html" height="600px" width="800px"></iframe>
+
+<small>d3heatmap</small>
 
 ***
 ## Codes
@@ -531,7 +524,7 @@ d3heatmap(mtcars, scale = "column", colors = "Spectral")
 ```
 
 
----
+---&vertical
 ## 前端可视化的框架
 - plotly
   - Rstudio团队ggplot2原班人马
@@ -542,10 +535,82 @@ d3heatmap(mtcars, scale = "column", colors = "Spectral")
 - rCharts，highchartsR
   - 基于其他JS库的可视化
 
+
+***
+## *plotly*
+<iframe data-src="https://plot.ly/r/" style=" height:600px; width:800px" ></iframe>
+
+
+***
+## *rbokeh*
+<iframe data-src="html/p.html" style=" height:600px; width:800px" ></iframe>
+
+
+***
+![](pic/rbok.png)
+
+
+***
+## Code
+
+```r
+library(rbokeh)
+# prepare data
+elements <- subset(elements, !is.na(group))
+elements$group <- as.character(elements$group)
+elements$period <- as.character(elements$period)
+
+# add colors for groups
+metals <- c("alkali metal", "alkaline earth metal", "halogen",
+  "metal", "metalloid", "noble gas", "nonmetal", "transition metal")
+colors <- c("#a6cee3", "#1f78b4", "#fdbf6f", "#b2df8a", "#33a02c",
+  "#bbbb88", "#baa2a6", "#e08e79")
+elements$color <- colors[match(elements$metal, metals)]
+elements$type <- elements$metal
+
+# make coordinates for labels
+elements$symx <- paste(elements$group, ":0.1", sep = "")
+elements$numbery <- paste(elements$period, ":0.8", sep = "")
+elements$massy <- paste(elements$period, ":0.15", sep = "")
+elements$namey <- paste(elements$period, ":0.3", sep = "")
+
+# create figure
+p <- figure(title = "Periodic Table", tools = c("resize", "hover"),
+  ylim = as.character(c(7:1)), xlim = as.character(1:18),
+  xgrid = FALSE, ygrid = FALSE, xlab = "", ylab = "",
+  height = 445, width = 800) %>%
+
+# plot rectangles
+ly_crect(group, period, data = elements, 0.9, 0.9,
+  fill_color = color, line_color = color, fill_alpha = 0.6,
+  hover = list(name, atomic.number, type, atomic.mass,
+    electronic.configuration)) %>%
+
+# add symbol text
+ly_text(symx, period, text = symbol, data = elements,
+  font_style = "bold", font_size = "10pt",
+  align = "left", baseline = "middle") %>%
+
+# add atomic number text
+ly_text(symx, numbery, text = atomic.number, data = elements,
+  font_size = "6pt", align = "left", baseline = "middle") %>%
+
+# add name text
+ly_text(symx, namey, text = name, data = elements,
+  font_size = "4pt", align = "left", baseline = "middle") %>%
+
+# add atomic mass text
+ly_text(symx, massy, text = atomic.mass, data = elements,
+  font_size = "4pt", align = "left", baseline = "middle")
+
+p
+```
+
+
 ---
 ## 一点建议
 - 可视化不是炫技, 而是合理的展示数据
-  - 再合理展示的前提下再考虑更炫
+  - 合理展示的前提下再考虑更炫
 - 奥卡姆剃刀： 如无必要, 勿增实例
   - 简洁而扁平的风格
 - 不要让工具束缚你的想象力
@@ -559,6 +624,10 @@ d3heatmap(mtcars, scale = "column", colors = "Spectral")
 ## Thanks
 
 [My Blog: 七风阁](http://lchiffon.github.io)
+
+<small>dawei_lang@sina.com</small>
+<br/>
+<small>Writing in Rstudio, power support by revealjs, link by slidify</small>
 <script>
 $('ul.incremental li').addClass('fragment')
 </script>
