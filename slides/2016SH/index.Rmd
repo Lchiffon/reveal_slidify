@@ -1,0 +1,291 @@
+---
+title: New Vistualization
+author: Chiffon
+mode : selfcontained
+framework: revealjs
+hitheme : tomorrow
+url :  {lib: ../libraries}
+revealjs:
+  theme: Sky
+  transition: slide
+  center: "true"
+bootstrap:
+  theme: amelia
+navbar:
+  title: Slidify
+  items: 
+    - {item: Home, href: index,  icon: home}
+    - {item: "Start", href: start, icon: signin}
+    - {item: Author, href: about, icon: pencil}
+    - {item: Style, href: style, icon: hand-right, class: dropdown, 
+        dropdown: true, menu: [
+         {item: io2012, href: 'samples/intro'},
+         {item: deck.js, href: 'samples/deck.js'},
+         {item: shower, href: 'samples/shower'},
+         {item: landslide, href: 'samples/landslide'}
+        ]
+      }
+    - {item: Customize, href: customize, icon: gift}
+    - {item: Extend, href: extend, icon: cogs}
+    - {item: Publish, href: publish, icon: github}
+---
+
+```{r setup, include=FALSE,echo = F, message = F, warning = F, tidy = F, cache=F}
+library(knitr)
+# make this an external chunk that can be included in any file
+options(width = 100,digits=4)
+opts_chunk$set(message = FALSE, fig.align = "center", warning = FALSE, comment = NA, dpi = 100, tidy = FALSE, fig.width=8,fig.height=5,cache = FALSE)
+
+knit_hooks$set(plot = knitr:::hook_plot_html)
+
+```
+
+<style>
+td{
+font-size: 3
+}
+.title-slide {
+  background-color: #e2e2e2;
+}
+
+.title-slide hgroup > h1{
+  font-family: 'Oswald', '微软雅黑';
+  color: #202020;
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+.reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+strong{
+ color: #4876FF;
+}
+</style>
+
+## 新瓶与新酒
+### 让R的可视化更炫酷
+<small> Created by [Chiffon](http://lchiffon.github.io)郎大为</small><br/>
+<small>J.D. Power 数据分析师</small>
+<script src="./libraries/jquery.min.js"></script>
+<script>
+			document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+
+---
+## 可视化是手段
+- #TODO1 formatter表格
+
+
+
+---&vertical
+## 新的瓶子: HtmlWidgets
+- 动态，可交互并有更炫酷的效果
+TODO2
+<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<small>package:formatR</small>
+
+
+*** 
+## Codes
+```{r eval=F}
+install.packages(formatR)
+library(formatR)
+```
+
+
+---&vertical
+## 基础图形的局限
+
+***
+## 基础图形的局限
+- 基础的图形已经能解决90%的问题
+  - 饼图 一维世界
+  - 条形图 二维世界
+  - 散点、折线图 努力展示高维世界
+
+***
+## 如何在一张图中展示5个维度
+![](pic/ggplot2.png)
+
+***
+```{r eval = F}
+library(ggplot2)
+ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position="jitter")+facet_wrap(~year)
+```
+
+---&vertical
+## 值得展示的高维数据
+- 不同污染物的情况
+- 城市基本指标
+- 运动员/候选人的数据
+
+***
+## 多维坐标轴
+TODO3
+<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eParaell</small>
+
+
+*** 
+## Codes
+```{r eval=F}
+devtools::install_github("taiyun/recharts")
+library(recharts)
+```
+
+
+---&vertical
+## 雷达图
+- 数据科学家的战斗力
+TODO4
+<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eParaell</small>
+
+***
+## 雷达图
+- 数据科学家的战斗力
+TODO5
+<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eParaell</small>
+
+
+*** 
+## Codes
+```{r eval=F}
+devtools::install_github("taiyun/recharts")
+library(recharts)
+```
+
+
+
+
+---&vertical
+## 流程的转化
+
+- App每天的用户都干什么了
+- 为什么这次的活动没有带来收益
+- 用户进入网站都干什么了
+
+***
+## 漏斗图
+- 到底哪个环节出问题了？
+
+TODO5
+<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eParaell</small>
+
+
+*** 
+## Codes
+```{r eval=F}
+devtools::install_github("taiyun/recharts")
+library(recharts)
+```
+
+
+---&vertical
+## Sunbrust
+- 数据科学家的战斗力
+TODO5
+<iframe data-src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+<small>recharts::eParaell</small>
+
+
+---
+## 关系的可视化
+图数据的可视化
+- igraph (旧瓶)
+- --D3Network (破瓶)--
+- networkD3 (新瓶)
+- diagrammeR
+
+---
+## 网络图
+TODO
+
+---
+## 弦图
+TODO
+
+---
+## 桑基图
+TODO
+
+---&vertical
+## 地理信息的可视化
+
+
+***
+## 美国大选
+
+***
+## 中国GDP
+
+***
+## leaflet
+
+***
+## 百度地图
+
+***
+## 3D
+
+
+---&vertical
+## 其他有意思的可视化
+
+***
+## 词云
+
+***
+## 时间轴
+
+***
+## 热图
+
+***
+## 仪表盘
+
+---
+## 前端可视化的框架
+- plotly
+  - Rstudio团队ggplot2原班人马
+- rbokeh
+  - python中bokeh的接口
+- recharts
+  - 百度echarts库
+- rCharts，highchartsR
+  - 基于其他JS库的可视化
+
+---
+## 一点建议
+- 可视化不是炫技, 而是合理的展示数据
+  - 再合理展示的前提下再考虑更炫
+- 奥卡姆剃刀： 如无必要, 勿增实例
+  - 简洁而扁平的风格
+- 不要让工具束缚你的想象力
+  - Try JavaScript!
+
+
+
+
+
+---
+## Thanks
+
+[My Blog: 七风阁](http://lchiffon.github.io)
+<script>
+$('ul.incremental li').addClass('fragment')
+</script>

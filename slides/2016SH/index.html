@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wordcloud2</title>
+  <meta name="description" content="">
+  <meta name="author" content="Chiffon">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  
+  <style>
+td{
+font-size: 3
+}
+.title-slide {
+  background-color: #e2e2e2;
+}
+
+.title-slide hgroup > h1{
+  font-family: 'Oswald', '微软雅黑';
+  color: #202020;
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+.reveal {font-family: 'Signika Negative', 'Calibri', '微软雅黑';
+  color: #202020;
+}
+
+strong{
+ color: #4876FF;
+}
+</style>
+
+<h2>新版词云</h2>
+
+<h3>基于htmlWidgets的wordcloud2</h3>
+
+<p><small> Created by <a href="http://lchiffon.github.io">Chiffon</a>郎大为</small><br/>
+<small>J.D. Power 数据分析师</small></p>
+
+<script src="./libraries/jquery.min.js"></script>
+
+<script>
+            document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>绘图: 从静态到动态</h2>
+    <ul>
+<li>除了统计计算,机器学习以外</li>
+<li>R最出名的莫过于数据可视化</li>
+<li>翘楚:
+
+<ul>
+<li><code>lattice</code></li>
+<li><code>ggplot2</code></li>
+<li><code>corr</code></li>
+<li><code>map</code></li>
+<li class='..</li>'></ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h1>JavaScript</h1>
+
+<h2>更适合可视化的语言</h2>
+
+<ul>
+<li>Echarts</li>
+<li>D3</li>
+<li>Highcharts</li>
+<li class='..</li>'></ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>htmlwidgets</h2>
+
+<h3>连接R与JS可视化的桥梁</h3>
+
+<ul>
+<li>Rstudio 出品</li>
+<li>良好的框架</li>
+<li>方便的输出</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>htmlwidgets</h2>
+
+<h3>连接R与JS可视化的桥梁</h3>
+
+<ul>
+<li>良好的框架
+
+<ul>
+<li>配置文件(叙述如何配置HtmlWidgets)</li>
+<li>JS库(源生JS)</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h1>htmlwidgets</h1>
+
+<h2>连接R与JS可视化的桥梁</h2>
+
+<ul>
+<li>方便的输出
+
+<ul>
+<li>Rstudio</li>
+<li>浏览器</li>
+<li>shiny</li>
+<li>knitr/slidify</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><a href="http://gallery.htmlwidgets.org/">htmlWidgets Gallery</a></h2>
+
+<p><img src="pic/htmlWidgets.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>wordlcoud2</em> 流程图</h2>
+
+<p><img src="pic/flow.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>安装</h2>
+    <ul>
+<li>CRAN版:</li>
+</ul>
+
+<pre><code class="r">install.packages(&quot;wordcloud2&quot;)
+</code></pre>
+
+<ul>
+<li>开发版:</li>
+</ul>
+
+<pre><code class="r">devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/gh.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>原始wordcloud</h2>
+    <pre><code class="r">library(wordcloud)
+wordcloud(demoFreq[,1],demoFreq[,2])
+</code></pre>
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <ul>
+<li>过大的margin
+
+<ul>
+<li>导致图案过小</li>
+</ul></li>
+<li>图案的设置
+
+<ul>
+<li>不能自定义形状</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>原始wordcloud</h2>
+
+<p><img src="pic/wordcloud1.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>基本使用</h2>
+    <pre><code class="r">library(wordcloud2)
+wordcloud2(demoFreq)
+</code></pre>
+
+<div class="rimage center"><img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <iframe src="pic/wc1.html" height="600px" width="800px"></iframe>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>基于图片的 <em>Wordcloud2</em></h2>
+    <pre><code class="r">figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
+wordcloud2(demoFreq, 
+           figPath = figPath,
+           size = 1.5, 
+           color = &quot;skyblue&quot;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/bird.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/hs.jpg" alt=""></p>
+
+<p>@微信: wetalkdata</p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2>基于文字的 <em>Wordcloud2</em></h2>
+    <pre><code class="r">library(wordcloud2)
+letterCloud(dat,&quot;R&quot;, 
+            color = &quot;random-light&quot;,
+            backgroundColor = &quot;black&quot;,
+            size = 0.3)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/tou.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/tb.jpg" alt=""></p>
+
+<p><a href="http://yalei.name/2016/06/wordcloud2">亚磊的博客</a></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 主题</h2>
+    <ul>
+<li><em>仅在开发版中使用(2016/10)</em></li>
+</ul>
+
+<pre><code class="r">wc = wordcloud2(demoFreq,
+                fontFamily=&#39;微软雅黑&#39;)
+wc + WCtheme(class = 1)
+## class: 1,2,3
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 主题</h2>
+
+<p><img src="pic/theme.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 细节调整</h2>
+    <p>可用参数:</p>
+
+<ul>
+<li>size</li>
+<li>fontFamily</li>
+<li>color/backgroundColor</li>
+<li>minRotation/maxRotation</li>
+<li>rotateRatio</li>
+<li>shape</li>
+<li>figPath</li>
+<li>hoverFunction</li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <table><thead>
+<tr>
+<th>参数名</th>
+<th>含义</th>
+<th>取值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>size</td>
+<td>大小</td>
+<td>1为默认值</td>
+</tr>
+<tr>
+<td>fontFamily</td>
+<td>字体</td>
+<td>&#39;Segoe UI&#39;</td>
+</tr>
+<tr>
+<td>color</td>
+<td>颜色</td>
+<td>&#39;random-dark&#39;</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>背景色</td>
+<td>&#39;white&#39;</td>
+</tr>
+<tr>
+<td>minRotation</td>
+<td>最小角度</td>
+<td>-pi/4</td>
+</tr>
+<tr>
+<td>maxRotation</td>
+<td>最大角度</td>
+<td>pi/4</td>
+</tr>
+<tr>
+<td>rotateRatio</td>
+<td>旋转比例</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>shape</td>
+<td>形状</td>
+<td>&#39;circle&#39;</td>
+</tr>
+<tr>
+<td>figPath</td>
+<td>图像</td>
+<td>图片路径</td>
+</tr>
+<tr>
+<td>hoverFunction</td>
+<td>JS函数</td>
+<td>动态函数</td>
+</tr>
+</tbody></table>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>size</em></h2>
+
+<pre><code class="r">wordcloud2(demoFreqC,size = 0.5,
+           fontFamily = &#39;微软雅黑&#39;)
+wordcloud2(demoFreqC,size = 2,
+           fontFamily = &#39;微软雅黑&#39;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <p><img src="pic/size.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>Wordcloud2</em> 主题</h2>
+
+<p><img src="pic/theme.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <ul>
+<li>theme1: 
+
+<ul>
+<li>minRotation = -pi/2</li>
+<li>maxRotation = -pi/2</li>
+</ul></li>
+<li>theme2:
+
+<ul>
+<li>minRotation = -pi/6</li>
+<li>maxRotation = -pi/6</li>
+<li>rotateRatio = 1</li>
+</ul></li>
+<li>theme3:
+
+<ul>
+<li>color = &quot;random-light&quot;</li>
+<li>backgroundColor = &quot;grey&quot;</li>
+</ul></li>
+</ul>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-10'>
+  <h2>图片保存</h2>
+  <ol>
+<li>Rstudio Export</li>
+<li><code>webshot</code> packages</li>
+</ol>
+
+<pre><code class="r">install.packages(&quot;webshot&quot;)
+webshot::install_phantomjs()
+library(wordcloud2)
+hw = wordcloud2(demoFreq,size = 3)
+saveWidget(hw,&quot;demo.html&quot;,selfcontained = F)
+webshot::webshot(&quot;demo.html&quot;,&quot;demo.png&quot;,
+                 vwidth = 800, vheight = 600, delay =3)
+</code></pre>
+
+</section>
+<section>
+   <section class='' data-state=''>
+    <h2><em>shiny</em></h2>
+    <pre><code class="r">wordcloud2Output(outputId, width = &quot;100%&quot;, height = &quot;400px&quot;)
+renderWordcloud2(expr, env = parent.frame(), quoted = FALSE)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2><em>knitr/slidify</em></h2>
+
+<pre><code class="r">install.packages(&quot;webshot&quot;)
+webshot::install_phantomjs()
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>中文支持</h2>
+
+<pre><code class="r">Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;chs&quot;)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+</section>
+<section class='' data-state='' id='slide-12'>
+  <h2>Thanks</h2>
+  <ul>
+<li>微博@郎大为Chiffon</li>
+</ul>
+
+<p><a href="http://lchiffon.github.com/wordcloud2">wordcloud2主页</a>
+<a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
+
+<script>
+$('ul.incremental li').addClass('fragment')
+</script>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="../libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="../libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'Sky', 
+    transition: Reveal.getQueryHash().transition || 'slide', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: '../libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: '../libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: '../libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: '../libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
