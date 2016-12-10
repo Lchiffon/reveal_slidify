@@ -85,11 +85,11 @@ kable(head( data.frame(
 
 ---&vertical
 ## 新的瓶子: HtmlWidgets
-- 动态，可交互并有更炫酷的效果
+### *package:formatR*
 
 <iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
 
-<small>package:formatR</small>
+
 
 
 *** 
@@ -144,7 +144,8 @@ formattable(df, list(
 ***
 ```{r eval = F}
 library(ggplot2)
-ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position="jitter")+facet_wrap(~year)
+ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
+  geom_point(position="jitter")+facet_wrap(~year)
 ```
 
 ---&vertical
@@ -154,11 +155,11 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position="jitter")+
 - 运动员/候选人的数据
 
 ***
-## 多维坐标轴
+### 多维坐标轴*recharts::eParallel*
 
 <iframe data-src="html/pall.html" height="600px" width="800px"></iframe>
 
-<small>recharts::eParaell</small>
+
 
 
 *** 
@@ -179,20 +180,18 @@ eParallel(head(parallelDf, 20),
 
 
 ---&vertical
-## 雷达图
+### 雷达图 *radarchart::chartJSRadar*
+
 - 数据科学家的战斗力
 
 <iframe data-src="html/radar.html" height="600px" width="800px"></iframe>
 
-<small>radarchart::chartJSRadar</small>
 
 ***
-## 雷达图
-- 数据科学家的战斗力
-TODO5
+### 雷达图*recharts::eRadar*
+
 <iframe data-src="html/radar2.html" height="600px" width="800px"></iframe>
 
-<small>recharts::eRadar</small>
 
 
 *** 
@@ -230,12 +229,9 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 - 用户进入网站都干什么了
 
 ***
-## 漏斗图
-- 到底哪个环节出问题了？
-
+### 漏斗图 *recharts::eFunnel*
 <iframe data-src="html/funnel.html" height="600px" width="800px"></iframe>
 
-<small>recharts::eFunnel</small>
 
 
 *** 
@@ -256,10 +252,9 @@ eFunnel(funnelDf, ~namevar, ~datavar)
 
 
 ***
-## SunBrust
+## *sunburstR::sunburst*
 <iframe data-src="html/sun.html" height="600px" width="800px"></iframe>
 
-<small>sunburstR::sunburst</small>
 
 
 
@@ -311,10 +306,8 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = "SPS" ) %>>%
 - diagrammeR
 
 ---&vertical
-## 网络图
+### 网络图*DiagrammeR*
 <iframe data-src="html/graph.html" height="600px" width="800px"></iframe>
-
-<small>DiagrammeR</small>
 
 
 ***
@@ -353,7 +346,7 @@ render_graph(graph)
 
 
 ---
-## 弦图
+### 弦图
 ![](pic/chord.png)
 
 
@@ -379,10 +372,10 @@ chordNetwork(Data = hairColourData,
 
 
 ---
-## 桑基图
+### 桑基图*networkD3::sankeyNetwork*
 <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
 
-<small>networkD3::sankeyNetwork</small>
+
 
 
 ***
@@ -408,35 +401,30 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
 
 
 ***
-## 美国大选
+### 美国大选
 
 ![](pic/map.png)
 <small>http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</small>
 
 ***
-## 中国GDP
+### 中国GDP *REmap::remapC*
 <iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
-<small>REmap::remapC</small>
-
 ***
-## leaflet
+### *leaflet*
 <iframe data-src="html/R-birth.html" height="600px" width="800px"></iframe>
 
-
-<small>leaflet</small>
-
+ 
 ***
-## 百度地图
+### 百度地图*REmap::remapB*
 <iframe data-src="html/4bmap2.html" height="600px" width="800px"></iframe>
 
-<small>REmap::remapB</small>
 
 ***
-## 3D
+### 3D *threejs*
 <iframe data-src="html/threejs.html" height="600px" width="800px"></iframe>
 
-<small>threejs</small>
+
 
 
 
@@ -493,20 +481,16 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 ## 其他有意思的可视化
 
 ***
-## 词云
+## 词云*wordcloud2*
 <iframe data-src="html/R.html" height="600px" width="800px"></iframe>
 
-<small>wordcloud2</small>
-
 ***
-## 时间轴
+## 时间轴*timevis*
 ![](pic/wcup.png)
 
 ***
-## 热图
+## 热图*d3heatmap*
 <iframe data-src="html/heatmap.html" height="600px" width="800px"></iframe>
-
-<small>d3heatmap</small>
 
 ***
 ## Codes
@@ -541,18 +525,25 @@ d3heatmap(mtcars, scale = "column", colors = "Spectral")
 
 
 ***
-## *plotly*
-<iframe data-src="https://plot.ly/r/" style=" height:600px; width:800px" ></iframe>
-
+### *plotly*
+![](pic/plotly2.png)
 
 ***
-## *rbokeh*
+### *rbokeh*
+![](pic/bokeh.png)
+
+***
+### *rbokeh*
 <iframe data-src="html/p.html" style=" height:600px; width:800px" ></iframe>
 
 
 ***
-![](pic/rbok.png)
+### *highcharts*
+![](pic/highcharts.png)
 
+***
+### *recharts*
+![](pic/recharts.png)
 
 ***
 ## Code
@@ -628,7 +619,7 @@ p
 
 [My Blog: 七风阁](http://lchiffon.github.io)
 
-<small>dawei_lang@sina.com</small>
+<small>dawei_lang@sina.com|weibo:郎大为chiffon</small>
 <br/>
 <small>Writing in Rstudio, power support by revealjs, link by slidify</small>
 <script>

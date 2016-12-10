@@ -143,13 +143,9 @@ strong{
 <section>
    <section class='' data-state=''>
     <h2>新的瓶子: HtmlWidgets</h2>
-    <ul>
-<li>动态，可交互并有更炫酷的效果</li>
-</ul>
+    <h3><em>package:formatR</em></h3>
 
 <iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
-
-<p><small>package:formatR</small></p>
 
     <aside class='notes'>
       
@@ -228,7 +224,8 @@ formattable(df, list(
    </section>
    <section class='' data-state=''>
     <pre><code class="r">library(ggplot2)
-ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position=&quot;jitter&quot;)+facet_wrap(~year)
+ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
+  geom_point(position=&quot;jitter&quot;)+facet_wrap(~year)
 </code></pre>
 
     <aside class='notes'>
@@ -250,11 +247,9 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) + geom_point(position=&quot;jitt
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>多维坐标轴</h2>
+    <h3>多维坐标轴<em>recharts::eParallel</em></h3>
 
 <iframe data-src="html/pall.html" height="600px" width="800px"></iframe>
-
-<p><small>recharts::eParaell</small></p>
 
     <aside class='notes'>
       
@@ -282,29 +277,21 @@ eParallel(head(parallelDf, 20),
 </section>
 <section>
    <section class='' data-state=''>
-    <h2>雷达图</h2>
+    <h3>雷达图 <em>radarchart::chartJSRadar</em></h3>
     <ul>
 <li>数据科学家的战斗力</li>
 </ul>
 
 <iframe data-src="html/radar.html" height="600px" width="800px"></iframe>
 
-<p><small>radarchart::chartJSRadar</small></p>
-
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>雷达图</h2>
+    <h3>雷达图<em>recharts::eRadar</em></h3>
 
-<ul>
-<li>数据科学家的战斗力
-TODO5
-<iframe data-src="html/radar2.html" height="600px" width="800px"></iframe></li>
-</ul>
-
-<p><small>recharts::eRadar</small></p>
+<iframe data-src="html/radar2.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
       
@@ -353,15 +340,9 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>漏斗图</h2>
-
-<ul>
-<li>到底哪个环节出问题了？</li>
-</ul>
+    <h3>漏斗图 <em>recharts::eFunnel</em></h3>
 
 <iframe data-src="html/funnel.html" height="600px" width="800px"></iframe>
-
-<p><small>recharts::eFunnel</small></p>
 
     <aside class='notes'>
       
@@ -393,11 +374,9 @@ eFunnel(funnelDf, ~namevar, ~datavar)
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>SunBrust</h2>
+    <h2><em>sunburstR::sunburst</em></h2>
 
 <iframe data-src="html/sun.html" height="600px" width="800px"></iframe>
-
-<p><small>sunburstR::sunburst</small></p>
 
     <aside class='notes'>
       
@@ -459,10 +438,8 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = &quot;SPS&quot; ) %&gt;&gt;%
 </section>
 <section>
    <section class='' data-state=''>
-    <h2>网络图</h2>
+    <h3>网络图<em>DiagrammeR</em></h3>
     <iframe data-src="html/graph.html" height="600px" width="800px"></iframe>
-
-<p><small>DiagrammeR</small></p>
 
     <aside class='notes'>
       
@@ -507,15 +484,13 @@ render_graph(graph)
    </section>
 </section>
 <section class='' data-state='' id='slide-11'>
-  <h2>弦图</h2>
+  <h3>弦图</h3>
   <p><img src="pic/chord.png" alt=""></p>
 
 </section>
 <section class='' data-state='' id='slide-12'>
-  <h2>桑基图</h2>
+  <h3>桑基图<em>networkD3::sankeyNetwork</em></h3>
   <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
-
-<p><small>networkD3::sankeyNetwork</small></p>
 
 </section>
 <section>
@@ -527,7 +502,7 @@ render_graph(graph)
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>美国大选</h2>
+    <h3>美国大选</h3>
 
 <p><img src="pic/map.png" alt="">
 <small><a href="http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/">http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</a></small></p>
@@ -537,44 +512,36 @@ render_graph(graph)
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>中国GDP</h2>
+    <h3>中国GDP<em>REmap::remapC</em></h3>
 
 <iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
-<p><small>REmap::remapC</small></p>
-
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>leaflet</h2>
+    <h3><em>leaflet</em></h3>
 
 <iframe data-src="html/R-birth.html" height="600px" width="800px"></iframe>
 
-<p><small>leaflet</small></p>
-
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>百度地图</h2>
+    <h3>百度地图<em>REmap::remapB</em></h3>
 
 <iframe data-src="html/4bmap2.html" height="600px" width="800px"></iframe>
 
-<p><small>REmap::remapB</small></p>
-
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>3D</h2>
+    <h3>3D <em>threejs</em></h3>
 
 <iframe data-src="html/threejs.html" height="600px" width="800px"></iframe>
-
-<p><small>threejs</small></p>
 
     <aside class='notes'>
       
@@ -641,18 +608,16 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>词云</h2>
+    <h2>词云<em>wordcloud2</em></h2>
 
 <iframe data-src="html/R.html" height="600px" width="800px"></iframe>
-
-<p><small>wordcloud2</small></p>
 
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>时间轴</h2>
+    <h2>时间轴<em>timevis</em></h2>
 
 <p><img src="pic/wcup.png" alt=""></p>
 
@@ -661,11 +626,9 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2>热图</h2>
+    <h2>热图<em>d3heatmap</em></h2>
 
 <iframe data-src="html/heatmap.html" height="600px" width="800px"></iframe>
-
-<p><small>d3heatmap</small></p>
 
     <aside class='notes'>
       
@@ -726,16 +689,25 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2><em>plotly</em></h2>
+    <h3><em>plotly</em></h3>
 
-<iframe data-src="https://plot.ly/r/" style=" height:600px; width:800px" ></iframe>
+<p><img src="pic/plotly2.png" alt=""></p>
 
     <aside class='notes'>
       
     </aside>
    </section>
    <section class='' data-state=''>
-    <h2><em>rbokeh</em></h2>
+    <h3><em>rbokeh</em></h3>
+
+<p><img src="pic/bokeh.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3><em>rbokeh</em></h3>
 
 <iframe data-src="html/p.html" style=" height:600px; width:800px" ></iframe>
 
@@ -744,7 +716,18 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
     </aside>
    </section>
    <section class='' data-state=''>
-    <p><img src="pic/rbok.png" alt=""></p>
+    <h3><em>highcharts</em></h3>
+
+<p><img src="pic/highcharts.png" alt=""></p>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h3><em>recharts</em></h3>
+
+<p><img src="pic/recharts.png" alt=""></p>
 
     <aside class='notes'>
       
@@ -835,7 +818,7 @@ p
   <h2>Thanks</h2>
   <p><a href="http://lchiffon.github.io">My Blog: 七风阁</a></p>
 
-<p><small><a href="mailto:dawei_lang@sina.com">dawei_lang@sina.com</a></small>
+<p><small><a href="mailto:dawei_lang@sina.com">dawei_lang@sina.com</a>|weibo:郎大为chiffon</small>
 <br/>
 <small>Writing in Rstudio, power support by revealjs, link by slidify</small></p>
 
