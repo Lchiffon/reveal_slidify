@@ -142,7 +142,7 @@ strong{
 </section>
 <section>
    <section class='' data-state=''>
-    <h2>新的瓶子: HtmlWidgets</h2>
+    <h3>新的瓶子: HtmlWidgets</h3>
     <h3><em>package:formatR</em></h3>
 
 <iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
@@ -483,15 +483,69 @@ render_graph(graph)
     </aside>
    </section>
 </section>
-<section class='' data-state='' id='slide-11'>
-  <h3>弦图</h3>
-  <p><img src="pic/chord.png" alt=""></p>
+<section>
+   <section class='' data-state=''>
+    <h3>弦图</h3>
+    <p><img src="pic/chord.png" alt=""></p>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Code</h2>
+
+<pre><code class="r">library(networkD3)
+hairColourData &lt;- matrix(c(11975,  1951,  8010, 1013,
+                           5871, 10048, 16145,  990,
+                           8916,  2060,  8090,  940,
+                           2868,  6171,  8045, 6907),
+                         nrow = 4)
+
+chordNetwork(Data = hairColourData, 
+             width = 500, 
+             height = 500,
+             colourScale = c(&quot;#000000&quot;, 
+                             &quot;#FFDD89&quot;, 
+                             &quot;#957244&quot;, 
+                             &quot;#F26223&quot;),
+             labels = c(&quot;red&quot;, &quot;brown&quot;, &quot;blond&quot;, &quot;gray&quot;))
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
-<section class='' data-state='' id='slide-12'>
-  <h3>桑基图<em>networkD3::sankeyNetwork</em></h3>
-  <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
+<section>
+   <section class='' data-state=''>
+    <h3>桑基图<em>networkD3::sankeyNetwork</em></h3>
+    <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
 
+    <aside class='notes'>
+      
+    </aside>
+   </section>
+   <section class='' data-state=''>
+    <h2>Code</h2>
+
+<pre><code class="r">library(networkD3)
+# Load energy projection data
+# Load energy projection data
+URL &lt;- paste0(
+  &quot;https://cdn.rawgit.com/christophergandrud/networkD3/&quot;,
+  &quot;master/JSONdata/energy.json&quot;)
+Energy &lt;- jsonlite::fromJSON(readLines(URL))
+# Plot
+sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&quot;,
+              Target = &quot;target&quot;, Value = &quot;value&quot;, NodeID = &quot;name&quot;,
+              units = &quot;TWh&quot;, fontSize = 12, nodeWidth = 30)
+</code></pre>
+
+    <aside class='notes'>
+      
+    </aside>
+   </section>
 </section>
 <section>
    <section class='' data-state=''>
@@ -512,7 +566,7 @@ render_graph(graph)
     </aside>
    </section>
    <section class='' data-state=''>
-    <h3>中国GDP<em>REmap::remapC</em></h3>
+    <h3>中国GDP <em>REmap::remapC</em></h3>
 
 <iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
@@ -709,7 +763,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
    <section class='' data-state=''>
     <h3><em>rbokeh</em></h3>
 
-<iframe data-src="html/p.html" style=" height:600px; width:800px" ></iframe>
+<p><img src="pic/rbok.png" alt=""></p>
 
     <aside class='notes'>
       
@@ -820,7 +874,7 @@ p
 
 <p><small><a href="mailto:dawei_lang@sina.com">dawei_lang@sina.com</a>|weibo:郎大为chiffon</small>
 <br/>
-<small>Writing in Rstudio, power support by revealjs, link by slidify</small></p>
+<small>Wrote in Rstudio, power supported by revealjs, linked by slidify</small></p>
 
 <script>
 $('ul.incremental li').addClass('fragment')

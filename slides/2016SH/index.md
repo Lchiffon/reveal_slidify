@@ -55,7 +55,6 @@ strong{
 			document.write( '<link rel="stylesheet" href="libraries/frameworks/revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
 
-
 ---
 ## 可视化是手段
 
@@ -68,17 +67,11 @@ strong{
 |  5|Jenny  |  29|B     |   9.1|   8.9|   9.0|TRUE       |
 |  6|Hans   |  29|B     |   9.3|   8.5|   8.9|TRUE       |
 
-
-
-
 ---&vertical
-## 新的瓶子: HtmlWidgets
+### 新的瓶子: HtmlWidgets
 ### *package:formatR*
 
 <iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
-
-
-
 
 *** 
 ## Codes
@@ -114,7 +107,6 @@ formattable(df, list(
 ))
 ```
 
-
 ---&vertical
 ## 基础图形的局限
 
@@ -148,9 +140,6 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
 
 <iframe data-src="html/pall.html" height="600px" width="800px"></iframe>
 
-
-
-
 *** 
 ## Codes
 
@@ -167,7 +156,6 @@ eParallel(head(parallelDf, 20),
           axisList = axisList)
 ```
 
-
 ---&vertical
 ### 雷达图 *radarchart::chartJSRadar*
 
@@ -175,13 +163,10 @@ eParallel(head(parallelDf, 20),
 
 <iframe data-src="html/radar.html" height="600px" width="800px"></iframe>
 
-
 ***
 ### 雷达图*recharts::eRadar*
 
 <iframe data-src="html/radar2.html" height="600px" width="800px"></iframe>
-
-
 
 *** 
 ## Codes
@@ -208,9 +193,6 @@ dat  <- data.frame(
 eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 ```
 
-
-
-
 ---&vertical
 ## 流程的转化
 
@@ -221,8 +203,6 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 ***
 ### 漏斗图 *recharts::eFunnel*
 <iframe data-src="html/funnel.html" height="600px" width="800px"></iframe>
-
-
 
 *** 
 ## Codes
@@ -240,14 +220,9 @@ eFunnel(funnelDf, ~namevar, ~datavar)
 ## 多维关系的展示
 <img data-src ='pic\sun1.png'/>
 
-
-
 ***
 ## *sunburstR::sunburst*
 <iframe data-src="html/sun.html" height="600px" width="800px"></iframe>
-
-
-
 
 *** 
 ## Codes
@@ -287,8 +262,6 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = "SPS" ) %>>%
   sunburst
 ```
 
-
-
 ---
 ## 关系的可视化
 图数据的可视化
@@ -300,7 +273,6 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = "SPS" ) %>>%
 ---&vertical
 ### 网络图*DiagrammeR*
 <iframe data-src="html/graph.html" height="600px" width="800px"></iframe>
-
 
 ***
 
@@ -337,14 +309,12 @@ graph <-
 render_graph(graph)
 ```
 
-
----
+---&vertical
 ### 弦图
 ![](pic/chord.png)
 
-
 ***
-
+## Code
 
 ```r
 library(networkD3)
@@ -364,13 +334,9 @@ chordNetwork(Data = hairColourData,
              labels = c("red", "brown", "blond", "gray"))
 ```
 
-
----
+---&vertical
 ### 桑基图*networkD3::sankeyNetwork*
 <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
-
-
-
 
 ***
 ## Code
@@ -389,10 +355,8 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
               units = "TWh", fontSize = 12, nodeWidth = 30)
 ```
 
-
 ---&vertical
 ## 地理信息的可视化
-
 
 ***
 ### 美国大选
@@ -401,26 +365,20 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
 <small>http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</small>
 
 ***
-### 中国GDP*REmap::remapC*
+### 中国GDP *REmap::remapC*
 <iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
 ***
 ### *leaflet*
 <iframe data-src="html/R-birth.html" height="600px" width="800px"></iframe>
 
- 
 ***
 ### 百度地图*REmap::remapB*
 <iframe data-src="html/4bmap2.html" height="600px" width="800px"></iframe>
 
-
 ***
 ### 3D *threejs*
 <iframe data-src="html/threejs.html" height="600px" width="800px"></iframe>
-
-
-
-
 
 ***
 ## Codes
@@ -470,8 +428,6 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
         atmosphere=TRUE)
 ```
 
-
-
 ---&vertical
 ## 其他有意思的可视化
 
@@ -507,7 +463,6 @@ library(d3heatmap)
 d3heatmap(mtcars, scale = "column", colors = "Spectral")
 ```
 
-
 ---&vertical
 ## 前端可视化的框架
 - plotly
@@ -519,7 +474,6 @@ d3heatmap(mtcars, scale = "column", colors = "Spectral")
 - rCharts，highchartsR
   - 基于其他JS库的可视化
 
-
 ***
 ### *plotly*
 ![](pic/plotly2.png)
@@ -530,8 +484,7 @@ d3heatmap(mtcars, scale = "column", colors = "Spectral")
 
 ***
 ### *rbokeh*
-<iframe data-src="html/p.html" style=" height:600px; width:800px" ></iframe>
-
+![](pic/rbok.png)
 
 ***
 ### *highcharts*
@@ -597,7 +550,6 @@ ly_text(symx, massy, text = atomic.mass, data = elements,
 p
 ```
 
-
 ---
 ## 一点建议
 - 可视化不是炫技, 而是合理的展示数据
@@ -607,10 +559,6 @@ p
 - 不要让工具束缚你的想象力
   - Try JavaScript!
 
-
-
-
-
 ---
 ## Thanks
 
@@ -618,7 +566,7 @@ p
 
 <small>dawei_lang@sina.com|weibo:郎大为chiffon</small>
 <br/>
-<small>Writing in Rstudio, power support by revealjs, link by slidify</small>
+<small>Wrote in Rstudio, power supported by revealjs, linked by slidify</small>
 <script>
 $('ul.incremental li').addClass('fragment')
 </script>
