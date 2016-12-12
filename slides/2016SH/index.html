@@ -8,17 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/reveal.css">
-  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/sky.css" id="theme">
   <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
   <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
-  <![endif]-->  
+  <![endif]-->
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
       <section class='' data-state='' id='slide-1'>
-  
+
   <style>
 td{
 font-size: 3
@@ -148,7 +148,7 @@ strong{
 <iframe data-src="./html/formattable.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -159,8 +159,8 @@ library(formattable)
 
 df &lt;- data.frame(
   id = 1:10,
-  name = c(&quot;Bob&quot;, &quot;Ashley&quot;, &quot;James&quot;, &quot;David&quot;, &quot;Jenny&quot;, 
-    &quot;Hans&quot;, &quot;Leo&quot;, &quot;John&quot;, &quot;Emily&quot;, &quot;Lee&quot;), 
+  name = c(&quot;Bob&quot;, &quot;Ashley&quot;, &quot;James&quot;, &quot;David&quot;, &quot;Jenny&quot;,
+    &quot;Hans&quot;, &quot;Leo&quot;, &quot;John&quot;, &quot;Emily&quot;, &quot;Lee&quot;),
   age = c(28, 27, 30, 28, 29, 29, 27, 27, 31, 30),
   grade = c(&quot;C&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;B&quot;, &quot;A&quot;, &quot;C&quot;, &quot;C&quot;),
   test1_score = c(8.9, 9.5, 9.6, 8.9, 9.1, 9.3, 9.3, 9.9, 8.5, 8.6),
@@ -171,7 +171,7 @@ df &lt;- data.frame(
 
 formattable(df, list(
   age = color_tile(&quot;white&quot;, &quot;orange&quot;),
-  grade = formatter(&quot;span&quot;, style = x ~ ifelse(x == &quot;A&quot;, 
+  grade = formatter(&quot;span&quot;, style = x ~ ifelse(x == &quot;A&quot;,
                                                style(color = &quot;green&quot;, font.weight = &quot;bold&quot;), NA)),
   area(col = c(test1_score, test2_score)) ~ normalize_bar(&quot;pink&quot;, 0.2),
   final_score = formatter(&quot;span&quot;,
@@ -184,16 +184,16 @@ formattable(df, list(
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
 <section>
    <section class='' data-state=''>
     <h2>基础图形的局限</h2>
-    
+
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -210,7 +210,7 @@ formattable(df, list(
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -219,7 +219,7 @@ formattable(df, list(
 <p><img src="pic/ggplot2.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -229,7 +229,7 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -243,7 +243,7 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -252,7 +252,7 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
 <iframe data-src="html/pall.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -262,16 +262,16 @@ ggplot(mpg,aes(cty, hwy, color=fl, size=displ)) +
 library(recharts)
 require(plyr)
 axisList = list(
-  list(index=7, type=&quot;category&quot;, data = c(&quot;low&quot;, &quot;middle&quot;, &quot;high&quot;)), 
+  list(index=7, type=&quot;category&quot;, data = c(&quot;low&quot;, &quot;middle&quot;, &quot;high&quot;)),
   list(index=6, inverse=TRUE, max=50, nameLocation=&quot;start&quot;)
 )
-eParallel(head(parallelDf, 20), 
+eParallel(head(parallelDf, 20),
           series=~groupName,
           axisList = axisList)
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -285,7 +285,7 @@ eParallel(head(parallelDf, 20),
 <iframe data-src="html/radar.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -294,7 +294,7 @@ eParallel(head(parallelDf, 20),
 <iframe data-src="html/radar2.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -322,7 +322,7 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -336,7 +336,7 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -345,7 +345,7 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 <iframe data-src="html/funnel.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -353,14 +353,14 @@ eRadar(dat, ~ability, ~saleNum, ~names,ymax=rep(12,6))
 
 <pre><code class="r">library(recharts)
 x = c(&quot;Exposure&quot; = 100, &quot;Click&quot; = 80, &quot;Visit&quot; = 60, &quot;Query&quot;=40, &quot;Buy&quot;=20)
-eFunnel(x) 
-funnelDf &lt;- data.frame(namevar = c(&quot;Exposure&quot;, &quot;Click&quot;, &quot;Visit&quot;, &quot;Query&quot;, &quot;Buy&quot;), 
+eFunnel(x)
+funnelDf &lt;- data.frame(namevar = c(&quot;Exposure&quot;, &quot;Click&quot;, &quot;Visit&quot;, &quot;Query&quot;, &quot;Buy&quot;),
    datavar = c(100, 80, 60, 40, 20), stringsAsFactors=FALSE)
 eFunnel(funnelDf, ~namevar, ~datavar)
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -370,7 +370,7 @@ eFunnel(funnelDf, ~namevar, ~datavar)
     <p><img data-src ='pic\sun1.png'/></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -379,7 +379,7 @@ eFunnel(funnelDf, ~namevar, ~datavar)
 <iframe data-src="html/sun.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -420,7 +420,7 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = &quot;SPS&quot; ) %&gt;&gt;%
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -442,7 +442,7 @@ seqtab( seqdss(mvad.seq), tlim = 0, format = &quot;SPS&quot; ) %&gt;&gt;%
     <iframe data-src="html/graph.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -479,7 +479,7 @@ render_graph(graph)
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -489,7 +489,7 @@ render_graph(graph)
     <p><img src="pic/chord.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -502,18 +502,18 @@ hairColourData &lt;- matrix(c(11975,  1951,  8010, 1013,
                            2868,  6171,  8045, 6907),
                          nrow = 4)
 
-chordNetwork(Data = hairColourData, 
-             width = 500, 
+chordNetwork(Data = hairColourData,
+             width = 500,
              height = 500,
-             colourScale = c(&quot;#000000&quot;, 
-                             &quot;#FFDD89&quot;, 
-                             &quot;#957244&quot;, 
+             colourScale = c(&quot;#000000&quot;,
+                             &quot;#FFDD89&quot;,
+                             &quot;#957244&quot;,
                              &quot;#F26223&quot;),
              labels = c(&quot;red&quot;, &quot;brown&quot;, &quot;blond&quot;, &quot;gray&quot;))
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -523,7 +523,7 @@ chordNetwork(Data = hairColourData,
     <iframe data-src="html/sankey.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -543,16 +543,16 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
 <section>
    <section class='' data-state=''>
     <h2>地理信息的可视化</h2>
-    
+
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -562,7 +562,7 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&
 <small><a href="http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/">http://blog.kaggle.com/2016/11/30/seventeen-ways-to-map-data-in-kaggle-kernels/</a></small></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -571,7 +571,7 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&
 <iframe data-src="html/1GDP.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -580,7 +580,7 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&
 <iframe data-src="html/R-birth.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -589,7 +589,7 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&
 <iframe data-src="html/4bmap2.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -598,7 +598,7 @@ sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = &quot;source&
 <iframe data-src="html/threejs.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -649,16 +649,16 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
 <section>
    <section class='' data-state=''>
     <h2>其他有意思的可视化</h2>
-    
+
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -667,7 +667,7 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 <iframe data-src="html/R.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -676,7 +676,7 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 <p><img src="pic/wcup.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -685,7 +685,7 @@ globejs(img=earth, lat=latlong[,1], long=latlong[,2], arcs=frequent_flights,
 <iframe data-src="html/heatmap.html" height="600px" width="800px"></iframe>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -708,7 +708,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -739,7 +739,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -748,7 +748,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 <p><img src="pic/plotly2.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -757,7 +757,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 <p><img src="pic/bokeh.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -766,7 +766,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 <p><img src="pic/rbok.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -775,7 +775,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 <p><img src="pic/highcharts.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -784,7 +784,7 @@ d3heatmap(mtcars, scale = &quot;column&quot;, colors = &quot;Spectral&quot;)
 <p><img src="pic/recharts.png" alt=""></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -843,7 +843,7 @@ p
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -913,6 +913,6 @@ $('ul.incremental li').addClass('fragment')
 <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <!-- DONE LOADING HIGHLIGHTER JS FILES -->
- 
+
 
 </html>
