@@ -6,7 +6,7 @@ framework: revealjs
 hitheme : tomorrow
 url :  {lib: ../libraries}
 revealjs:
-  theme: Sky
+  theme: sky
   transition: slide
   center: "true"
   viewDistance: 2

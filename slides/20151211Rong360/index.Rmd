@@ -7,7 +7,7 @@ url : {lib: ../libraries}
 widgets: mathjax
 hitheme : tomorrow
 revealjs:
-  theme: Sky
+  theme: sky
   transition: slide
   center: "true"
 bootstrap:

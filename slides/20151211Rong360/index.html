@@ -8,17 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/reveal.min.css">
-  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/Sky.css" id="theme">
+  <link rel="stylesheet" href="../libraries/frameworks/revealjs/css/theme/sky.css" id="theme">
   <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
   <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
-  <![endif]-->  
+  <![endif]-->
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
       <section class='' data-state='' id='slide-1'>
-  
+
   <style>
 
 .title-slide {
@@ -132,9 +132,9 @@ strong{
 <section>
    <section class='' data-state='soothe'>
     <h2>数据部分</h2>
-    
+
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -162,7 +162,7 @@ strong{
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -188,7 +188,7 @@ strong{
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -201,7 +201,7 @@ strong{
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -215,7 +215,7 @@ strong{
 <p><img src="pic/data.png" alt="pic2"></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -232,7 +232,7 @@ strong{
 <li class='..</li>'></ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -241,16 +241,16 @@ strong{
 <p><a href="code.r">codes</a></p>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
 <section>
    <section class='' data-state='soothe'>
     <h2>建模过程</h2>
-    
+
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -278,12 +278,12 @@ strong{
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
     <pre><code># load(&quot;tr4.Rdata&quot;)
-model = glm(result ~ . -bank_id , 
+model = glm(result ~ . -bank_id ,
             data = train_final,
             family = &quot;binomial&quot;)
 summary(model)
@@ -294,7 +294,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </code></pre>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -311,7 +311,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -333,7 +333,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -350,7 +350,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -364,16 +364,16 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
 <section>
    <section class='' data-state='soothe'>
     <h2>模型评价</h2>
-    
+
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -394,7 +394,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -409,7 +409,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
    <section class='' data-state=''>
@@ -430,7 +430,7 @@ writeLines(as.character(out), &quot;submit/3.26.1.txt&quot;) # 0.2985
 </ul>
 
     <aside class='notes'>
-      
+
     </aside>
    </section>
 </section>
@@ -460,8 +460,8 @@ $('ul.incremental li').addClass('fragment')
     progress: true,
     history: true,
     center: true,
-    theme: Reveal.getQueryHash().theme || 'Sky', 
-    transition: Reveal.getQueryHash().transition || 'slide', 
+    theme: Reveal.getQueryHash().theme || 'sky', 
+    transition: Reveal.getQueryHash().transition || 'slide',
     dependencies: [
     // Cross-browser shim that fully implements classList -
     // https://github.com/eligrey/classList.js/
@@ -492,6 +492,6 @@ $('ul.incremental li').addClass('fragment')
 <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <!-- DONE LOADING HIGHLIGHTER JS FILES -->
- 
+
 
 </html>

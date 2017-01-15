@@ -45,7 +45,7 @@ reveal.js是一个slides的框架,本文是对于在slidify包下reveal.js的实
     framework: revealjs
     hitheme : zenburn
     revealjs:
-      theme:  Sky # {solarized,Black,White,League,Sky,Beige,Simple,Serif, Night,Moon}
+      theme:  sky # {solarized,Black,White,League,sky,Beige,Simple,Serif, Night,Moon}
       transition: slide # {fade/slide/convex/concave/zoom}
       center: "true"
     url: {lib: "."}

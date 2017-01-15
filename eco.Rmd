@@ -6,7 +6,7 @@ framework: revealjs
 widgets: mathjax
 hitheme : zenburn
 revealjs:
-  theme: Sky
+  theme: sky
   transition: slide
   center: "true"
 bootstrap:

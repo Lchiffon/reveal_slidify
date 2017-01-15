@@ -5,7 +5,7 @@ mode : selfcontained
 framework: revealjs
 hitheme : zenburn
 revealjs:
-  theme: solarized # {Black,White,League,Sky,Beige,Simple,Serif, Night,Moon}
+  theme: solarized # {Black,White,League,sky,Beige,Simple,Serif, Night,Moon}
   transition: slide # {fade/slide/convex/concave/zoom}
   center: "true"
 bootstrap:
