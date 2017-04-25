@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>响马读书</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+  <style>
+    p {
+    font-size:2em
+    }
+    h3{
+    font-size:5em
+    }
+    input{
+      height: 3em;
+      width: 100%;
+      font-size: 2.5em
+    }
+  </style>
+</head>
+<body>
+  <div id="head">
+    <h3 style="text-align:center"> 响马书单 </h3>
+  </div>
+  <div id="app">
+    <input v-model="search" placeholder="查找书名或用户" >
+    <p v-if='searchNum'>共查找到{{searchNum}}本书</p>
+    <ul>
+      <template v-for='item in books' v-if='item.book!=""'>
+        <li><p>书名: <a :href='douban(item.book)'>{{item.book}}</a></p></li>
+        <li><p>阅读者: {{item.reviewer}}</p></li>
+        <li><p>数量: {{item.cnt}}</p></li>
+      </template>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        greeting: 'Welcome to your Vue.js app!',
+        items: null,
+        search: null,
+        books: null,
+        searchNum: null
+      },
+      mounted: function () {
+        this.getbook()
+      },
+      methods:{
+        douban: function(value){
+          return('https://book.douban.com/subject_search?search_text='+
+          encodeURI(value)+
+          '&cat=1001')
+        },
+        getbook: function() {
+            this.$http.get('http://120.24.220.14/xm/book.php')
+              .then((response) => {
+                // console.log(response.data.data)
+                this.items=response.data.data
+                this.books=response.data.data
+              })
+              .catch(function(response) {
+                // console.log(response)
+              })
+          },
+          searchFunction: function () {
+            if(!this.search | this.search==''){
+              this.books = this.items
+              this.searchNum = null
+            }else{
+              var books = []
+              var searchNum = 0
+              var search = this.search
+              this.items.forEach(function(e){
+                var book = e.book
+                var reviewer = e.reviewer
+                if(e.book.indexOf(search)>-1 | e.reviewer.indexOf(search)>-1){
+                  books.push(e)
+                  searchNum += 1
+                }
+              })
+              this.books = books
+              this.searchNum = searchNum
+            }
+          }
+        },
+        watch: {
+          search: 'searchFunction'
+        }
+
+
+
+    })
+  </script>
+</body>
+</html>
