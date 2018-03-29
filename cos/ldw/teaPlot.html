@@ -1,0 +1,819 @@
+<html>
+  <head>
+                <meta charset='utf-8'>
+                <style type='text/css'>
+                body {
+                margin: 0;
+                }
+                #main {
+                height: 100%;
+                }
+                </style>
+                </head>
+                <body>
+                <div id='main'></div>
+                <script src='http://echarts.baidu.com/build/dist/echarts.js'></script>
+                <script type='text/javascript' src='http://api.map.baidu.com/api?v=2.0&ak=q9U1lWgCK1aBGVC1DVWrgWa7'></script>
+                <script src='http://echarts.baidu.com/doc/asset/js/jquery.min.js'></script>
+                <script>
+
+                (function () {
+                require.config({
+                paths: {
+                echarts:'http://echarts.baidu.com/doc/example/www/js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: 'http://lchiffon.github.io/reveal_slidify/echarts/require',
+                main: 'main'
+                }
+                ]
+                });
+
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+
+                var BMapExt = new BMapExtension($('#main')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+
+                var startPoint = {
+                x: 104.114129,
+                y: 37.550339
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 5);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({
+    styleJson: [
+    {
+    'featureType': 'water',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#044161'
+    }
+    },
+    {
+    'featureType': 'land',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#064f85'
+    }
+    },
+    {
+    'featureType': 'railway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#005b96',
+    'lightness': 1
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#00508b'
+    }
+    },
+    {
+    'featureType': 'poi',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'green',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#056197',
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'subway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'manmade',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'local',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#029fd4'
+    }
+    },
+    {
+    'featureType': 'building',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#1a5787'
+    }
+    },
+    {
+    'featureType': 'label',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    }
+    ]
+  });
+
+
+optionID_20180116145336_291849 = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '',
+    subtext: '',
+    x:'center',
+    textStyle : {
+      color: '#fff'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter: function (v) {
+               if(v[2].tooltipValue!=null){
+               return v[2].tooltipValue;
+               }else{
+               return v[1];
+               }
+  }},
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+      
+  ,markLine : {
+    Symbol:['none', 'arrow'],
+    symbolSize:['2', '4'],
+    smooth:true,
+    smooth:0.2,
+    effect : {
+      show: true,
+      scaleSize: 1,
+      period: 30,
+      color: '#fff',
+      shadowBlur: 10
+    },
+    itemStyle : {
+      color: 'red',
+      normal: {
+        color:function(param){
+      return(param.data[0].value.colorValue);
+    },
+        borderWidth:1,
+        lineStyle: {
+          type: 'solid',
+          width: 2,
+          shadowBlur: 10
+        },
+        label:{show:false}
+      }
+    },
+
+    data : [[{name:'mnt'}, {name:'ace',value:{colorValue:'blue'}}],
+[{name:'qaf'}, {name:'aeg',value:{colorValue:'red'}}],
+[{name:'mnt'}, {name:'afr',value:{colorValue:'blue'}}],
+[{name:'afr'}, {name:'alt',value:{colorValue:'blue'}}],
+[{name:'qaf'}, {name:'amh',value:{colorValue:'red'}}],
+[{name:'alt'}, {name:'arm',value:{colorValue:'blue'}}],
+[{name:'khs'}, {name:'ass',value:{colorValue:'red'}}],
+[{name:'mme'}, {name:'aze',value:{colorValue:'red'}}],
+[{name:'wlo'}, {name:'bal',value:{colorValue:'blue'}}],
+[{name:'khs'}, {name:'ben',value:{colorValue:'red'}}],
+[{name:'aze'}, {name:'blc',value:{colorValue:'red'}}],
+[{name:'mme'}, {name:'blr',value:{colorValue:'red'}}],
+[{name:'alt'}, {name:'bre',value:{colorValue:'blue'}}],
+[{name:'aeg'}, {name:'bsq',value:{colorValue:'red'}}],
+[{name:'blr'}, {name:'bul',value:{colorValue:'red'}}],
+[{name:'blc'}, {name:'bur',value:{colorValue:'red'}}],
+[{name:'cmh'}, {name:'ccp',value:{colorValue:'blue'}}],
+[{name:'chr'}, {name:'ceb',value:{colorValue:'red'}}],
+[{name:'ceb'}, {name:'cha',value:{colorValue:'red'}}],
+[{name:'afr'}, {name:'cic',value:{colorValue:'blue'}}],
+[{name:'chr'}, {name:'cme',value:{colorValue:'red'}}],
+[{name:'mnt'}, {name:'cmh',value:{colorValue:'blue'}}],
+[{name:'nun'}, {name:'cnt',value:{colorValue:'red'}}],
+[{name:'amh'}, {name:'com',value:{colorValue:'red'}}],
+[{name:'bre'}, {name:'ctl',value:{colorValue:'blue'}}],
+[{name:'hre'}, {name:'cua',value:{colorValue:'blue'}}],
+[{name:'slo'}, {name:'cze',value:{colorValue:'red'}}],
+[{name:'amh'}, {name:'din',value:{colorValue:'red'}}],
+[{name:'ctl'}, {name:'dio',value:{colorValue:'blue'}}],
+[{name:'dio'}, {name:'dua',value:{colorValue:'blue'}}],
+[{name:'lux'}, {name:'dut',value:{colorValue:'blue'}}],
+[{name:'alt'}, {name:'est',value:{colorValue:'blue'}}],
+[{name:'dua'}, {name:'ewe',value:{colorValue:'blue'}}],
+[{name:'dua'}, {name:'ewo',value:{colorValue:'blue'}}],
+[{name:'qay'}, {name:'gdl',value:{colorValue:'blue'}}],
+[{name:'aze'}, {name:'geo',value:{colorValue:'red'}}],
+[{name:'bul'}, {name:'grk',value:{colorValue:'red'}}],
+[{name:'wlo'}, {name:'grt',value:{colorValue:'blue'}}],
+[{name:'qay'}, {name:'gua',value:{colorValue:'blue'}}],
+[{name:'blc'}, {name:'guj',value:{colorValue:'red'}}],
+[{name:'din'}, {name:'hau',value:{colorValue:'red'}}],
+[{name:'arm'}, {name:'heb',value:{colorValue:'blue'}}],
+[{name:'guj'}, {name:'hin',value:{colorValue:'red'}}],
+[{name:'alt'}, {name:'hun',value:{colorValue:'blue'}}],
+[{name:'iri'}, {name:'ice',value:{colorValue:'blue'}}],
+[{name:'lmp'}, {name:'ind',value:{colorValue:'blue'}}],
+[{name:'oss'}, {name:'ing',value:{colorValue:'red'}}],
+[{name:'wel'}, {name:'iri',value:{colorValue:'blue'}}],
+[{name:'alt'}, {name:'ita',value:{colorValue:'blue'}}],
+[{name:'lmp'}, {name:'jav',value:{colorValue:'blue'}}],
+[{name:'kor'}, {name:'jpn',value:{colorValue:'red'}}],
+[{name:'bur'}, {name:'kaz',value:{colorValue:'red'}}],
+[{name:'mnd'}, {name:'kha',value:{colorValue:'red'}}],
+[{name:'crh'}, {name:'khm',value:{colorValue:'blue'}}],
+[{name:'nun'}, {name:'khs',value:{colorValue:'red'}}],
+[{name:'amh'}, {name:'kik',value:{colorValue:'red'}}],
+[{name:'kik'}, {name:'kin',value:{colorValue:'red'}}],
+[{name:'geo'}, {name:'kji',value:{colorValue:'red'}}],
+[{name:'guj'}, {name:'kkn',value:{colorValue:'red'}}],
+[{name:'mnd'}, {name:'kor',value:{colorValue:'red'}}],
+[{name:'est'}, {name:'lat',value:{colorValue:'blue'}}],
+[{name:'kin'}, {name:'lda',value:{colorValue:'red'}}],
+[{name:'ewo'}, {name:'lin',value:{colorValue:'blue'}}],
+[{name:'mnt'}, {name:'lmp',value:{colorValue:'blue'}}],
+[{name:'kik'}, {name:'luo',value:{colorValue:'red'}}],
+[{name:'alt'}, {name:'lux',value:{colorValue:'blue'}}],
+[{name:'cic'}, {name:'mal',value:{colorValue:'blue'}}],
+[{name:'lmp'}, {name:'mdr',value:{colorValue:'blue'}}],
+[{name:'kkn'}, {name:'mhi',value:{colorValue:'red'}}],
+[{name:'ita'}, {name:'mlt',value:{colorValue:'blue'}}],
+[{name:'khs'}, {name:'mme',value:{colorValue:'red'}}],
+[{name:'cnt'}, {name:'mnd',value:{colorValue:'red'}}],
+[{name:'crh'}, {name:'mnt',value:{colorValue:'blue'}}],
+[{name:'kkn'}, {name:'mym',value:{colorValue:'red'}}],
+[{name:'ben'}, {name:'nep',value:{colorValue:'red'}}],
+[{name:'nep'}, {name:'new',value:{colorValue:'red'}}],
+[{name:'chr'}, {name:'nun',value:{colorValue:'red'}}],
+[{name:'ctl'}, {name:'occ',value:{colorValue:'blue'}}],
+[{name:'geo'}, {name:'oss',value:{colorValue:'red'}}],
+[{name:'amh'}, {name:'owc',value:{colorValue:'red'}}],
+[{name:'ben'}, {name:'oya',value:{colorValue:'red'}}],
+[{name:'bur'}, {name:'pan',value:{colorValue:'red'}}],
+[{name:'bsq'}, {name:'por',value:{colorValue:'red'}}],
+[{name:'ctl'}, {name:'pro',value:{colorValue:'blue'}}],
+[{name:'blc'}, {name:'prs',value:{colorValue:'red'}}],
+[{name:'uzb'}, {name:'psh',value:{colorValue:'red'}}],
+[{name:'mme'}, {name:'qaf',value:{colorValue:'red'}}],
+[{name:'cmh'}, {name:'qay',value:{colorValue:'blue'}}],
+[{name:'alt'}, {name:'rmc',value:{colorValue:'blue'}}],
+[{name:'din'}, {name:'san',value:{colorValue:'red'}}],
+[{name:'grk'}, {name:'scr',value:{colorValue:'red'}}],
+[{name:'guj'}, {name:'sdh',value:{colorValue:'red'}}],
+[{name:'afr'}, {name:'ses',value:{colorValue:'blue'}}],
+[{name:'scr'}, {name:'slo',value:{colorValue:'red'}}],
+[{name:'ace'}, {name:'snh',value:{colorValue:'blue'}}],
+[{name:'est'}, {name:'sno',value:{colorValue:'blue'}}],
+[{name:'kik'}, {name:'som',value:{colorValue:'red'}}],
+[{name:'gdl'}, {name:'sra',value:{colorValue:'blue'}}],
+[{name:'lmp'}, {name:'sun',value:{colorValue:'blue'}}],
+[{name:'scr'}, {name:'svk',value:{colorValue:'red'}}],
+[{name:'kik'}, {name:'swa',value:{colorValue:'red'}}],
+[{name:'ceb'}, {name:'tag',value:{colorValue:'red'}}],
+[{name:'ccp'}, {name:'tah',value:{colorValue:'blue'}}],
+[{name:'uzb'}, {name:'taj',value:{colorValue:'red'}}],
+[{name:'snh'}, {name:'tel',value:{colorValue:'blue'}}],
+[{name:'nun'}, {name:'tha',value:{colorValue:'red'}}],
+[{name:'ass'}, {name:'tib',value:{colorValue:'red'}}],
+[{name:'kji'}, {name:'tur',value:{colorValue:'red'}}],
+[{name:'blr'}, {name:'ukr',value:{colorValue:'red'}}],
+[{name:'bur'}, {name:'uyg',value:{colorValue:'red'}}],
+[{name:'bur'}, {name:'uzb',value:{colorValue:'red'}}],
+[{name:'chr'}, {name:'vie',value:{colorValue:'red'}}],
+[{name:'bre'}, {name:'wel',value:{colorValue:'blue'}}],
+[{name:'crh'}, {name:'wlo',value:{colorValue:'blue'}}],
+[{name:'kor'}, {name:'ykt',value:{colorValue:'red'}}],
+[{name:'ewe'}, {name:'yor',value:{colorValue:'blue'}}]]},
+    geoCoord:{'ace': [  95.5000000,  5.500000],
+'aeg': [  31.0000000, 30.000000],
+'afr': [  22.0000000,-31.000000],
+'alt': [   7.5000000, 48.500000],
+'amh': [  38.0000000, 10.000000],
+'arm': [  45.0000000, 40.000000],
+'ass': [  93.0000000, 26.000000],
+'aze': [  48.5000000, 40.500000],
+'bal': [ 115.2500000, -8.333333],
+'bam': [  -7.5000000, 12.500000],
+'ben': [  90.0000000, 24.000000],
+'blc': [  62.0000000, 28.000000],
+'blr': [  28.0000000, 54.000000],
+'bma': [  -5.0000000, 33.000000],
+'bre': [  -3.0000000, 48.000000],
+'brm': [  96.0000000, 21.000000],
+'bru': [ 106.0000000, 17.333333],
+'bsq': [  -3.0000000, 43.000000],
+'bul': [  25.0000000, 42.500000],
+'bur': [  74.5000000, 36.500000],
+'ccp': [-115.0000000, 32.333333],
+'ceb': [ 124.0000000, 10.000000],
+'cha': [ 144.7500000, 13.450000],
+'chr': [ 107.5000000, 10.750000],
+'cic': [  34.0000000,-14.000000],
+'cme': [ 108.5000000, 11.333333],
+'cmh': [-115.1666667, 34.333333],
+'cnt': [ 113.0000000, 23.000000],
+'com': [  44.0000000,-12.000000],
+'crh': [ 108.5000000, 11.500000],
+'ctl': [   2.0000000, 41.750000],
+'cua': [ 108.5000000, 15.250000],
+'cze': [  15.0000000, 50.000000],
+'din': [  28.0000000,  8.500000],
+'dio': [ -16.2500000, 13.000000],
+'dua': [   9.4166667,  4.000000],
+'dut': [   6.0000000, 52.500000],
+'est': [  26.0000000, 59.000000],
+'ewe': [   0.4166667,  6.333333],
+'ewo': [  12.0000000,  4.000000],
+'gdl': [ -61.5000000, 16.250000],
+'geo': [  44.0000000, 42.000000],
+'grk': [  22.0000000, 39.000000],
+'grt': [ 122.0000000,  0.500000],
+'gua': [ -56.0000000,-26.000000],
+'guj': [  72.0000000, 23.000000],
+'hau': [   7.0000000, 12.000000],
+'heb': [  34.8333333, 31.500000],
+'hin': [  77.0000000, 25.000000],
+'hre': [ 108.6666667, 14.666667],
+'hun': [  20.0000000, 47.000000],
+'ice': [ -17.0000000, 65.000000],
+'ind': [ 106.0000000,  0.000000],
+'ing': [  45.0833333, 43.166667],
+'iri': [  -8.0000000, 53.000000],
+'ita': [  12.0000000, 43.000000],
+'jav': [ 111.0000000, -7.000000],
+'jpn': [ 140.0000000, 37.000000],
+'kaz': [  70.0000000, 50.000000],
+'kbl': [   5.0000000, 36.500000],
+'ket': [  87.0000000, 64.000000],
+'kha': [ 105.0000000, 47.000000],
+'khm': [ 105.0000000, 12.500000],
+'khs': [  92.0000000, 25.500000],
+'kik': [  36.7500000, -0.750000],
+'kin': [  30.0000000, -2.000000],
+'kji': [  42.0000000, 38.000000],
+'kkn': [  74.0000000, 15.250000],
+'kor': [ 128.0000000, 37.500000],
+'krk': [-123.0000000, 41.666667],
+'kse': [   0.0000000, 16.000000],
+'ksg': [  97.0000000, 18.000000],
+'lad': [  78.0000000, 34.000000],
+'lao': [ 103.0000000, 18.000000],
+'lat': [  24.0000000, 57.000000],
+'lda': [  32.1666667,  0.500000],
+'lin': [  18.5000000,  2.000000],
+'lit': [  24.0000000, 55.000000],
+'lmp': [ 105.0000000, -5.000000],
+'luo': [  34.7500000, -0.500000],
+'lux': [   6.1666667, 49.833333],
+'mal': [  47.0000000,-20.000000],
+'mdr': [ 113.5000000, -7.000000],
+'mhi': [  76.0000000, 19.000000],
+'mlt': [  14.4166667, 35.916667],
+'mme': [  48.0000000, 57.000000],
+'mnd': [ 110.0000000, 34.000000],
+'mnt': [  99.0000000, -1.500000],
+'mym': [  76.5000000, 10.000000],
+'nep': [  85.0000000, 28.000000],
+'new': [  85.5000000, 27.666667],
+'nun': [ 106.4166667, 21.916667],
+'occ': [   2.0000000, 44.000000],
+'oss': [  44.0000000, 43.000000],
+'owc': [  37.0000000,  9.000000],
+'oya': [  85.0000000, 21.000000],
+'pan': [  74.0000000, 31.000000],
+'por': [  -8.0000000, 39.000000],
+'pro': [   6.0000000, 44.000000],
+'prs': [  54.0000000, 32.000000],
+'psh': [  67.0000000, 33.000000],
+'qaf': [  42.0000000, 12.000000],
+'qay': [ -74.0000000,-14.000000],
+'rmc': [   9.1666667, 46.666667],
+'san': [  18.0000000,  5.000000],
+'scr': [  19.0000000, 44.000000],
+'sdh': [  69.0000000, 26.000000],
+'ses': [  27.0000000,-28.000000],
+'slo': [  15.0000000, 46.000000],
+'snh': [  80.5000000,  7.000000],
+'snn': [ -10.5000000, 15.000000],
+'sno': [  24.0000000, 69.000000],
+'som': [  45.0000000,  3.000000],
+'sra': [ -55.3333333,  5.833333],
+'sun': [ 107.0000000, -7.000000],
+'svk': [  20.0000000, 49.000000],
+'swa': [  39.0000000, -6.500000],
+'tag': [ 121.0000000, 15.000000],
+'tah': [-149.5833333,-17.666667],
+'taj': [  70.0000000, 38.666667],
+'tel': [  79.0000000, 16.000000],
+'tha': [ 101.0000000, 16.000000],
+'tib': [  91.0000000, 30.000000],
+'tun': [ -91.0000000, 32.666667],
+'tur': [  35.0000000, 39.000000],
+'ukr': [  33.0000000, 49.000000],
+'uyg': [  80.0000000, 40.000000],
+'uzb': [  66.0000000, 39.000000],
+'vie': [ 106.5000000, 10.500000],
+'wel': [  -3.0000000, 52.000000],
+'wlf': [ -16.0000000, 15.250000],
+'wlo': [ 122.7500000, -5.500000],
+'ykt': [ 130.0000000, 62.000000],
+'yor': [   4.3333333,  8.000000],
+'zar': [   2.1666667, 13.833333],
+'zul': [  30.0000000,-30.000000]
+    }
+  
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :5,
+      effect : {
+        show: false,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:function(param){
+    return(param.data.value.colorValue);
+  }
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'ace',value:{colorValue:'blue'},symbol:'pin'},
+{name:'aeg',value:{colorValue:'red'},symbol:'pin'},
+{name:'afr',value:{colorValue:'blue'},symbol:'pin'},
+{name:'alt',value:{colorValue:'blue'},symbol:'pin'},
+{name:'amh',value:{colorValue:'red'},symbol:'pin'},
+{name:'arm',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ass',value:{colorValue:'red'},symbol:'pin'},
+{name:'aze',value:{colorValue:'red'},symbol:'pin'},
+{name:'bal',value:{colorValue:'blue'},symbol:'pin'},
+{name:'bam',value:{colorValue:'green'},symbol:'pin'},
+{name:'ben',value:{colorValue:'red'},symbol:'pin'},
+{name:'blc',value:{colorValue:'red'},symbol:'pin'},
+{name:'blr',value:{colorValue:'red'},symbol:'pin'},
+{name:'bma',value:{colorValue:'green'},symbol:'pin'},
+{name:'bre',value:{colorValue:'blue'},symbol:'pin'},
+{name:'brm',value:{colorValue:'green'},symbol:'pin'},
+{name:'bru',value:{colorValue:'blue'},symbol:'pin'},
+{name:'bsq',value:{colorValue:'red'},symbol:'pin'},
+{name:'bul',value:{colorValue:'red'},symbol:'pin'},
+{name:'bur',value:{colorValue:'red'},symbol:'pin'},
+{name:'ccp',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ceb',value:{colorValue:'red'},symbol:'pin'},
+{name:'cha',value:{colorValue:'red'},symbol:'pin'},
+{name:'chr',value:{colorValue:'red'},symbol:'pin'},
+{name:'cic',value:{colorValue:'blue'},symbol:'pin'},
+{name:'cme',value:{colorValue:'red'},symbol:'pin'},
+{name:'cmh',value:{colorValue:'blue'},symbol:'pin'},
+{name:'cnt',value:{colorValue:'red'},symbol:'pin'},
+{name:'com',value:{colorValue:'red'},symbol:'pin'},
+{name:'crh',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ctl',value:{colorValue:'blue'},symbol:'pin'},
+{name:'cua',value:{colorValue:'blue'},symbol:'pin'},
+{name:'cze',value:{colorValue:'red'},symbol:'pin'},
+{name:'din',value:{colorValue:'red'},symbol:'pin'},
+{name:'dio',value:{colorValue:'blue'},symbol:'pin'},
+{name:'dua',value:{colorValue:'blue'},symbol:'pin'},
+{name:'dut',value:{colorValue:'blue'},symbol:'pin'},
+{name:'est',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ewe',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ewo',value:{colorValue:'blue'},symbol:'pin'},
+{name:'gdl',value:{colorValue:'blue'},symbol:'pin'},
+{name:'geo',value:{colorValue:'red'},symbol:'pin'},
+{name:'grk',value:{colorValue:'red'},symbol:'pin'},
+{name:'grt',value:{colorValue:'blue'},symbol:'pin'},
+{name:'gua',value:{colorValue:'blue'},symbol:'pin'},
+{name:'guj',value:{colorValue:'red'},symbol:'pin'},
+{name:'hau',value:{colorValue:'red'},symbol:'pin'},
+{name:'heb',value:{colorValue:'blue'},symbol:'pin'},
+{name:'hin',value:{colorValue:'red'},symbol:'pin'},
+{name:'hre',value:{colorValue:'blue'},symbol:'pin'},
+{name:'hun',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ice',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ind',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ing',value:{colorValue:'red'},symbol:'pin'},
+{name:'iri',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ita',value:{colorValue:'blue'},symbol:'pin'},
+{name:'jav',value:{colorValue:'blue'},symbol:'pin'},
+{name:'jpn',value:{colorValue:'red'},symbol:'pin'},
+{name:'kaz',value:{colorValue:'red'},symbol:'pin'},
+{name:'kbl',value:{colorValue:'green'},symbol:'pin'},
+{name:'ket',value:{colorValue:'green'},symbol:'pin'},
+{name:'kha',value:{colorValue:'red'},symbol:'pin'},
+{name:'khm',value:{colorValue:'blue'},symbol:'pin'},
+{name:'khs',value:{colorValue:'red'},symbol:'pin'},
+{name:'kik',value:{colorValue:'red'},symbol:'pin'},
+{name:'kin',value:{colorValue:'red'},symbol:'pin'},
+{name:'kji',value:{colorValue:'red'},symbol:'pin'},
+{name:'kkn',value:{colorValue:'red'},symbol:'pin'},
+{name:'kor',value:{colorValue:'red'},symbol:'pin'},
+{name:'krk',value:{colorValue:'green'},symbol:'pin'},
+{name:'kse',value:{colorValue:'green'},symbol:'pin'},
+{name:'ksg',value:{colorValue:'green'},symbol:'pin'},
+{name:'lad',value:{colorValue:'green'},symbol:'pin'},
+{name:'lao',value:{colorValue:'green'},symbol:'pin'},
+{name:'lat',value:{colorValue:'blue'},symbol:'pin'},
+{name:'lda',value:{colorValue:'red'},symbol:'pin'},
+{name:'lin',value:{colorValue:'blue'},symbol:'pin'},
+{name:'lit',value:{colorValue:'green'},symbol:'pin'},
+{name:'lmp',value:{colorValue:'blue'},symbol:'pin'},
+{name:'luo',value:{colorValue:'red'},symbol:'pin'},
+{name:'lux',value:{colorValue:'blue'},symbol:'pin'},
+{name:'mal',value:{colorValue:'blue'},symbol:'pin'},
+{name:'mdr',value:{colorValue:'blue'},symbol:'pin'},
+{name:'mhi',value:{colorValue:'red'},symbol:'pin'},
+{name:'mlt',value:{colorValue:'blue'},symbol:'pin'},
+{name:'mme',value:{colorValue:'red'},symbol:'pin'},
+{name:'mnd',value:{colorValue:'red'},symbol:'pin'},
+{name:'mnt',value:{colorValue:'blue'},symbol:'pin'},
+{name:'mym',value:{colorValue:'red'},symbol:'pin'},
+{name:'nep',value:{colorValue:'red'},symbol:'pin'},
+{name:'new',value:{colorValue:'red'},symbol:'pin'},
+{name:'nun',value:{colorValue:'red'},symbol:'pin'},
+{name:'occ',value:{colorValue:'blue'},symbol:'pin'},
+{name:'oss',value:{colorValue:'red'},symbol:'pin'},
+{name:'owc',value:{colorValue:'red'},symbol:'pin'},
+{name:'oya',value:{colorValue:'red'},symbol:'pin'},
+{name:'pan',value:{colorValue:'red'},symbol:'pin'},
+{name:'por',value:{colorValue:'red'},symbol:'pin'},
+{name:'pro',value:{colorValue:'blue'},symbol:'pin'},
+{name:'prs',value:{colorValue:'red'},symbol:'pin'},
+{name:'psh',value:{colorValue:'red'},symbol:'pin'},
+{name:'qaf',value:{colorValue:'red'},symbol:'pin'},
+{name:'qay',value:{colorValue:'blue'},symbol:'pin'},
+{name:'rmc',value:{colorValue:'blue'},symbol:'pin'},
+{name:'san',value:{colorValue:'red'},symbol:'pin'},
+{name:'scr',value:{colorValue:'red'},symbol:'pin'},
+{name:'sdh',value:{colorValue:'red'},symbol:'pin'},
+{name:'ses',value:{colorValue:'blue'},symbol:'pin'},
+{name:'slo',value:{colorValue:'red'},symbol:'pin'},
+{name:'snh',value:{colorValue:'blue'},symbol:'pin'},
+{name:'snn',value:{colorValue:'green'},symbol:'pin'},
+{name:'sno',value:{colorValue:'blue'},symbol:'pin'},
+{name:'som',value:{colorValue:'red'},symbol:'pin'},
+{name:'sra',value:{colorValue:'blue'},symbol:'pin'},
+{name:'sun',value:{colorValue:'blue'},symbol:'pin'},
+{name:'svk',value:{colorValue:'red'},symbol:'pin'},
+{name:'swa',value:{colorValue:'red'},symbol:'pin'},
+{name:'tag',value:{colorValue:'red'},symbol:'pin'},
+{name:'tah',value:{colorValue:'blue'},symbol:'pin'},
+{name:'taj',value:{colorValue:'red'},symbol:'pin'},
+{name:'tel',value:{colorValue:'blue'},symbol:'pin'},
+{name:'tha',value:{colorValue:'red'},symbol:'pin'},
+{name:'tib',value:{colorValue:'red'},symbol:'pin'},
+{name:'tun',value:{colorValue:'green'},symbol:'pin'},
+{name:'tur',value:{colorValue:'red'},symbol:'pin'},
+{name:'ukr',value:{colorValue:'red'},symbol:'pin'},
+{name:'uyg',value:{colorValue:'red'},symbol:'pin'},
+{name:'uzb',value:{colorValue:'red'},symbol:'pin'},
+{name:'vie',value:{colorValue:'red'},symbol:'pin'},
+{name:'wel',value:{colorValue:'blue'},symbol:'pin'},
+{name:'wlf',value:{colorValue:'green'},symbol:'pin'},
+{name:'wlo',value:{colorValue:'blue'},symbol:'pin'},
+{name:'ykt',value:{colorValue:'red'},symbol:'pin'},
+{name:'yor',value:{colorValue:'blue'},symbol:'pin'},
+{name:'zar',value:{colorValue:'green'},symbol:'pin'},
+{name:'zul',value:{colorValue:'green'},symbol:'pin'}
+      ]},
+      geoCoord:{'ace': [  95.5000000,  5.500000],
+'aeg': [  31.0000000, 30.000000],
+'afr': [  22.0000000,-31.000000],
+'alt': [   7.5000000, 48.500000],
+'amh': [  38.0000000, 10.000000],
+'arm': [  45.0000000, 40.000000],
+'ass': [  93.0000000, 26.000000],
+'aze': [  48.5000000, 40.500000],
+'bal': [ 115.2500000, -8.333333],
+'bam': [  -7.5000000, 12.500000],
+'ben': [  90.0000000, 24.000000],
+'blc': [  62.0000000, 28.000000],
+'blr': [  28.0000000, 54.000000],
+'bma': [  -5.0000000, 33.000000],
+'bre': [  -3.0000000, 48.000000],
+'brm': [  96.0000000, 21.000000],
+'bru': [ 106.0000000, 17.333333],
+'bsq': [  -3.0000000, 43.000000],
+'bul': [  25.0000000, 42.500000],
+'bur': [  74.5000000, 36.500000],
+'ccp': [-115.0000000, 32.333333],
+'ceb': [ 124.0000000, 10.000000],
+'cha': [ 144.7500000, 13.450000],
+'chr': [ 107.5000000, 10.750000],
+'cic': [  34.0000000,-14.000000],
+'cme': [ 108.5000000, 11.333333],
+'cmh': [-115.1666667, 34.333333],
+'cnt': [ 113.0000000, 23.000000],
+'com': [  44.0000000,-12.000000],
+'crh': [ 108.5000000, 11.500000],
+'ctl': [   2.0000000, 41.750000],
+'cua': [ 108.5000000, 15.250000],
+'cze': [  15.0000000, 50.000000],
+'din': [  28.0000000,  8.500000],
+'dio': [ -16.2500000, 13.000000],
+'dua': [   9.4166667,  4.000000],
+'dut': [   6.0000000, 52.500000],
+'est': [  26.0000000, 59.000000],
+'ewe': [   0.4166667,  6.333333],
+'ewo': [  12.0000000,  4.000000],
+'gdl': [ -61.5000000, 16.250000],
+'geo': [  44.0000000, 42.000000],
+'grk': [  22.0000000, 39.000000],
+'grt': [ 122.0000000,  0.500000],
+'gua': [ -56.0000000,-26.000000],
+'guj': [  72.0000000, 23.000000],
+'hau': [   7.0000000, 12.000000],
+'heb': [  34.8333333, 31.500000],
+'hin': [  77.0000000, 25.000000],
+'hre': [ 108.6666667, 14.666667],
+'hun': [  20.0000000, 47.000000],
+'ice': [ -17.0000000, 65.000000],
+'ind': [ 106.0000000,  0.000000],
+'ing': [  45.0833333, 43.166667],
+'iri': [  -8.0000000, 53.000000],
+'ita': [  12.0000000, 43.000000],
+'jav': [ 111.0000000, -7.000000],
+'jpn': [ 140.0000000, 37.000000],
+'kaz': [  70.0000000, 50.000000],
+'kbl': [   5.0000000, 36.500000],
+'ket': [  87.0000000, 64.000000],
+'kha': [ 105.0000000, 47.000000],
+'khm': [ 105.0000000, 12.500000],
+'khs': [  92.0000000, 25.500000],
+'kik': [  36.7500000, -0.750000],
+'kin': [  30.0000000, -2.000000],
+'kji': [  42.0000000, 38.000000],
+'kkn': [  74.0000000, 15.250000],
+'kor': [ 128.0000000, 37.500000],
+'krk': [-123.0000000, 41.666667],
+'kse': [   0.0000000, 16.000000],
+'ksg': [  97.0000000, 18.000000],
+'lad': [  78.0000000, 34.000000],
+'lao': [ 103.0000000, 18.000000],
+'lat': [  24.0000000, 57.000000],
+'lda': [  32.1666667,  0.500000],
+'lin': [  18.5000000,  2.000000],
+'lit': [  24.0000000, 55.000000],
+'lmp': [ 105.0000000, -5.000000],
+'luo': [  34.7500000, -0.500000],
+'lux': [   6.1666667, 49.833333],
+'mal': [  47.0000000,-20.000000],
+'mdr': [ 113.5000000, -7.000000],
+'mhi': [  76.0000000, 19.000000],
+'mlt': [  14.4166667, 35.916667],
+'mme': [  48.0000000, 57.000000],
+'mnd': [ 110.0000000, 34.000000],
+'mnt': [  99.0000000, -1.500000],
+'mym': [  76.5000000, 10.000000],
+'nep': [  85.0000000, 28.000000],
+'new': [  85.5000000, 27.666667],
+'nun': [ 106.4166667, 21.916667],
+'occ': [   2.0000000, 44.000000],
+'oss': [  44.0000000, 43.000000],
+'owc': [  37.0000000,  9.000000],
+'oya': [  85.0000000, 21.000000],
+'pan': [  74.0000000, 31.000000],
+'por': [  -8.0000000, 39.000000],
+'pro': [   6.0000000, 44.000000],
+'prs': [  54.0000000, 32.000000],
+'psh': [  67.0000000, 33.000000],
+'qaf': [  42.0000000, 12.000000],
+'qay': [ -74.0000000,-14.000000],
+'rmc': [   9.1666667, 46.666667],
+'san': [  18.0000000,  5.000000],
+'scr': [  19.0000000, 44.000000],
+'sdh': [  69.0000000, 26.000000],
+'ses': [  27.0000000,-28.000000],
+'slo': [  15.0000000, 46.000000],
+'snh': [  80.5000000,  7.000000],
+'snn': [ -10.5000000, 15.000000],
+'sno': [  24.0000000, 69.000000],
+'som': [  45.0000000,  3.000000],
+'sra': [ -55.3333333,  5.833333],
+'sun': [ 107.0000000, -7.000000],
+'svk': [  20.0000000, 49.000000],
+'swa': [  39.0000000, -6.500000],
+'tag': [ 121.0000000, 15.000000],
+'tah': [-149.5833333,-17.666667],
+'taj': [  70.0000000, 38.666667],
+'tel': [  79.0000000, 16.000000],
+'tha': [ 101.0000000, 16.000000],
+'tib': [  91.0000000, 30.000000],
+'tun': [ -91.0000000, 32.666667],
+'tur': [  35.0000000, 39.000000],
+'ukr': [  33.0000000, 49.000000],
+'uyg': [  80.0000000, 40.000000],
+'uzb': [  66.0000000, 39.000000],
+'vie': [ 106.5000000, 10.500000],
+'wel': [  -3.0000000, 52.000000],
+'wlf': [ -16.0000000, 15.250000],
+'wlo': [ 122.7500000, -5.500000],
+'ykt': [ 130.0000000, 62.000000],
+'yor': [   4.3333333,  8.000000],
+'zar': [   2.1666667, 13.833333],
+'zul': [  30.0000000,-30.000000]
+                  }
+                  
+
+    },
+    ]
+};
+
+
+var myChart = BMapExt.initECharts(container);
+window.onresize = myChart.onresize;
+BMapExt.setOption(optionID_20180116145336_291849);
+                }
+                );
+                })();
+</script>
+  </body>
+  </html>
+
+  
